@@ -18,86 +18,109 @@ class LoginScreen extends GetView<LoginController> {
     return Scaffold(
         backgroundColor: Colors.indigo.withOpacity(0.13),
         appBar: AppbarWidget(),
-        body: GetBuilder<LoginController>(
-          builder: (controller) {
-            return SizedBox(
-
-              width: context.screenWidth,
-              height: context.screenHeight,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Card(
-                    elevation: 2,
-                    child: Container(
-                      constraints: BoxConstraints(
-                        minWidth: context.screenWidth * 0.3,
+        body: GetBuilder<LoginController>(builder: (controller) {
+          return SizedBox(
+            width: context.screenWidth,
+            height: context.screenHeight,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Card(
+                  elevation: 2,
+                  child: Container(
+                    constraints: BoxConstraints(
+                      minWidth: context.screenWidth * 0.3,
                       //  minHeight: context.screenHeight * 0.54,
-                        maxWidth:450,
+                      maxWidth: 450,
                       //  maxHeight: context.screenHeight
-                      ),
-                      // width: context.screenWidth * 0.35,
-                      // height: context.screenHeight * 0.54,
-                      decoration: BoxDecoration(
+                    ),
 
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          10.heightBox,
-                          Center(
-                            child: TextWidget(
-                              text: "Hii there, Welcome Back..!!",
-                              fontWeight: FontWeight.w900,
-                              fontSize: 32,
-                            ),
+                    // width: context.screenWidth * 0.35,
+                    // height: context.screenHeight * 0.54,
+                    decoration: BoxDecoration(
+                        color: Colors.lightBlueAccent,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        10.heightBox,
+                        Center(
+                          child: TextWidget(
+                            text: "Hii there, Welcome Back..!!",
+                            fontWeight: FontWeight.w900,
+                            fontSize: 32,
                           ),
-                          10.heightBox,
+                        ),
+                        10.heightBox,
                         TextfieldWidget(
                           controller: controller.email,
                           obscure: false,
-                          label: "Email",hint: "Enter your Email Id",),
-                          10.heightBox,
-                          TextfieldWidget(
-                            controller: controller.password,
-                            obscure: true,
-                            label: "Password",hint: "Enter your Password",),
-                          40.heightBox,
-                          Container(
-                            width: context.screenWidth,
-                            height: 48,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color:primaryColor,
-                              borderRadius: BorderRadius.circular(230)
-                            ),
-                            child: TextWidget(text: "Continue",color: Colors.white,fontSize: 20,fontWeight: FontWeight.w700,),
-                          ).onTap(() {
-                            controller.login(context: context);
-                          } ),
-                          30.heightBox,
-                          Row(
-                            children: [
-                              TextWidget(text: "Dont have an Account?",fontSize: 15,color: Color(0xff5b5058),),
-                              5.widthBox,
-                              TextWidget(text: "Sign Up",fontSize: 15,color: primaryColor,fontWeight: FontWeight.bold,).onTap((){
-                              context.go("/signup");
-                              })
-                            ],
+                          label: "Email",
+                          hint: "Enter your Email Id",
+                        ),
+                        10.heightBox,
+                        TextfieldWidget(
+                          controller: controller.password,
+                          obscure: true,
+                          label: "Password",
+                          hint: "Enter your Password",
+                        ),
+                        40.heightBox,
+                        Container(
+                          width: context.screenWidth,
+                          height: 48,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: primaryColor,
+                              borderRadius: BorderRadius.circular(230)),
+                          child: TextWidget(
+                            text: "Continue",
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
                           ),
-                          10.heightBox,
-                          TextWidget(text: "For queries and concerns, please contact us at",color: Color(0xff5b5058),),
-                          TextWidget(text: "support@jioworks.com",color: primaryColor,fontSize: 12,fontWeight: FontWeight.w400,)
-                        ],
-                      ).p12(),
-                    ),
-                  )
-                ],
-              ),
-            );
-          }
-        ));
+                        ).onTap(() {
+                          controller.login(context: context);
+                        }),
+                        30.heightBox,
+                        Row(
+                          children: [
+                            TextWidget(
+                              text: "Dont have an Account?",
+                              fontSize: 15,
+                              color: Color(0xff5b5058),
+                            ),
+                            5.widthBox,
+                            TextWidget(
+                              text: "Sign Up",
+                              fontSize: 15,
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ).onTap(() {
+                              context.go("/signup");
+                            })
+                          ],
+                        ),
+                        10.heightBox,
+                        TextWidget(
+                          text:
+                              "For queries and concerns, please contact us at",
+                          color: Color(0xff5b5058),
+                        ),
+                        TextWidget(
+                          text: "support@jioworks.com",
+                          color: primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        )
+                      ],
+                    ).p12(),
+                  ),
+                )
+              ],
+            ),
+          );
+        }));
   }
 }
