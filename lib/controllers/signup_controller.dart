@@ -48,7 +48,7 @@ class SignupController extends GetxController {
  emailCheck({required BuildContext context}) {
    print("okk");
    if (email.text.trim().isEmail) {
-       sendOtp(context: context);
+      // sendOtp(context: context);
      context.go('/otp');
      print('hello');
 
@@ -57,50 +57,35 @@ class SignupController extends GetxController {
    }
  }
 
- Future<void> sendOtp({required BuildContext context}) async {
-   try {
-     // Assuming 'Datainfo' is a wrapper for Appwrite SDK
-     sessionToken = await Datainfo.account.createEmailToken(
-       userId: ID.unique(),  // Generate a unique user ID
-       email: email.text,     // Make sure 'email' is a TextEditingController
-     );
+ sendOtp({required BuildContext context})async{
+   sessionToken = await Datainfo.account.createEmailToken(
+     userId: ID.unique(),
+     email: email.text,
 
-     // You can handle the response here, like notifying the user
-     if (sessionToken != null) {
-       // Handle success (e.g., show confirmation message)
-       ScaffoldMessenger.of(context).showSnackBar(
-         SnackBar(content: Text('OTP sent to ${email.text}')),
-       );
-     } else {
-       // Handle failure case
-       ScaffoldMessenger.of(context).showSnackBar(
-         SnackBar(content: Text('Failed to send OTP')),
-       );
-     }
-   } catch (e) {
-     // Handle any errors that might occur
-     ScaffoldMessenger.of(context).showSnackBar(
-       SnackBar(content: Text('Error: $e')),
-     );
-   }
+   );
+   context.go('/otp');
+
+
+
+
  }
-
  verifyOtp({ required BuildContext context})async{
    if(otp.text.isEmpty || otp.text.length<6){
      showSnackBar(message: "Please Enter Otp", context: context);
    }
    else{
-     try{
-        await Datainfo.account.createSession(
-           userId: sessionToken.userId,
-           secret: otp.text
-       ).then((value){
-         context.go('/details');
-        });
-     }
-     catch(e){
-      showSnackBar(message: e.toString(), context: context);
-     }
+     context.go('/details');
+     // try{
+     //    await Datainfo.account.createSession(
+     //       userId: sessionToken.userId,
+     //       secret: otp.text
+     //   ).then((value){
+     //     context.go('/details');
+     //    });
+     // }
+     // catch(e){
+     //  showSnackBar(message: e.toString(), context: context);
+     // }
 
  }}
  checkDetails({required BuildContext context}){
@@ -133,9 +118,10 @@ class SignupController extends GetxController {
        context.go('/login');
      });
 
-     print('User created: ${user!.$id}');
+   //  print('User created: ${user!.$id}');
    } catch (e) {
-
+     print("error comes");
+print(e.toString());
      showSnackBar(message: e.toString(), context: context);
    }
  }
