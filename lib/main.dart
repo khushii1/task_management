@@ -23,47 +23,65 @@ void main() {
     home: MyApp(account: Datainfo.account),
   ));
 }
-final GoRouter router=GoRouter(routes: [
-  GoRoute(path: '/',
-  builder:( BuildContext context, GoRouterState state){
-    return  HomeScreen();
-  },
-    routes: [
-      GoRoute(path: 'login',builder:( BuildContext context, GoRouterState state){
-        return  LoginScreen();
-      }, ),
-      GoRoute(path: '/signup',builder:( BuildContext context, GoRouterState state){
-        return  SignupScreen();
-      }, ),
-      GoRoute(path: '/otp',builder:( BuildContext context, GoRouterState state){
-        return  OtpScreen();
-      }, ),
-      GoRoute(path: 'details',builder:( BuildContext context, GoRouterState state){
-        return  DetailSignupScreen();
-      }, ),
-      GoRoute(path: 'customUrl',builder:( BuildContext context, GoRouterState state){
-        return  CustomUrlScreen();
-      }, ),
-      GoRoute(path: 'jioscreen',builder:( BuildContext context, GoRouterState state){
-        return  JioScreen();
-      }, ),
 
-    ]
-  )
+final GoRouter router = GoRouter(routes: [
+  GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return HomeScreen();
+      },
+      routes: [
+        GoRoute(
+          path: 'login',
+          builder: (BuildContext context, GoRouterState state) {
+            return LoginScreen();
+          },
+        ),
+        GoRoute(
+          path: '/signup',
+          builder: (BuildContext context, GoRouterState state) {
+            return SignupScreen();
+          },
+        ),
+        GoRoute(
+          path: '/otp',
+          builder: (BuildContext context, GoRouterState state) {
+            return OtpScreen();
+          },
+        ),
+        GoRoute(
+          path: 'details',
+          builder: (BuildContext context, GoRouterState state) {
+            return DetailSignupScreen();
+          },
+        ),
+        GoRoute(
+          path: 'customUrl',
+          builder: (BuildContext context, GoRouterState state) {
+            return CustomUrlScreen();
+          },
+        ),
+        GoRoute(
+          path: 'jioscreen',
+          builder: (BuildContext context, GoRouterState state) {
+            return JioScreen();
+          },
+        ),
+      ])
 ]);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required Account account});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp.router(
-
-        routerConfig: router,
-        title: 'jio works',
-        debugShowCheckedModeBanner: false,
-
+    return GetMaterialApp.router(
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
+      routeInformationProvider: router.routeInformationProvider,
+      title: 'jio works',
+      debugShowCheckedModeBanner: false,
     );
   }
 }
-
