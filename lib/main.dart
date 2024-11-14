@@ -57,8 +57,8 @@ class MyApp extends StatelessWidget {
     return  MaterialApp.router(
 
         routerConfig: router,
-      title: 'jio works',
-debugShowCheckedModeBanner: false,
+        title: 'jio works',
+        debugShowCheckedModeBanner: false,
 
     );
   }
