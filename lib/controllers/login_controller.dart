@@ -33,6 +33,7 @@ class LoginController extends GetxController {
 
 
 
+
    await Datainfo.account.createEmailPasswordSession(
         email: email.text,
         password: password.text,
@@ -49,13 +50,18 @@ class LoginController extends GetxController {
 
       var data = await Datainfo.account
           .createEmailPasswordSession(
+
         email: email.text,
         password: password.text,
-      )
-          .then((value) {
+      ).then((value) {
+        Datainfo.sessionId=value.$id;
+        
+
+    print(Datainfo.sessionId);
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
+
 
     } catch (e) {
       showSnackBar(message: e.toString(), context: context);
