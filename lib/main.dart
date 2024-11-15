@@ -11,7 +11,7 @@ import 'package:jio_works/screens/login_screen.dart';
 import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Datainfo.appWriteInfo();
@@ -82,6 +82,7 @@ class MyApp extends StatelessWidget {
       routeInformationProvider: router.routeInformationProvider,
       title: 'jio works',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(),
     );
   }
 }
