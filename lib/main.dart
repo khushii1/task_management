@@ -11,6 +11,7 @@ import 'package:jio_works/screens/jio_screen.dart';
 import 'package:jio_works/screens/login_screen.dart';
 import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
+import 'package:jio_works/screens/splash_screen.dart';
 
 void main() {
 
@@ -31,6 +32,12 @@ final GoRouter router = GoRouter(routes: [
         return HomeScreen();
       },
       routes: [
+        GoRoute(
+          path: 'home',
+          builder: (BuildContext context, GoRouterState state) {
+            return HomeScreen();
+          },
+        ),
         GoRoute(
           path: 'login',
           builder: (BuildContext context, GoRouterState state) {

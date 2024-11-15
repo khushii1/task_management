@@ -23,6 +23,7 @@ class LoginController extends GetxController{
         ],
       );
 
+
       if (response.documents.isEmpty) {
         // No matching user found in the database
         showSnackBar(message: "Invalid email or password", context: context);
@@ -30,13 +31,14 @@ class LoginController extends GetxController{
       }
 
 
-      await Datainfo.account.createEmailPasswordSession(
+  var data=    await Datainfo.account.createEmailPasswordSession(
         email: email.text,
         password: password.text,
       ).then((value) {
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
+      print(data);
 
     } catch (e) {
 
