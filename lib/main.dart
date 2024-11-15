@@ -17,7 +17,7 @@ void main() async {
 
   Datainfo.appWriteInfo();
 
-  await Datainfo.account.deleteSessions();
+
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -29,7 +29,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const HomeScreen();
+        return const SplashScreen();
       },
       routes: [
         GoRoute(

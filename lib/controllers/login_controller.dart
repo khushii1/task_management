@@ -36,7 +36,8 @@ class LoginController extends GetxController {
         email: email.text,
         password: password.text,
       ).then((value) {
-    print("hello evenryone: ${value.$id} ");
+        Datainfo.sessionId=value.$id;
+    
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
