@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,25 +15,36 @@ enum ImageType {
   svg,
 }
 
-extension StringExtension on dynamic {
+extension StringExtension on String {
   Widget image(
-      {ImageType type = ImageType.assets, BoxFit fit = BoxFit.contain}) {
-    if (type == ImageType.assets) {
-      return Image.asset(
-        this,
-        fit: fit,
-      );
-    } else if (type == ImageType.network) {
+      {final width, final height, BoxFit fit = BoxFit.contain, Color? color}) {
+    if (Uri.tryParse(this)?.hasAbsolutePath ?? false) {
+      // Check if it's a network URL
       return Image.network(
         this,
         fit: fit,
       );
-    } else if (type == ImageType.file) {
-      return Image.file(this);
-    } else if (type == ImageType.memory) {
-      return Image.memory(this);
+    } else if (this.toLowerCase().endsWith('.svg')) {
+      // Check if it's an SVG file
+      return SvgPicture.asset(
+        this,
+        fit: BoxFit.contain,
+        color: color,
+      );
+    } else if (File(this).existsSync()) {
+      // Check if it's a local file
+      return Image.file(
+        File(this),
+        fit: fit,
+      );
     } else {
-      return SvgPicture.asset(this);
+      // Default to an asset
+      return Image.asset(
+        this,
+        fit: fit,
+        width: width,
+        height: height,
+      );
     }
   }
 }
@@ -68,12 +81,11 @@ extension Check on bool {
 showSnackBar({required String message, required BuildContext context}) {
   if (context.mounted) {
     if (message.isNotEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: TextWidget(
-      text: message,
-      color: Colors.white,
-    )));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: TextWidget(
+        text: message,
+        color: Colors.white,
+      )));
+    }
   }
-  }
-  
 }
