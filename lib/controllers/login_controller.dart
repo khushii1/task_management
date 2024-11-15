@@ -40,7 +40,7 @@ class LoginController extends GetxController {
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
-      print(data);
+      
     } catch (e) {
       showSnackBar(message: e.toString(), context: context);
     }
