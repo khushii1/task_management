@@ -1,5 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,10 +12,29 @@ class LoginController extends GetxController {
   final password = TextEditingController();
   final databases = Databases(DataInfo.client!);
   final RxBool isLoading = false.obs;
+  checkDetail({required BuildContext context}){
+
+    if(!email.text.isEmail){
+      isLoading.value=false;
+      update();
+      showSnackBar(message: "Please Enter Correct Email", context: context);
+    }
+    else if(password.text.isEmpty || password.text.length<6) {
+      isLoading.value=false;
+      update();
+      showSnackBar(message: "Please Enter Correct Password", context: context);
+    }
+    else{
+      login(context: context);
+    }
+
+  }
   Future<void> login({required BuildContext context}) async {
     print("Checking user in database...");
     try {
+      print("f1:${isLoading.value}");
       isLoading.value = true;
+      print("f2:${isLoading.value}");
       update();
       // final response = await databases.listDocuments(
       //   databaseId: '6735eba3001840aef863',
@@ -38,6 +58,8 @@ class LoginController extends GetxController {
         email: email.text,
         password: password.text,
       ).then((value) {
+        isLoading.value=false;
+        update();
     //  DataInfo.sessionId=value.$id;
     //     print(value.$id);
     //
@@ -52,6 +74,8 @@ class LoginController extends GetxController {
 
 
     } catch (e) {
+      isLoading.value=false;
+      update();
       showSnackBar(message: e.toString(), context: context);
     }
   }

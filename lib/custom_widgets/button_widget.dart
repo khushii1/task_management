@@ -9,6 +9,7 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(isLoading);
     return Container(
       width: context.screenWidth,
       height: 48,
