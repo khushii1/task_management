@@ -16,6 +16,7 @@ class SplashController extends GetxController{
     checkSession(context);
   }
   checkSession(BuildContext context)async{
+    await Future.delayed(Duration(seconds: 1));
     try {
       final session = await Datainfo.account.getSession(sessionId: Datainfo.sessionId);
       // Gets the current active session
