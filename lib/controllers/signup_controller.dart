@@ -29,7 +29,7 @@ class SignupController extends GetxController {
   final organization = TextEditingController();
   final password = TextEditingController();
   final customUrl = TextEditingController();
-  RxBool checkEye = false.obs;
+  RxBool checkEye = true.obs;
   final databases = Databases(DataInfo.client!);
 RxBool isLoading=false.obs;
   late Token sessionToken;
@@ -80,7 +80,8 @@ RxBool isLoading=false.obs;
       userId: ID.unique(),
       email: email.text,
     );
-
+isLoading.value=false;
+update();
     context.go('/otp');
   }
 
@@ -110,6 +111,7 @@ RxBool isLoading=false.obs;
   }
 
   checkDetails({required BuildContext context}) {
+
     if (firstName.text.isEmpty || firstName.text.length < 3) {
       showSnackBar(message: "Please Enter Proper Name", context: context);
     } else if (lastName.text.isEmpty) {
