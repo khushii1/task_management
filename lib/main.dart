@@ -12,11 +12,12 @@ import 'package:jio_works/screens/login_screen.dart';
 import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
 
-void main() {
-
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   Datainfo.appWriteInfo();
+
+  await Datainfo.account.deleteSessions();
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
