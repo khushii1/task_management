@@ -9,14 +9,14 @@ class SplashScreen extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     Get.put(SplashController(context: context));
-    return GetBuilder<SplashController>(
-      builder: (controller) {
-        return Scaffold(
-          body: Center(
-            child: TextWidget(text: "Task Management",color: Colors.red,),
+    return GetBuilder<SplashController>(builder: (controller) {
+      return Scaffold(
+        body: Center(
+          child: TextWidget(
+            text: "Task Management",
           ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }
