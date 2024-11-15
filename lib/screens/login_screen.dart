@@ -68,7 +68,6 @@ class LoginScreen extends GetView<LoginController> {
                           hint: "Enter your Password",
                         ),
                         40.heightBox,
-                        ButtonWidget(text: "Login"),
                         Container(
                           width: context.screenWidth,
                           height: 48,

@@ -4,41 +4,53 @@ import 'package:go_router/go_router.dart';
 
 import '../datainfo/datainfo.dart';
 
-class SplashController extends GetxController{
+class SplashController extends GetxController {
   BuildContext context;
-  SplashController({required this.context}){
-    context=context;
+  SplashController({required this.context}) {
+    context = context;
   }
   @override
   void onInit() {
-    print("oninit method");
-    // TODO: implement onInit
     super.onInit();
     checkSession(context);
   }
-  checkSession(BuildContext context)async{
+
+  checkSession(BuildContext context) async {
     print("okk");
     //String? sessionId = await getSessionId();
 
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     try {
-      print("yes");
-      print(Datainfo.sessionId);
+      final user = await Datainfo.account.get();
+      print('User is logged in: ${user.email}');
+      if (context.mounted) {
+        context.go('/jioscreen');
+      }
 
-      print("elllo id:${Datainfo.sessionId}");
-      final session = await Datainfo.account.getSession(sessionId: Datainfo.sessionId);
-      // Gets the current active session
-     print("nithing");
-       if(session!=null){
-         print("hello");
-       context.go('/jioscreen');// If session exists, return true (logged in)
-       }
-       else{
-         print("byy");
-         context.go('/home');
-       }
+      // User is logged in, handle accordingly
     } catch (e) {
-      return false;  // No session exists, return false (not logged in)
+      print('User is not logged in: $e');
+      if (context.mounted) {
+        context.go('/login');
+      }
+      // User is not logged in, handle accordingly
     }
+    // try {
+
+    //   print("elllo id:${Datainfo.sessionId}");
+    //   final session = await Datainfo.account.getSession(sessionId: Datainfo.sessionId);
+    //   // Gets the current active session
+    //  print("nithing");
+    //    if(session!=null){
+    //      print("hello");
+    //    context.go('/jioscreen');// If session exists, return true (logged in)
+    //    }
+    //    else{
+    //      print("byy");
+    //      context.go('/home');
+    //    }
+    // } catch (e) {
+    //   return false;  // No session exists, return false (not logged in)
+    // }
   }
 }
