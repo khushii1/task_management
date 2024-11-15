@@ -30,7 +30,7 @@ class SignupController extends GetxController {
   final password = TextEditingController();
   final customUrl = TextEditingController();
   RxBool checkEye = false.obs;
-  final databases = Databases(Datainfo.client!);
+  final databases = Databases(DataInfo.client!);
 
   late Token sessionToken;
   checkBoolEye() {
@@ -66,7 +66,7 @@ class SignupController extends GetxController {
   }
 
   sendOtp({required BuildContext context}) async {
-    sessionToken = await Datainfo.account.createEmailToken(
+    sessionToken = await DataInfo.account.createEmailToken(
       userId: ID.unique(),
       email: email.text,
     );
@@ -80,7 +80,7 @@ class SignupController extends GetxController {
     } else {
       // context.go('/details');
       try {
-        await Datainfo.account
+        await DataInfo.account
             .createSession(userId: sessionToken.userId, secret: otp.text)
             .then((value) {
           context.go('/details');
@@ -110,9 +110,9 @@ class SignupController extends GetxController {
 
   Future<void> signup({required BuildContext context}) async {
     try {
-      Datainfo.account
+      DataInfo.account
           .updateName(name: "${firstName.text.trim()} ${lastName.text.trim()}");
-      Datainfo.account.updatePassword(password: password.text.trim());
+      DataInfo.account.updatePassword(password: password.text.trim());
       
       await databases.createDocument(
         databaseId: '6735eba3001840aef863',

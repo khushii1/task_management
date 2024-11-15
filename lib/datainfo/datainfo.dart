@@ -1,6 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 
-class Datainfo {
+class DataInfo {
   static String projectId = '6732e7f20038e9fc710b';
   static String url = 'https://cloud.appwrite.io/v1';
   static late Account account;
@@ -8,7 +8,7 @@ class Datainfo {
   static Client? client;
   static appWriteInfo() {
      client =
-        Client().setEndpoint(Datainfo.url).setProject(Datainfo.projectId);
+        Client().setEndpoint(url).setProject(projectId);
 
     account = Account(client!);
   }

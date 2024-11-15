@@ -12,7 +12,7 @@ class JioScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppbarWidget(
         onClick: () async {
-          await Datainfo.account.deleteSessions();
+          await DataInfo.account.deleteSessions();
           context.go("/login");
         },
       ),

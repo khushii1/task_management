@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-import '../datainfo/datainfo.dart';
+import '../DataInfo/DataInfo.dart';
 import '../utilities/custom_field.dart';
 
 class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
-  final databases = Databases(Datainfo.client!);
+  final databases = Databases(DataInfo.client!);
   final RxBool isLoading = false.obs;
   Future<void> login({required BuildContext context}) async {
     print("Checking user in database...");
@@ -34,33 +34,21 @@ class LoginController extends GetxController {
 
 
 
-   await Datainfo.account.createEmailPasswordSession(
+   await DataInfo.account.createEmailPasswordSession(
         email: email.text,
         password: password.text,
       ).then((value) {
-        Datainfo.sessionId=value.$id;
+        DataInfo.sessionId=value.$id;
         print(value.$id);
 
-    print(Datainfo.sessionId);
+    print(DataInfo.sessionId);
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
 
 
 
-      var data = await Datainfo.account
-          .createEmailPasswordSession(
 
-        email: email.text,
-        password: password.text,
-      ).then((value) {
-        Datainfo.sessionId=value.$id;
-        
-
-    print(Datainfo.sessionId);
-        showSnackBar(message: "Logged in successfully", context: context);
-        context.go("/jioscreen");
-      });
 
 
     } catch (e) {

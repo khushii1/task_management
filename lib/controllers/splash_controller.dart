@@ -21,7 +21,7 @@ class SplashController extends GetxController {
 
     await Future.delayed(const Duration(seconds: 1));
     try {
-      final user = await Datainfo.account.get();
+      final user = await DataInfo.account.get();
       print('User is logged in: ${user.email}');
       if (context.mounted) {
         context.go('/jioscreen');
