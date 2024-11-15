@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -65,13 +64,16 @@ extension Check on bool {
     }
   }
 }
-showSnackBar({required String message,required BuildContext context}) {
-  if (message.isNotEmpty) {
+
+showSnackBar({required String message, required BuildContext context}) {
+  if (context.mounted) {
+    if (message.isNotEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: TextWidget(
-         text:  message,
-          color: Colors.white,
-        )));
+      text: message,
+      color: Colors.white,
+    )));
   }
+  }
+  
 }
-

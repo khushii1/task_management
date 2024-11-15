@@ -10,14 +10,14 @@ import 'package:velocity_x/velocity_x.dart';
 import '../controllers/login_controller.dart';
 
 class LoginScreen extends GetView<LoginController> {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
     return Scaffold(
         backgroundColor: Colors.indigo.withOpacity(0.13),
-        appBar: AppbarWidget(),
+        appBar: const AppbarWidget(),
         body: GetBuilder<LoginController>(builder: (controller) {
           return SizedBox(
             width: context.screenWidth,
@@ -45,7 +45,7 @@ class LoginScreen extends GetView<LoginController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         10.heightBox,
-                        Center(
+                        const Center(
                           child: TextWidget(
                             text: "Hii there, Welcome Back..!!",
                             fontWeight: FontWeight.w900,
@@ -74,7 +74,7 @@ class LoginScreen extends GetView<LoginController> {
                           decoration: BoxDecoration(
                               color: primaryColor,
                               borderRadius: BorderRadius.circular(230)),
-                          child: TextWidget(
+                          child: const TextWidget(
                             text: "Continue",
                             color: Colors.white,
                             fontSize: 20,
@@ -86,7 +86,7 @@ class LoginScreen extends GetView<LoginController> {
                         30.heightBox,
                         Row(
                           children: [
-                            TextWidget(
+                            const TextWidget(
                               text: "Dont have an Account?",
                               fontSize: 15,
                               color: Color(0xff5b5058),
@@ -103,7 +103,7 @@ class LoginScreen extends GetView<LoginController> {
                           ],
                         ),
                         10.heightBox,
-                        TextWidget(
+                        const TextWidget(
                           text:
                               "For queries and concerns, please contact us at",
                           color: Color(0xff5b5058),
