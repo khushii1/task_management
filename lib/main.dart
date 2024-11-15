@@ -16,7 +16,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  DataInfo.appWriteInfo();
+ await DataInfo.appWriteInfo();
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,

@@ -6,10 +6,15 @@ class DataInfo {
   static late Account account;
   static String  sessionId='';
   static Client? client;
-  static appWriteInfo() {
+  static appWriteInfo()async {
+   try{
+     print("printed");
      client =
-        Client().setEndpoint(url).setProject(projectId);
-
-    account = Account(client!);
+         Client().setEndpoint(DataInfo.url).setProject(DataInfo.projectId);
+     print(client!.config.toString());
+     account = Account(client!);
+   }catch(e){
+     print("de:${e}");
+   }
   }
 }

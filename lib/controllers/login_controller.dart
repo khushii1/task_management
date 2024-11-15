@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-import '../DataInfo/DataInfo.dart';
+import '../datainfo/datainfo.dart';
 import '../utilities/custom_field.dart';
 
 class LoginController extends GetxController {
@@ -16,20 +16,20 @@ class LoginController extends GetxController {
     try {
       isLoading.value = true;
       update();
-      final response = await databases.listDocuments(
-        databaseId: '6735eba3001840aef863',
-        collectionId: '6735ebaa003ba5e26526',
-        queries: [
-          Query.equal('email', email.text),
-          Query.equal('password', password.text),
-        ],
-      );
+      // final response = await databases.listDocuments(
+      //   databaseId: '6735eba3001840aef863',
+      //   collectionId: '6735ebaa003ba5e26526',
+      //   queries: [
+      //     Query.equal('email', email.text),
+      //     Query.equal('password', password.text),
+      //   ],
+      // );
 
-      if (response.documents.isEmpty) {
-        // No matching user found in the database
-        showSnackBar(message: "Invalid email or password", context: context);
-        return;
-      }
+      // if (response.documents.isEmpty) {
+      //   // No matching user found in the database
+      //   showSnackBar(message: "Invalid email or password", context: context);
+      //   return;
+      // }
 
 
 
@@ -38,10 +38,10 @@ class LoginController extends GetxController {
         email: email.text,
         password: password.text,
       ).then((value) {
-        DataInfo.sessionId=value.$id;
-        print(value.$id);
-
-    print(DataInfo.sessionId);
+    //  DataInfo.sessionId=value.$id;
+    //     print(value.$id);
+    //
+    // print(DataInfo.sessionId);
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
