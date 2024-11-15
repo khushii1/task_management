@@ -1,17 +1,19 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 
 import '../datainfo/datainfo.dart';
 
 class SplashController extends GetxController{
+
   BuildContext context;
   SplashController({required this.context}){
     context=context;
   }
   @override
   void onInit() {
-    print("oninit method");
+   
     // TODO: implement onInit
     super.onInit();
     checkSession(context);

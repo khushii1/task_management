@@ -1,6 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 
 import '../datainfo/datainfo.dart';
@@ -11,6 +12,7 @@ class LoginController extends GetxController {
   final password = TextEditingController();
   final databases = Databases(Datainfo.client!);
   final RxBool isLoading = false.obs;
+  final box = GetStorage();
   Future<void> login({required BuildContext context}) async {
     print("Checking user in database...");
     try {
@@ -38,8 +40,7 @@ class LoginController extends GetxController {
         email: email.text,
         password: password.text,
       ).then((value) {
-        Datainfo.sessionId=value.$id;
-        print(value.$id);
+
 
     print(Datainfo.sessionId);
         showSnackBar(message: "Logged in successfully", context: context);
@@ -55,7 +56,7 @@ class LoginController extends GetxController {
         password: password.text,
       ).then((value) {
         Datainfo.sessionId=value.$id;
-        
+
 
     print(Datainfo.sessionId);
         showSnackBar(message: "Logged in successfully", context: context);
