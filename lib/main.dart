@@ -17,8 +17,6 @@ void main() async {
 
   Datainfo.appWriteInfo();
 
-
-
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(account: Datainfo.account),
@@ -29,7 +27,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const JioScreen();
+        return const SplashScreen();
       },
       routes: [
         GoRoute(
