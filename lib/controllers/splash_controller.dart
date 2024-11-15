@@ -11,13 +11,21 @@ class SplashController extends GetxController{
   }
   @override
   void onInit() {
+    print("oninit method");
     // TODO: implement onInit
     super.onInit();
     checkSession(context);
   }
   checkSession(BuildContext context)async{
+    print("okk");
+    //String? sessionId = await getSessionId();
+
     await Future.delayed(Duration(seconds: 1));
     try {
+      print("yes");
+      print(Datainfo.sessionId);
+
+      print("elllo id:${Datainfo.sessionId}");
       final session = await Datainfo.account.getSession(sessionId: Datainfo.sessionId);
       // Gets the current active session
      print("nithing");
