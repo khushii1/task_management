@@ -31,16 +31,17 @@ class LoginController extends GetxController {
         return;
       }
 
-      var data = await Datainfo.account
-          .createEmailPasswordSession(
+
+   await Datainfo.account.createEmailPasswordSession(
         email: email.text,
         password: password.text,
-      )
-          .then((value) {
+      ).then((value) {
+    print("hello evenryone: ${value.$id} ");
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
-      
+
+
     } catch (e) {
       showSnackBar(message: e.toString(), context: context);
     }
