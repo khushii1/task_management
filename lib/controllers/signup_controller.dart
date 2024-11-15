@@ -31,7 +31,7 @@ class SignupController extends GetxController {
   final customUrl = TextEditingController();
   RxBool checkEye = false.obs;
   final databases = Databases(DataInfo.client!);
-
+RxBool isLoading=false.obs;
   late Token sessionToken;
   checkBoolEye() {
     checkEye.value = !checkEye.value;
@@ -40,9 +40,12 @@ class SignupController extends GetxController {
 
   emailCheck({required BuildContext context}) async {
     if (email.text.trim().isEmail) {
+
       // sendOtp(context: context);
 
       try {
+        isLoading.value=true;
+        update();
         final documents = await databases.listDocuments(
             databaseId: '6735eba3001840aef863',
             collectionId: '6735ebaa003ba5e26526',
@@ -53,14 +56,21 @@ class SignupController extends GetxController {
             sendOtp(context: context);
           }
         } else {
+
           if (context.mounted) {
+            isLoading.value=false;
+            update();
             showSnackBar(message: "Email is alredy exists.", context: context);
           }
         }
       } on AppwriteException catch (e) {
+        isLoading.value=false;
+        update();
         print(e);
       }
     } else {
+      isLoading.value=false;
+      update();
       showSnackBar(message: "Please Enter Email", context: context);
     }
   }
@@ -75,7 +85,11 @@ class SignupController extends GetxController {
   }
 
   verifyOtp({required BuildContext context}) async {
+    isLoading.value=true;
+    update();
     if (otp.text.isEmpty || otp.text.length < 6) {
+      isLoading.value=false;
+      update();
       showSnackBar(message: "Please Enter Otp", context: context);
     } else {
       // context.go('/details');
@@ -84,8 +98,12 @@ class SignupController extends GetxController {
             .createSession(userId: sessionToken.userId, secret: otp.text)
             .then((value) {
           context.go('/details');
+          isLoading.value=false;
+          update();
         });
       } catch (e) {
+        isLoading.value=false;
+        update();
         showSnackBar(message: e.toString(), context: context);
       }
     }
@@ -110,6 +128,8 @@ class SignupController extends GetxController {
 
   Future<void> signup({required BuildContext context}) async {
     try {
+      isLoading.value=true;
+      update();
       DataInfo.account
           .updateName(name: "${firstName.text.trim()} ${lastName.text.trim()}");
       DataInfo.account.updatePassword(password: password.text.trim());
@@ -127,11 +147,15 @@ class SignupController extends GetxController {
           "password": password.text.trim()
         },
       ).then((value) {
+        isLoading.value=false;
+        update();
         print(value.toString());
         clearData();
         context.go('/login');
       });
     } on AppwriteException catch (e) {
+      isLoading.value=false;
+      update();
       print(e);
     }
     // try {
