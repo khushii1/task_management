@@ -13,7 +13,7 @@ class SplashScreen extends GetView<SplashController> {
       builder: (controller) {
         return Scaffold(
           body: Center(
-            child: TextWidget(text: "Task Management",),
+            child: TextWidget(text: "Task Management",color: Colors.red,),
           ),
         );
       }
