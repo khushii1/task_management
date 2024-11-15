@@ -39,7 +39,7 @@ class LoginScreen extends GetView<LoginController> {
                     // width: context.screenWidth * 0.35,
                     // height: context.screenHeight * 0.54,
                     decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(20)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
