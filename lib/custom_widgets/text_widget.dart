@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TextWidget extends StatelessWidget {
   final String text;
@@ -12,7 +11,17 @@ class TextWidget extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
 
-  const TextWidget({super.key, required this.text, this.color, this.fontSize, this.fontWeight, this.letterSpacing, this.textAlign, this.height, this.maxLines, this.overflow});
+  const TextWidget(
+      {super.key,
+      required this.text,
+      this.color,
+      this.fontSize,
+      this.fontWeight,
+      this.letterSpacing,
+      this.textAlign,
+      this.height,
+      this.maxLines,
+      this.overflow});
 
   @override
   Widget build(BuildContext context) {

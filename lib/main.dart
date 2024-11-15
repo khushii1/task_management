@@ -1,5 +1,4 @@
 import 'package:appwrite/appwrite.dart';
-import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -13,11 +12,12 @@ import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
 import 'package:jio_works/screens/splash_screen.dart';
 
-void main() {
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Datainfo.appWriteInfo();
+
+  await Datainfo.account.deleteSessions();
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -29,7 +29,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return HomeScreen();
+        return const HomeScreen();
       },
       routes: [
         GoRoute(
@@ -41,37 +41,37 @@ final GoRouter router = GoRouter(routes: [
         GoRoute(
           path: 'login',
           builder: (BuildContext context, GoRouterState state) {
-            return LoginScreen();
+            return const LoginScreen();
           },
         ),
         GoRoute(
           path: '/signup',
           builder: (BuildContext context, GoRouterState state) {
-            return SignupScreen();
+            return const SignupScreen();
           },
         ),
         GoRoute(
           path: '/otp',
           builder: (BuildContext context, GoRouterState state) {
-            return OtpScreen();
+            return const OtpScreen();
           },
         ),
         GoRoute(
           path: 'details',
           builder: (BuildContext context, GoRouterState state) {
-            return DetailSignupScreen();
+            return const DetailSignupScreen();
           },
         ),
         GoRoute(
           path: 'customUrl',
           builder: (BuildContext context, GoRouterState state) {
-            return CustomUrlScreen();
+            return const CustomUrlScreen();
           },
         ),
         GoRoute(
           path: 'jioscreen',
           builder: (BuildContext context, GoRouterState state) {
-            return JioScreen();
+            return const JioScreen();
           },
         ),
       ])
@@ -89,6 +89,7 @@ class MyApp extends StatelessWidget {
       routeInformationProvider: router.routeInformationProvider,
       title: 'jio works',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(),
     );
   }
 }

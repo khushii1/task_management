@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jio_works/constants/color-constant.dart';
 import 'package:jio_works/custom_widgets/appbar_widget.dart';
+import 'package:jio_works/custom_widgets/button_widget.dart';
 import 'package:jio_works/custom_widgets/text_widget.dart';
 import 'package:jio_works/custom_widgets/textfield_widget.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -67,6 +68,7 @@ class LoginScreen extends GetView<LoginController> {
                           hint: "Enter your Password",
                         ),
                         40.heightBox,
+                        ButtonWidget(text: "Login"),
                         Container(
                           width: context.screenWidth,
                           height: 48,
