@@ -19,7 +19,9 @@ class SettingScreen extends GetView<SettingsController> {
         child: Container(
           child: Row(
             children: [
-              SettingLeftbarScreen(),
+              Container(
+                  color: Colors.transparent,
+                  child: SettingLeftbarScreen()),
               controller.index.value == 0
                   ? SettingProfileScreen()
                   : controller.index.value == 1
