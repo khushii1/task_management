@@ -9,12 +9,12 @@ import 'package:jio_works/screens/main_screens/bars/projects/project_screen.dart
 import 'package:jio_works/screens/main_screens/bars/settings/setting_screen.dart';
 import 'package:jio_works/screens/profile_rightbar_screen.dart';
 
-import 'package:jio_works/screens/settings/left_settingbar_screen.dart';
+
 import 'package:jio_works/utilities/custom_field.dart';
 import 'package:jio_works/utilities/library.dart';
 
 import 'bars/left_bar.dart';
-import '../settings/setting_rightside_profile_details.dart';
+
 
 class JioScreen extends StatelessWidget {
   const JioScreen({super.key});

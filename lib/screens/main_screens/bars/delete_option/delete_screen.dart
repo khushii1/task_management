@@ -5,10 +5,11 @@ class DeleteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueGrey,
-      width: context.screenWidth*0.9,
-      height: context.screenHeight,
+    return Expanded(
+      child: Container(
+        color: Colors.blueGrey,
+
+      ),
     );
   }
 }

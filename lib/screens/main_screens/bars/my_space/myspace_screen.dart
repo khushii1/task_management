@@ -5,10 +5,11 @@ class MyspaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Container(
-      color: Colors.blue,
-      width: context.screenWidth*0.9,
-      height: context.screenHeight,
-    );
+     return Expanded(
+       child: Container(
+        color: Colors.blue,
+
+           ),
+     );
   }
 }

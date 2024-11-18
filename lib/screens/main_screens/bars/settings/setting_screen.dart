@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jio_works/screens/main_screens/bars/settings/settings_bar/setting_leftbar_screen.dart';
 import 'package:jio_works/utilities/library.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -6,10 +7,15 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      width: context.screenWidth*0.9,
-      height: context.screenHeight,
+    return Expanded(
+      child: Container(
+   child: Row(
+     children: [
+       SettingLeftbarScreen()
+     ],
+   ),
+
+      ),
     );
   }
 }

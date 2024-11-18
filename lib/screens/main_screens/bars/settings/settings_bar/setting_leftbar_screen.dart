@@ -1,9 +1,8 @@
-import 'package:jio_works/screens/main_screens/jio_screen.dart';
-import 'package:jio_works/utilities/custom_field.dart';
+import 'package:flutter/material.dart';
 import 'package:jio_works/utilities/library.dart';
 
-class LeftSettingbarScreen extends StatelessWidget {
-  const LeftSettingbarScreen({super.key});
+class SettingLeftbarScreen extends StatelessWidget {
+  const SettingLeftbarScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +47,10 @@ class LeftSettingbarScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ).pSymmetric(v: 15.0)
+            ).pSymmetric()
           ],
         ),
-      ),
+      ).pSymmetric(v: 10),
     );
   }
 

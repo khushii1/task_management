@@ -160,7 +160,7 @@ class LeftBar extends GetView<LeftbarController> {
                       ],
                     )).pOnly(bottom: 10.0),
               ],
-            )).pSymmetric();
+            )).pSymmetric(v: 10);
       }
     );
   }
