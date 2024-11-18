@@ -32,6 +32,7 @@ class TextWidget extends StatelessWidget {
       maxLines: maxLines,
       textScaler: TextScaler.noScaling,
       style: TextStyle(
+
           color: color,
           fontSize: fontSize,
           fontWeight: fontWeight,

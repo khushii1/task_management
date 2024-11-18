@@ -48,6 +48,7 @@ class JioScreen extends StatelessWidget {
                                 ),
                                 10.heightBox,
                                 const TextWidget(
+
                                   text: "My Space",
                                   color: Color(0xff595959),
                                   fontWeight: FontWeight.w700,
