@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:jio_works/controllers/settings_controller.dart';
 import 'package:jio_works/utilities/library.dart';
 
-class SettingLeftbarScreen extends StatelessWidget {
+class SettingLeftbarScreen extends GetView<SettingsController> {
   const SettingLeftbarScreen({super.key});
 
   @override
