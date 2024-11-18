@@ -28,7 +28,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const SplashScreen();
+        return const JioScreen();
       },
       routes: [
         GoRoute(
