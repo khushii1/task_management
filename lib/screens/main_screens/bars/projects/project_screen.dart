@@ -8,8 +8,7 @@ class ProjectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Row(
+    return Row(
       children: [
         Card(
           color: Colors.white,
@@ -24,6 +23,6 @@ class ProjectScreen extends StatelessWidget {
           ).p16(),
         ).p12()
       ],
-    ));
+    );
   }
 }

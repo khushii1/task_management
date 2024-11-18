@@ -7,6 +7,6 @@ class SettingUpgradeplanScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: Container(color: Colors.grey,));
+    return Container(color: Colors.grey,);
   }
 }

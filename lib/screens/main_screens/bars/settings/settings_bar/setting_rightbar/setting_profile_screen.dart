@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
 import 'package:jio_works/custom_widgets/button_widget.dart';
@@ -14,7 +13,9 @@ class SettingProfileScreen extends GetView<SettingsController> {
     Get.put(SettingsController());
     return GetBuilder<SettingsController>(builder: (controller) {
       return SizedBox(
-        width: context.screenWidth * 0.76,
+
+        width: context.screenWidth * 0.8,
+
         height: context.screenHeight,
         child: Card(
           color: Colors.white,

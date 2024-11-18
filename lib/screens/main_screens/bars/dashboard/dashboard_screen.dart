@@ -5,11 +5,8 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: Colors.pink,
-
-      ),
+    return Container(
+      color: Colors.pink,
     );
   }
 }

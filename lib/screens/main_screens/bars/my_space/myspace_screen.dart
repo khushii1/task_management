@@ -7,8 +7,7 @@ class MyspaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Card(
+    return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: ListView(
@@ -132,7 +131,7 @@ class MyspaceScreen extends StatelessWidget {
           ),
         ],
       ).p16(),
-    ).pSymmetric(h: 5.0, v: 10.0));
+    ).pSymmetric(h: 5.0, v: 10.0);
   }
 
   tile(
