@@ -6,7 +6,7 @@ import 'package:jio_works/datainfo/datainfo.dart';
 import 'package:jio_works/screens/custom_url_screen.dart';
 import 'package:jio_works/screens/detail_signup_screen.dart';
 import 'package:jio_works/screens/home_screen.dart';
-import 'package:jio_works/screens/jio_screen.dart';
+import 'package:jio_works/screens/main_screens/jio_screen.dart';
 import 'package:jio_works/screens/login_screen.dart';
 import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
@@ -83,6 +83,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
+      builder: (context,child){
+        return MediaQuery(child: child!, data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),);
+      },
       key: navigatorKey,
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,

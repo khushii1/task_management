@@ -2,8 +2,8 @@ import 'package:jio_works/screens/main_screens/jio_screen.dart';
 import 'package:jio_works/utilities/custom_field.dart';
 import 'package:jio_works/utilities/library.dart';
 
-class ProfileDetails extends StatelessWidget {
-  const ProfileDetails({super.key});
+class LeftSettingbarScreen extends StatelessWidget {
+  const LeftSettingbarScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
