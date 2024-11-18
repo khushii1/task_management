@@ -6,7 +6,9 @@ class DataInfo {
   static late Account account;
   static String sessionId = '';
   static Client? client;
-  static int index = 4;
+
+  static int index = 1;
+
   static appWriteInfo() async {
     try {
       print("printed");

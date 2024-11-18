@@ -11,8 +11,8 @@ class MyspaceScreen extends StatelessWidget {
         child: Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextWidget(
             text: getGreeting(),
@@ -23,6 +23,7 @@ class MyspaceScreen extends StatelessWidget {
             text: getFormattedDate(),
             fontSize: 20,
             color: textColor,
+            fontWeight: FontWeight.bold,
           ),
           20.heightBox,
           Wrap(
@@ -115,7 +116,7 @@ class MyspaceScreen extends StatelessWidget {
                 children: [
                   empty.image(),
                   5.heightBox,
-                  TextWidget(
+                  const TextWidget(
                     text: "Your task list is empty",
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
