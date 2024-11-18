@@ -6,6 +6,8 @@ class SettingManageusersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: Container(color: Colors.red,));
+    return Container(
+      color: Colors.red,
+    );
   }
 }

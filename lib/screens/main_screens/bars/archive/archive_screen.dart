@@ -5,11 +5,8 @@ class ArchiveScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: Colors.brown,
-
-      ),
+    return Container(
+      color: Colors.brown,
     );
   }
 }
