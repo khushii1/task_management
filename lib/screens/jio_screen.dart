@@ -158,7 +158,7 @@ class JioScreen extends StatelessWidget {
                           ],
                         )).pOnly(bottom: 10.0),
                   ],
-                )).pSymmetric(v: 15.0),
+                )).pSymmetric(),
             ProfileDetails(),
           ],
         ),
