@@ -13,10 +13,11 @@ class SettingProfileScreen extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     Get.put(SettingsController());
     return GetBuilder<SettingsController>(builder: (controller) {
-      return Container(
+      return SizedBox(
         width: context.screenWidth * 0.76,
         height: context.screenHeight,
         child: Card(
+          color: Colors.white,
           child: ListView(
             shrinkWrap: true,
             children: [
@@ -33,7 +34,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
               ),
               10.heightBox,
               Card(
-                color: const Color(0xfff5f5f5),
+                color: Colors.grey[100],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
