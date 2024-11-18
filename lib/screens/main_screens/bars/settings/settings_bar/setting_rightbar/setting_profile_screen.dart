@@ -15,213 +15,199 @@ class SettingProfileScreen extends GetView<SettingsController> {
     return GetBuilder<SettingsController>(builder: (controller) {
       return Container(
         width: context.screenWidth * 0.76,
-              height: context.screenHeight,
-              child: Card(
-      child: ListView(
-        shrinkWrap: true,
-
-        children: [
-          const TextWidget(
-            text: "Profile Details",
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
-          ),
-          10.heightBox,
-          const TextWidget(
-            text:
-                "Basic info like your name, photo, email that you use on jioworks service",
-            fontSize: 18,
-          ),
-          10.heightBox,
-          Card(
-            color: const Color(0xfff5f5f5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 mainAxisSize: MainAxisSize.max,
+        height: context.screenHeight,
+        child: Card(
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              const TextWidget(
+                text: "Profile Details",
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+              10.heightBox,
+              const TextWidget(
+                text:
+                    "Basic info like your name, photo, email that you use on jioworks service",
+                fontSize: 18,
+              ),
+              10.heightBox,
+              Card(
+                color: const Color(0xfff5f5f5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    Row(children: [
-                      Stack(
-                        children: [
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                color: const Color(0xffe5f1f7),
-                                borderRadius: BorderRadius.circular(40)),
-                            child: profileIcon.svg(colors: primaryColor),
-                          ),
-                          Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: Container(
-                                  width: 20,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(20),
-                                      color: Colors.white),
-                                  child: editIcon.svg().p2()))
-                        ],
-                      ),
-                      20.widthBox,
-                      const Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(children: [
+                          Stack(
                             children: [
-                              TextWidget(
-                                text: "Upload Photo",
-                                fontSize: 27,
-                                fontWeight: FontWeight.bold,
+                              Container(
+                                width: 60,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xffe5f1f7),
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: profileIcon.svg(colors: primaryColor),
                               ),
-                              TextWidget(
-                                text:
-                                    "Basic info like your name, photo, email that you use on jioworks service",
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              )
+                              Positioned(
+                                  bottom: 0,
+                                  right: 0,
+                                  child: Container(
+                                      width: 20,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white),
+                                      child: editIcon.svg().p2()))
                             ],
                           ),
-                        ],
-                      ),
-                    ]),
-
-                    Container(
-                      height: 30,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all()),
-                      child: Row(
-                        children: [
-                          editIcon.svg(),
-                          10.widthBox,
-                          const TextWidget(
-                            text: "Upload Photo",
-                            fontSize: 20,
-                          )
-                        ],
-                      ).pSymmetric(h: 5, v: 3),
-                    )
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TextWidget(
-                          text: "Basic Info",
-                          color: Color(0xffb5b5bb),
-                          fontSize: 20,
-                        ),
-                        20.heightBox,
-                        Row(
-                          children: [
-                            TextfieldWidget(
-                              controller: controller.firstName,
-                              obscure: false,
-                              hint: "Enter first name",
-                              label: "First Name",
-                            ).w(220),
-                            20.widthBox,
-                            TextfieldWidget(
-                              controller: controller.lastName,
-                              obscure: false,
-                              hint: "Enter last name",
-                              label: "Last Name",
-                            ).w(220),
-                          ],
-                        ),
-                        10.heightBox,
-                        TextfieldWidget(
-                          controller: controller.title,
-                          obscure: false,
-                          label: "Designation/Title",
-                        ).w(460),
-                        10.heightBox,
-                        TextfieldWidget(
-                          controller: controller.birthday,
-                          obscure: false,
-                          label: "Birthday",
-                        ).w(460),
-                        10.heightBox,
-                        TextfieldWidget(
-                          controller: controller.aniversary,
-                          obscure: false,
-                          label: "Work Aniversary",
-                        ).w(460),
+                          20.widthBox,
+                          const Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TextWidget(
+                                    text: "Upload Photo",
+                                    fontSize: 27,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  TextWidget(
+                                    text:
+                                        "Basic info like your name, photo, email that you use on jioworks service",
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ]),
+                        Container(
+                          height: 30,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all()),
+                          child: Row(
+                            children: [
+                              editIcon.svg(),
+                              10.widthBox,
+                              const TextWidget(
+                                text: "Upload Photo",
+                                fontSize: 20,
+                              )
+                            ],
+                          ).pSymmetric(h: 5, v: 3),
+                        )
                       ],
                     ),
-                    30.widthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const TextWidget(
-                          text: "Contact Info",
-                          color: Color(0xffb5b5bb),
-                          fontSize: 20,
-                        ),
-                        20.heightBox,
-                        Row(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            const TextWidget(
+                              text: "Basic Info",
+                              color: Color(0xffb5b5bb),
+                              fontSize: 20,
+                            ),
+                            20.heightBox,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextfieldWidget(
+                                  controller: controller.firstName,
+                                  obscure: false,
+                                  hint: "Enter first name",
+                                  label: "First Name",
+                                ).w(context.screenWidth * 0.15),
+                                20.widthBox,
+                                TextfieldWidget(
+                                  controller: controller.lastName,
+                                  obscure: false,
+                                  hint: "Enter last name",
+                                  label: "Last Name",
+                                ).w(context.screenWidth * 0.15),
+                              ],
+                            ).w(context.screenWidth * 0.32),
+                            10.heightBox,
+                            TextfieldWidget(
+                              controller: controller.title,
+                              obscure: false,
+                              label: "Designation/Title",
+                            ).w(context.screenWidth * 0.32),
+                            10.heightBox,
+                            TextfieldWidget(
+                              controller: controller.birthday,
+                              obscure: false,
+                              label: "Birthday",
+                            ).w(context.screenWidth * 0.32),
+                            10.heightBox,
+                            TextfieldWidget(
+                              controller: controller.aniversary,
+                              obscure: false,
+                              label: "Work Aniversary",
+                            ).w(context.screenWidth * 0.32),
+                          ],
+                        ),
+                        30.widthBox,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const TextWidget(
+                              text: "Contact Info",
+                              color: Color(0xffb5b5bb),
+                              fontSize: 20,
+                            ),
+                            20.heightBox,
                             TextfieldWidget(
                               controller: controller.firstName,
                               obscure: false,
-
                               label: "Email",
-                            ).w(220),
-                            20.widthBox,
+                            ).w(context.screenWidth * 0.32),
+                            10.heightBox,
                             TextfieldWidget(
-                              controller: controller.lastName,
+                              controller: controller.title,
                               obscure: false,
-                              hint: "Contact No",
-                              label: "Last Name",
-                            ).w(220),
+                              label: "City",
+                            ).w(context.screenWidth * 0.32),
+                            10.heightBox,
+                            TextfieldWidget(
+                              controller: controller.birthday,
+                              obscure: false,
+                              label: "Birthday",
+                            ).w(context.screenWidth * 0.32),
+                            10.heightBox,
+                            TextfieldWidget(
+                              controller: controller.aniversary,
+                              obscure: false,
+                              label: "Timezone",
+                            ).w(context.screenWidth * 0.32),
+                            // ButtonWidget(text: "Save Details").w(100)
                           ],
-                        ),
-                        10.heightBox,
-                        TextfieldWidget(
-                          controller: controller.title,
-                          obscure: false,
-                          label: "City",
-                        ).w(460),
-                        10.heightBox,
-                        TextfieldWidget(
-                          controller: controller.birthday,
-                          obscure: false,
-                          label: "Birthday",
-                        ).w(460),
-                        10.heightBox,
-                        TextfieldWidget(
-                          controller: controller.aniversary,
-                          obscure: false,
-                          label: "Timezone",
-                        ).w(460),
-                       // ButtonWidget(text: "Save Details").w(100)
+                        )
                       ],
-
-                    )
+                    ),
+                    30.heightBox,
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: const ButtonWidget(text: "Save Details").w(160))
                   ],
-                ),
-                30.heightBox,
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: const ButtonWidget(text: "Save Details").w(160))
-              ],
-            ).p12(),
-          ).pSymmetric(v: 10)
-        ],
-      ).pSymmetric(h: 15, v: 10),
-              ),
-            ).pSymmetric(v: 15);
+                ).p12(),
+              ).pSymmetric(v: 10)
+            ],
+          ).pSymmetric(h: 15, v: 10),
+        ),
+      ).pSymmetric(v: 15);
     });
   }
 }
