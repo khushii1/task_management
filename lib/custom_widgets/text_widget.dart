@@ -32,12 +32,15 @@ class TextWidget extends StatelessWidget {
       maxLines: maxLines,
       textScaler: TextScaler.noScaling,
       style: TextStyle(
-
           color: color,
-          fontSize: fontSize,
+          fontSize: responsiveFontSize(context, fontSize ?? 16),
           fontWeight: fontWeight,
           height: height,
           letterSpacing: letterSpacing ?? 0),
     );
+  }
+
+  double responsiveFontSize(BuildContext context, double baseSize) {
+    return baseSize * MediaQuery.of(context).textScaler.scale(0.9);
   }
 }
