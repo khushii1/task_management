@@ -41,6 +41,8 @@ class TextWidget extends StatelessWidget {
   }
 
   double responsiveFontSize(BuildContext context, double baseSize) {
-    return baseSize * MediaQuery.of(context).textScaler.scale(0.8);
+
+    return baseSize * MediaQuery.of(context).textScaler.scale(0.7);
+
   }
 }

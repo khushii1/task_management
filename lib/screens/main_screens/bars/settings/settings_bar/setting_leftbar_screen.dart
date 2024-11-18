@@ -8,55 +8,77 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        child: Row(
-          children: [
-            Card(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  40.heightBox,
-                  TextWidget(
-                    text: "Profile Settings",
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                  ).pSymmetric(h: 12),
-                  20.heightBox,
-                  tile(title: "Profile Details", icon: profileIcon),
-                  tile(title: "Password & Preferences", icon: lock),
-                  Container(
-                    width: 220,
-                    height: 0.5,
-                    color: Colors.grey[400],
-                  ),
-                  50.heightBox,
-                  TextWidget(
-                    text: "Admin Settings",
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                  ).pSymmetric(h: 12.0),
-                  20.heightBox,
-                  tile(title: "Upgrade Plan", icon: crown),
-                  tile(title: "Manage Users", icon: manageUser),
-                  Container(
-                    width: 220,
-                    height: 0.5,
-                    color: Colors.grey[400],
-                  ),
-                ],
-              ),
-            ).pSymmetric()
-          ],
-        ),
-      ).pSymmetric(v: 10),
-    );
+    return GetBuilder<SettingsController>(builder: (controller) {
+      return Expanded(
+        child: Container(
+          child: Row(
+            children: [
+              Card(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    40.heightBox,
+                    TextWidget(
+                      text: "Profile Settings",
+                      color: textColor,
+                      fontWeight: FontWeight.bold,
+                    ).pSymmetric(h: 12),
+                    20.heightBox,
+                    tile(
+                        title: "Profile Details",
+                        icon: profileIcon,
+                        chooseIndex: () {
+                          controller.changeIndex(0);
+                        }),
+                    tile(
+                        title: "Password & Preferences",
+                        icon: lock,
+                        chooseIndex: () {
+                          controller.changeIndex(1);
+                        }),
+                    Container(
+                      width: 220,
+                      height: 0.5,
+                      color: Colors.grey[400],
+                    ),
+                    50.heightBox,
+                    TextWidget(
+                      text: "Admin Settings",
+                      color: textColor,
+                      fontWeight: FontWeight.bold,
+                    ).pSymmetric(h: 12.0),
+                    20.heightBox,
+                    tile(
+                        title: "Upgrade Plan",
+                        icon: crown,
+                        chooseIndex: () {
+                          controller.changeIndex(2);
+                        }),
+                    tile(
+                        title: "Manage Users",
+                        icon: manageUser,
+                        chooseIndex: () {
+                          controller.changeIndex(3);
+                        }),
+                    Container(
+                      width: 220,
+                      height: 0.5,
+                      color: Colors.grey[400],
+                    ),
+                  ],
+                ),
+              ).pSymmetric()
+            ],
+          ),
+        ).pSymmetric(v: 10),
+      );
+    });
   }
 
-  tile({required String title, required String icon}) {
+  tile({required String title, required String icon, Function()? chooseIndex}) {
     return Container(
       color: Colors.white,
       child: Row(
@@ -67,7 +89,7 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
             text: title,
             color: textColor,
             fontWeight: FontWeight.bold,
-          ),
+          ).onTap(chooseIndex),
         ],
       ).wh(200.0, 40.0).pOnly(left: 12.0),
     );
