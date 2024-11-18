@@ -7,7 +7,7 @@ class DataInfo {
   static String sessionId = '';
   static Client? client;
 
-  static int index = 1;
+  static int index = 4;
 
   static appWriteInfo() async {
     try {
