@@ -18,6 +18,7 @@ class JioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(LeftbarController());
+
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppbarWidget(
@@ -27,9 +28,15 @@ class JioScreen extends StatelessWidget {
         },
       ),
       body: GetBuilder<LeftbarController>(builder: (controller) {
-        return SizedBox(
-          width: context.screenWidth,
-          height: context.screenHeight,
+        return Container(
+
+          constraints: BoxConstraints(
+
+          maxWidth:context.screenWidth,
+          //  minWidth: 300
+          ),
+          // width: context.screenWidth,
+          // height: context.screenHeight,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
