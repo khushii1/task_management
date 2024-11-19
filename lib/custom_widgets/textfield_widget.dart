@@ -7,23 +7,27 @@ class TextfieldWidget extends StatelessWidget {
   final bool obscure;
   Function()? onShowPassword;
   final TextEditingController? controller;
-  TextfieldWidget({
-    super.key,
-    this.onShowPassword,
-    this.label,
-    this.hint,
-    this.suffixIcon = const SizedBox(),
-    required this.controller, required this.obscure,
-  });
+  final bool? readOnly;
+  TextfieldWidget(
+      {super.key,
+      this.onShowPassword,
+      this.label,
+      this.hint,
+      this.suffixIcon = const SizedBox(),
+      required this.controller,
+      required this.obscure,
+      this.readOnly = false});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       obscureText: obscure,
       controller: controller!,
+      readOnly: readOnly ?? false,
       decoration: InputDecoration(
         isDense: true, // Add this
         // Adjust padding
+
         suffixIcon: onShowPassword != null
             ? IconButton(onPressed: onShowPassword, icon: suffixIcon)
             : const SizedBox(),
