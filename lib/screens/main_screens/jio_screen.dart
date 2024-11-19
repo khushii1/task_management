@@ -34,11 +34,7 @@ class JioScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               const LeftBar(),
-              SizedBox(
-                width: context.screenWidth * 0.94,
-                height: context.screenHeight,
-                child: showWidget(currentIndex: DataInfo.index),
-              )
+              showWidget(currentIndex: DataInfo.index),
             ],
           ),
         );

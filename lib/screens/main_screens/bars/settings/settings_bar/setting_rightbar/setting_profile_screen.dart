@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
 import 'package:jio_works/custom_widgets/button_widget.dart';
 import 'package:jio_works/custom_widgets/textfield_widget.dart';
-
 import '../../../../../../utilities/library.dart';
 
 class SettingProfileScreen extends GetView<SettingsController> {
@@ -13,7 +12,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
     Get.put(SettingsController());
     return GetBuilder<SettingsController>(builder: (controller) {
       return SizedBox(
-        width: context.screenWidth * 0.8,
+        width: context.screenWidth * 0.75,
         height: context.screenHeight,
         child: Card(
           color: Colors.white,

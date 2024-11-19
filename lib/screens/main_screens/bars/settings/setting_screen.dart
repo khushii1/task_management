@@ -15,11 +15,12 @@ class SettingScreen extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     Get.put(SettingsController());
     return GetBuilder<SettingsController>(builder: (controller) {
-      return SizedBox(
-        width: context.screenWidth * 0.9,
+      return Container(
+
+        width: context.screenWidth * 0.93,
         child: Row(
           children: [
-            Container(color: Colors.transparent, child: const SettingLeftbarScreen()),
+            SettingLeftbarScreen(),
             controller.index.value == 0
                 ? const SettingProfileScreen()
                 : controller.index.value == 1
