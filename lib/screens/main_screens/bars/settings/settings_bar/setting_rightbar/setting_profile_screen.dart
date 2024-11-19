@@ -124,6 +124,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextfieldWidget(
+                                  
                                   controller: controller.firstName,
                                   obscure: false,
                                   hint: "Enter first name",
