@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(10)),
               alignment: Alignment.center,
-              child: TextWidget(text:"Login"),
+              child: const TextWidget(text:"Login"),
             ).onTap(() {
               context.go('/login');
             }),
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(10)),
               alignment: Alignment.center,
-              child: TextWidget(text:"Signup"),
+              child: const TextWidget(text:"Signup"),
             ).onTap((){
               context.go("/signup");
             }),

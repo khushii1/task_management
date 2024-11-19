@@ -9,15 +9,15 @@ class BlurredLoader extends StatelessWidget {
   final controller;// The main screen content
 
   const BlurredLoader({
-    Key? key,
+    super.key,
     required this.isLoading,
     required this.child,
     this.controller
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    print("kjskd"+isLoading.toString());
+    print("kjskd$isLoading");
     return Stack(
       children: [
         // Main content
@@ -36,7 +36,7 @@ class BlurredLoader extends StatelessWidget {
                  color: Colors.white,
                  borderRadius: BorderRadius.circular(10),
                ),
-               child: CircularProgressIndicator(
+               child: const CircularProgressIndicator(
                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
                ),
              ),

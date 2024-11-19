@@ -1,5 +1,3 @@
-import 'package:jio_works/screens/main_screens/jio_screen.dart';
-import 'package:jio_works/utilities/custom_field.dart';
 import 'package:jio_works/utilities/library.dart';
 
 class ProfileDetails extends StatelessWidget {

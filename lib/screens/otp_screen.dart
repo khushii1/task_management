@@ -66,7 +66,7 @@ class OtpScreen extends GetView<SignupController> {
                             children: [
                               TextWidget(
                                 text: controller.email.text,
-                                color: Color(0xff5b5058),
+                                color: const Color(0xff5b5058),
                                 fontSize: 10,
                               ),
                               TextWidget(

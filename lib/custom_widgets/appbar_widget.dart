@@ -16,14 +16,14 @@ class AppbarWidget extends StatelessWidget implements PreferredSize {
       child: AppBar(
         automaticallyImplyLeading: false,
         titleSpacing: 10,
-        backgroundColor: Color(0xff0078ad),
+        backgroundColor: const Color(0xff0078ad),
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             10.widthBox,
             jio_logo.svg(),
             15.widthBox,
-            TextWidget(
+            const TextWidget(
               text: "Jio Works",
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -34,8 +34,8 @@ class AppbarWidget extends StatelessWidget implements PreferredSize {
         actions: [
           onClick != null
               ? IconButton(
-                  onPressed: onClick, icon: Icon(Icons.logout_outlined))
-              : SizedBox(),
+                  onPressed: onClick, icon: const Icon(Icons.logout_outlined))
+              : const SizedBox(),
         ],
       ),
     );

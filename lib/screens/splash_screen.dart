@@ -10,7 +10,7 @@ class SplashScreen extends GetView<SplashController> {
   Widget build(BuildContext context) {
     Get.put(SplashController(context: context));
     return GetBuilder<SplashController>(builder: (controller) {
-      return Scaffold(
+      return const Scaffold(
         body: Center(
           child: TextWidget(
             text: "Task Management",
