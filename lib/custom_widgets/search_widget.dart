@@ -21,7 +21,7 @@ class SearchWidget extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search),
+        prefixIcon: const Icon(Icons.search),
         fillColor: Colors.grey[200],
         filled: true,
         hintStyle: TextStyle(fontSize: 16, color: Colors.grey[500]),

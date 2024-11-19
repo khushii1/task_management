@@ -24,7 +24,7 @@ extension StringExtension on String {
         this,
         fit: fit,
       );
-    } else if (this.toLowerCase().endsWith('.svg')) {
+    } else if (toLowerCase().endsWith('.svg')) {
       // Check if it's an SVG file
       return SvgPicture.asset(
         this,
@@ -63,7 +63,7 @@ extension SvgExtension on dynamic {
 extension Check on bool {
   static bool data(dynamic n) {
     if (n is String) {
-      if (n != null && n != "null" && n.isNotEmpty) {
+      if (n != "null" && n.isNotEmpty) {
         return true;
       } else {
         return false;

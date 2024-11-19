@@ -19,24 +19,24 @@ class TextfieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      obscureText: obscure!,
+      obscureText: obscure,
       controller: controller!,
       decoration: InputDecoration(
         isDense: true, // Add this
         // Adjust padding
         suffixIcon: onShowPassword != null
             ? IconButton(onPressed: onShowPassword, icon: suffixIcon)
-            : SizedBox(),
+            : const SizedBox(),
 
         labelText: label,
-        hintStyle: TextStyle(fontSize: 12, height: 3),
-        floatingLabelStyle: TextStyle(height: 10),
+        hintStyle: const TextStyle(fontSize: 12, height: 3),
+        floatingLabelStyle: const TextStyle(height: 10),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        labelStyle: TextStyle(fontSize: 20, height: 4),
+        labelStyle: const TextStyle(fontSize: 20, height: 4),
 
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Color(0xff595959), width: 1.5)),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Color(0xff595959), width: 1.5)),
         hintText: hint,
       ),

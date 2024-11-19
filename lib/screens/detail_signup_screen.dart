@@ -19,7 +19,7 @@ class DetailSignupScreen extends GetView<SignupController> {
     Get.put(SignupController());
     return Scaffold(
         backgroundColor: Colors.indigo.withOpacity(0.13),
-        appBar: AppbarWidget(),
+        appBar: const AppbarWidget(),
         body: GetBuilder<SignupController>(
           builder: (controller) {
             return BlurredLoader(
@@ -47,17 +47,17 @@ class DetailSignupScreen extends GetView<SignupController> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Align(
+                            const Align(
                                 alignment: Alignment.topRight,
                                 child: Icon(Icons.cancel_outlined)),
                             10.heightBox,
-                            TextWidget(
+                            const TextWidget(
                               text: "Welcome,",
                               fontWeight: FontWeight.w900,
                               fontSize: 32,
                             ),
                             5.heightBox,
-                            TextWidget(
+                            const TextWidget(
                               text: "Lets get started with few simple steps",
                               color: Color(0xff5b5058),
                               fontSize: 10,
@@ -111,7 +111,7 @@ class DetailSignupScreen extends GetView<SignupController> {
                               },
 
                               obscure: controller.checkEye.value,
-                              suffixIcon: controller.checkEye.value? Icon(Icons.remove_red_eye):Icon(Icons.remove_red_eye_outlined),
+                              suffixIcon: controller.checkEye.value? const Icon(Icons.remove_red_eye):const Icon(Icons.remove_red_eye_outlined),
                             ),
                             30.heightBox,
                             Container(
@@ -121,7 +121,7 @@ class DetailSignupScreen extends GetView<SignupController> {
                               decoration: BoxDecoration(
                                   color: primaryColor,
                                   borderRadius: BorderRadius.circular(230)),
-                              child: TextWidget(
+                              child: const TextWidget(
                                 text: "Continue",
                                 color: Colors.white,
                                 fontSize: 17,

@@ -17,7 +17,7 @@ class CustomUrlScreen extends GetView<SignupController> {
     Get.put(SignupController());
     return Scaffold(
         backgroundColor: Colors.indigo.withOpacity(0.13),
-        appBar: AppbarWidget(),
+        appBar: const AppbarWidget(),
         body: GetBuilder<SignupController>(
           builder: (controller) {
             return SizedBox(
@@ -30,7 +30,7 @@ class CustomUrlScreen extends GetView<SignupController> {
                   Card(
                     elevation: 2,
                     child: Container(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                           maxWidth: 360,
                           minWidth: 300,
                         //  minHeight: 350,
@@ -44,17 +44,17 @@ class CustomUrlScreen extends GetView<SignupController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Align(
+                          const Align(
                               alignment: Alignment.topRight,
                               child: Icon(Icons.cancel_outlined)),
                           10.heightBox,
-                          TextWidget(
+                          const TextWidget(
                             text: "Get your custom URL,",
                             fontWeight: FontWeight.w900,
                             fontSize: 32,
                           ),
                           5.heightBox,
-                          TextWidget(
+                          const TextWidget(
                             text: "Lets create a subdomainfor your  organization",
                             color: Color(0xff5b5058),
                             fontSize: 10,
@@ -73,7 +73,7 @@ class CustomUrlScreen extends GetView<SignupController> {
                                   hint: "URL",
                                 ),
                               ),
-                              TextWidget(
+                              const TextWidget(
                                 text: ".jioworks.io",
                                 color: Color(0xff5b5058),
                                 fontSize: 10,
@@ -82,12 +82,12 @@ class CustomUrlScreen extends GetView<SignupController> {
                             ],
                           ),
                           15.heightBox,
-                          TextWidget(
+                          const TextWidget(
                             text: "One word, no dashes, underscrores, special characters,or spaces,",
                             color: Color(0xff5b5058),
                             fontSize: 10,
                           ),
-                          TextWidget(
+                          const TextWidget(
                             text: "Maximum 24 characters",
                             color: Color(0xff5b5058),
                             fontSize: 10,
@@ -100,7 +100,7 @@ class CustomUrlScreen extends GetView<SignupController> {
                             decoration: BoxDecoration(
                                 color: primaryColor,
                                 borderRadius: BorderRadius.circular(230)),
-                            child: TextWidget(
+                            child: const TextWidget(
                               text: "Finish Setup",
                               color: Colors.white,
                               fontSize: 15,

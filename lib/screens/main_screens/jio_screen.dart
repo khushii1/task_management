@@ -7,9 +7,7 @@ import 'package:jio_works/screens/main_screens/bars/delete_option/delete_screen.
 import 'package:jio_works/screens/main_screens/bars/my_space/myspace_screen.dart';
 import 'package:jio_works/screens/main_screens/bars/projects/project_screen.dart';
 import 'package:jio_works/screens/main_screens/bars/settings/setting_screen.dart';
-import 'package:jio_works/screens/profile_rightbar_screen.dart';
 
-import 'package:jio_works/utilities/custom_field.dart';
 import 'package:jio_works/utilities/library.dart';
 
 import 'bars/left_bar.dart';

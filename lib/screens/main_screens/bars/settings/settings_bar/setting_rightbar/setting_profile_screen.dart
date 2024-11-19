@@ -13,9 +13,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
     Get.put(SettingsController());
     return GetBuilder<SettingsController>(builder: (controller) {
       return SizedBox(
-
         width: context.screenWidth * 0.8,
-
         height: context.screenHeight,
         child: Card(
           color: Colors.white,
@@ -172,13 +170,13 @@ class SettingProfileScreen extends GetView<SettingsController> {
                             ),
                             20.heightBox,
                             TextfieldWidget(
-                              controller: controller.firstName,
+                              controller: controller.email,
                               obscure: false,
                               label: "Email",
                             ).w(context.screenWidth * 0.32),
                             10.heightBox,
                             TextfieldWidget(
-                              controller: controller.title,
+                              controller: controller.city,
                               obscure: false,
                               label: "City",
                             ).w(context.screenWidth * 0.32),
