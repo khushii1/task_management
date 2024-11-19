@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
 import 'package:jio_works/screens/main_screens/bars/settings/settings_bar/setting_leftbar_screen.dart';
@@ -15,12 +14,10 @@ class SettingScreen extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     Get.put(SettingsController());
     return GetBuilder<SettingsController>(builder: (controller) {
-      return Container(
-
-        width: context.screenWidth * 0.93,
+      return Expanded(
         child: Row(
           children: [
-            SettingLeftbarScreen(),
+            const SettingLeftbarScreen(),
             controller.index.value == 0
                 ? const SettingProfileScreen()
                 : controller.index.value == 1

@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/leftbar_controller.dart';
 
@@ -39,7 +38,9 @@ class LeftBar extends GetView<LeftbarController> {
                                 .image(
                                     color: DataInfo.index == 0
                                         ? Colors.white
-                                        : Colors.black54)
+                                        : Colors.black54,
+                                    width: 45,
+                                    height: 45)
                                 .p8(),
                           ),
                           10.heightBox,
@@ -66,7 +67,9 @@ class LeftBar extends GetView<LeftbarController> {
                                 .image(
                                     color: DataInfo.index == 1
                                         ? Colors.white
-                                        : Colors.black54)
+                                        : Colors.black54,
+                                    width: 45,
+                                    height: 45)
                                 .p8(),
                           ),
                           10.heightBox,
@@ -93,7 +96,9 @@ class LeftBar extends GetView<LeftbarController> {
                                 .image(
                                     color: DataInfo.index == 2
                                         ? Colors.white
-                                        : Colors.black54)
+                                        : Colors.black54,
+                                    width: 45,
+                                    height: 45)
                                 .p8(),
                           ),
                           10.heightBox,
@@ -120,7 +125,9 @@ class LeftBar extends GetView<LeftbarController> {
                                 .image(
                                     color: DataInfo.index == 3
                                         ? Colors.white
-                                        : Colors.black54)
+                                        : Colors.black54,
+                                    width: 45,
+                                    height: 45)
                                 .p8(),
                           ),
                           10.heightBox,
@@ -147,7 +154,9 @@ class LeftBar extends GetView<LeftbarController> {
                                 .image(
                                     color: DataInfo.index == 4
                                         ? Colors.white
-                                        : Colors.black54)
+                                        : Colors.black54,
+                                    width: 45,
+                                    height: 45)
                                 .p8(),
                           ),
                           10.heightBox,
@@ -176,7 +185,9 @@ class LeftBar extends GetView<LeftbarController> {
                             .image(
                                 color: DataInfo.index == 5
                                     ? Colors.white
-                                    : Colors.black54)
+                                    : Colors.black54,
+                                width: 45,
+                                height: 45)
                             .p8(),
                       ),
                       10.heightBox,
@@ -188,7 +199,7 @@ class LeftBar extends GetView<LeftbarController> {
                     ],
                   )).pOnly(bottom: 10.0),
             ],
-          )).pSymmetric(v: 10);
+          )).w(100).pSymmetric(v: 10);
     });
   }
 }

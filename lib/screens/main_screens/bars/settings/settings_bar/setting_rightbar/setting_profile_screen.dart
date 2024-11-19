@@ -11,13 +11,12 @@ class SettingProfileScreen extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     Get.put(SettingsController());
     return GetBuilder<SettingsController>(builder: (controller) {
-      return SizedBox(
-        width: context.screenWidth * 0.75,
-        height: context.screenHeight,
+      return Expanded(
         child: Card(
           color: Colors.white,
-          child: ListView(
-            shrinkWrap: true,
+          child: Column(
+            //  shrinkWrap: true,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TextWidget(
                 text: "Profile Details",
@@ -66,7 +65,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                             ],
                           ),
                           20.widthBox,
-                          const Row(
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Column(
@@ -84,7 +83,8 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                         "Basic info like your name, photo, email that you use on jioworks service",
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
-                                  )
+                                    maxLines: 5,
+                                  ).w(context.screenWidth * 0.45)
                                 ],
                               ),
                             ],
@@ -123,15 +123,14 @@ class SettingProfileScreen extends GetView<SettingsController> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                TextfieldWidget(
-                                  
+                                TextFieldWidget(
                                   controller: controller.firstName,
                                   obscure: false,
                                   hint: "Enter first name",
                                   label: "First Name",
                                 ).w(context.screenWidth * 0.15),
                                 20.widthBox,
-                                TextfieldWidget(
+                                TextFieldWidget(
                                   controller: controller.lastName,
                                   obscure: false,
                                   hint: "Enter last name",
@@ -140,19 +139,19 @@ class SettingProfileScreen extends GetView<SettingsController> {
                               ],
                             ).w(context.screenWidth * 0.32),
                             10.heightBox,
-                            TextfieldWidget(
+                            TextFieldWidget(
                               controller: controller.title,
                               obscure: false,
                               label: "Designation/Title",
                             ).w(context.screenWidth * 0.32),
                             10.heightBox,
-                            TextfieldWidget(
+                            TextFieldWidget(
                               controller: controller.birthday,
                               obscure: false,
                               label: "Birthday",
                             ).w(context.screenWidth * 0.32),
                             10.heightBox,
-                            TextfieldWidget(
+                            TextFieldWidget(
                               controller: controller.aniversary,
                               obscure: false,
                               label: "Work Aniversary",
@@ -169,25 +168,25 @@ class SettingProfileScreen extends GetView<SettingsController> {
                               fontSize: 20,
                             ),
                             20.heightBox,
-                            TextfieldWidget(
+                            TextFieldWidget(
                               controller: controller.email,
                               obscure: false,
                               label: "Email",
                             ).w(context.screenWidth * 0.32),
                             10.heightBox,
-                            TextfieldWidget(
+                            TextFieldWidget(
                               controller: controller.city,
                               obscure: false,
                               label: "City",
                             ).w(context.screenWidth * 0.32),
                             10.heightBox,
-                            TextfieldWidget(
+                            TextFieldWidget(
                               controller: controller.birthday,
                               obscure: false,
                               label: "Birthday",
                             ).w(context.screenWidth * 0.32),
                             10.heightBox,
-                            TextfieldWidget(
+                            TextFieldWidget(
                               controller: controller.aniversary,
                               obscure: false,
                               label: "Timezone",
@@ -206,8 +205,8 @@ class SettingProfileScreen extends GetView<SettingsController> {
               ).pSymmetric(v: 10)
             ],
           ).pSymmetric(h: 15, v: 10),
-        ),
-      ).pSymmetric(v: 15);
+        ).h(context.screenHeight).pSymmetric(v: 12),
+      );
     });
   }
 }

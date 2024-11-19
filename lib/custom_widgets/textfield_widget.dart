@@ -1,6 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
-class TextfieldWidget extends StatelessWidget {
+class TextFieldWidget extends StatelessWidget {
   final String? label;
   final String? hint;
   Widget suffixIcon;
@@ -8,7 +10,7 @@ class TextfieldWidget extends StatelessWidget {
   Function()? onShowPassword;
   final TextEditingController? controller;
   final bool? readOnly;
-  TextfieldWidget(
+  TextFieldWidget(
       {super.key,
       this.onShowPassword,
       this.label,
