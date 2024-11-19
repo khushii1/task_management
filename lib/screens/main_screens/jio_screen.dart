@@ -28,15 +28,9 @@ class JioScreen extends StatelessWidget {
         },
       ),
       body: GetBuilder<LeftbarController>(builder: (controller) {
-        return Container(
-
-          constraints: BoxConstraints(
-
-          maxWidth:context.screenWidth,
-          //  minWidth: 300
-          ),
-          // width: context.screenWidth,
-          // height: context.screenHeight,
+        return SizedBox(
+          width: context.screenWidth,
+          height: context.screenHeight,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [

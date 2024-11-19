@@ -61,7 +61,7 @@ class SignupScreen extends GetView<SignupController> {
                             color: Color(0xff5b5058),
                           ),
                           10.heightBox,
-                          TextfieldWidget(
+                          TextFieldWidget(
                             obscure: false,
                             controller: controller.email,
                             label: "Enter your Email ID",
