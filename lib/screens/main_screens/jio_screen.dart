@@ -1,5 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jio_works/controllers/leftbar_controller.dart';
 import 'package:jio_works/screens/main_screens/bars/archive/archive_screen.dart';
 import 'package:jio_works/screens/main_screens/bars/dashboard/dashboard_screen.dart';

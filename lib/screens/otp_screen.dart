@@ -9,7 +9,6 @@ import 'package:velocity_x/velocity_x.dart';
 import '../constants/color-constant.dart';
 import '../custom_widgets/appbar_widget.dart';
 import '../custom_widgets/text_widget.dart';
-import '../custom_widgets/textfield_widget.dart';
 
 class OtpScreen extends GetView<SignupController> {
   const OtpScreen({super.key});

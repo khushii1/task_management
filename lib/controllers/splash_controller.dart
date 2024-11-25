@@ -1,8 +1,10 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
-import '../datainfo/datainfo.dart';
+
+import 'package:get/get.dart';
+
+import 'package:jio_works/utilities/library.dart';
+
+
 
 class SplashController extends GetxController {
   BuildContext context;
@@ -16,20 +18,22 @@ class SplashController extends GetxController {
   }
 
   checkSession(BuildContext context) async {
-    print("okk");
+    
     //String? sessionId = await getSessionId();
 
     await Future.delayed(const Duration(seconds: 1));
     try {
-      final user = await DataInfo.account.get();
-      print('User is logged in: ${user.email}');
+      await DataInfo.account.get();
+      
       if (context.mounted) {
         context.go('/jioscreen');
       }
 
       // User is logged in, handle accordingly
     } catch (e) {
-      print('User is not logged in: $e');
+      if (kDebugMode) {
+        print('User is not logged in: $e');
+      }
       if (context.mounted) {
         context.go('/login');
       }

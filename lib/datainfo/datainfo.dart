@@ -1,4 +1,5 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter/foundation.dart';
 
 class DataInfo {
   static String projectId = '6732e7f20038e9fc710b';
@@ -16,7 +17,9 @@ class DataInfo {
 
       account = Account(client!);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 }

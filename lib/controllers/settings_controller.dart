@@ -1,5 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:appwrite/appwrite.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:get/get.dart';
 import 'package:jio_works/utilities/library.dart';
 
@@ -52,7 +54,7 @@ chooseDate(context)async{
 
       if (response.documents.isNotEmpty) {
         if (response.documents.isNotEmpty) {
-          print('Documents: ${response.documents.first.data}');
+          
           userDetails.value = response.documents.first.data;
 
           firstName.text = userDetails['first_name'];
@@ -69,7 +71,9 @@ chooseDate(context)async{
         }
       }
     } catch (e) {
-      print('Error: $e');
+      if (kDebugMode) {
+        print('Error: $e');
+      }
     }
   }
   changePasswordMethod({required BuildContext context})async{
@@ -102,7 +106,7 @@ chooseDate(context)async{
         ).then((value){
           showSnackBar(message: "Password updated successfully", context: context);
         });
-        print('Password updated successfully');
+        
       } catch (e) {
         showSnackBar(message: 'Failed to update password: $e',context: context);
       }

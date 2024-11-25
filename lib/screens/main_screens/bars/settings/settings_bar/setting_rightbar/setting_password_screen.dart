@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
-import 'package:jio_works/custom_widgets/textfield_widget.dart';
 
-import '../../../../../../custom_widgets/button_widget.dart';
 import '../../../../../../utilities/library.dart';
 
 class SettingPasswordScreen extends GetView<SettingsController> {
@@ -35,7 +33,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
+                  SizedBox(
                     width: context.screenWidth * 0.35,
                     child: Card(
                       color: Colors.grey[100],
@@ -57,7 +55,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                           SizedBox(
                               width: context.screenWidth * 0.33,
                               child: TextFieldWidget(
-                                suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                                suffixIcon: const Icon(Icons.remove_red_eye_outlined),
                                 label: "Current Password",
                                 controller: controller.password,
                                 obscure: false,
@@ -67,7 +65,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                           SizedBox(
                               width: context.screenWidth * 0.33,
                               child: TextFieldWidget(
-                                suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                                suffixIcon: const Icon(Icons.remove_red_eye_outlined),
                                 label: "Enter New Password",
                                 controller: controller.newPassword,
                                 obscure: true,
@@ -80,7 +78,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                                 label: "Confirm New Password",
                                 controller: controller.confirmPassword,
                                 obscure: true,
-                                suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                                suffixIcon: const Icon(Icons.remove_red_eye_outlined),
                                 onShowPassword: () {},
                               )),
                           20.heightBox,
@@ -99,7 +97,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                       ).pSymmetric(h: 10, v: 10),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: context.screenWidth * 0.35,
                     child: Card(
                       color: Colors.grey[100],
@@ -113,7 +111,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                             fontWeight: FontWeight.bold,
                           ),
                           10.heightBox,
-                          TextWidget(
+                          const TextWidget(
                             text: "Time Format",
                             fontSize: 16,
                             color: Colors.grey,
@@ -131,7 +129,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                                       onChanged: (value) {
                                         controller.updateTimeFormat(value);
                                       }),
-                                  TextWidget(text: "12 Hours, 1:30pm"),
+                                  const TextWidget(text: "12 Hours, 1:30pm"),
                                 ],
                               ),
                               40.widthBox,
@@ -144,13 +142,13 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                                     controller.updateTimeFormat(value);
                                   }
                                   ),
-                                  TextWidget(text: "24 Hours, 13:30pm"),
+                                  const TextWidget(text: "24 Hours, 13:30pm"),
                                 ],
                               )
                             ],
                           ),
                           20.heightBox,
-                          TextWidget(
+                          const TextWidget(
                             text: "Date Format",
                             fontSize: 16,
                             color: Colors.grey,
@@ -168,7 +166,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                                       controller.updateDateFormat(value);
                                     },
                                   ),
-                                  TextWidget(text: "05 May,2021"),
+                                  const TextWidget(text: "05 May,2021"),
                                 ],
                               ),
                               40.widthBox,
@@ -181,7 +179,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                                       controller.updateDateFormat(value);
                                     },
                                   ),
-                                  TextWidget(text: "May 05,2021"),
+                                  const TextWidget(text: "May 05,2021"),
                                 ],
                               )
                             ],
@@ -190,7 +188,7 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              ButtonWidget(
+                              const ButtonWidget(
                                 text: "Update",
                               ).w(150),
                             ],
