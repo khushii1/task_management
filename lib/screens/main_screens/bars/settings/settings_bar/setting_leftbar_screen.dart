@@ -11,12 +11,15 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
     return GetBuilder<SettingsController>(builder: (controller) {
       return SizedBox(
         width: 200,
+        height: context.screenHeight,
         child: Card(
           color: Colors.white,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
+          shrinkWrap: true,
+
+            //  crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               40.heightBox,
               TextWidget(

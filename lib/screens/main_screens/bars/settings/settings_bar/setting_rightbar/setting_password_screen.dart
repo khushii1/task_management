@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
 import 'package:jio_works/custom_widgets/textfield_widget.dart';
 
+import '../../../../../../custom_widgets/button_widget.dart';
 import '../../../../../../utilities/library.dart';
 
 class SettingPasswordScreen extends GetView<SettingsController> {
@@ -30,53 +31,174 @@ class SettingPasswordScreen extends GetView<SettingsController> {
                     "From here you can change your Password and Time / Date Format",
                 fontSize: 18,
               ),
+              30.heightBox,
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Card(
-                    color: Colors.grey[100],
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TextWidget(
-                          text: "Change Password",
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        10.heightBox,
-                        const TextWidget(
-                          text:
-                              "This will log you out from all the system and you will need to login \n again",
-                          fontSize: 18,
-                        ),
-                        SizedBox(
-                            width: context.screenWidth * 0.33,
-                            child: TextFieldWidget(
-                              label: "Current Password",
-                              controller: controller.birthday,
-                              obscure: true,
-                              onShowPassword: () {},
-                            )),
-                        10.heightBox,
-                        SizedBox(
-                            width: context.screenWidth * 0.33,
-                            child: TextFieldWidget(
-                              label: "Enter New Password",
-                              controller: controller.birthday,
-                              obscure: true,
-                              onShowPassword: () {},
-                            )),
-                        10.heightBox,
-                        SizedBox(
-                            width: context.screenWidth * 0.33,
-                            child: TextFieldWidget(
-                              label: "Confirm New Password",
-                              controller: controller.birthday,
-                              obscure: true,
-                              onShowPassword: () {},
-                            ))
-                      ],
-                    ).pSymmetric(h: 10, v: 10),
-                  )
+                  Container(
+                    width: context.screenWidth * 0.35,
+                    child: Card(
+                      color: Colors.grey[100],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          20.heightBox,
+                          const TextWidget(
+                            text: "Change Password",
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          10.heightBox,
+                          const TextWidget(
+                            text:
+                                "This will log you out from all the system and you will need to login \n again",
+                            fontSize: 18,
+                          ),
+                          SizedBox(
+                              width: context.screenWidth * 0.33,
+                              child: TextFieldWidget(
+                                suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                                label: "Current Password",
+                                controller: controller.password,
+                                obscure: false,
+                                onShowPassword: () {},
+                              )),
+                          10.heightBox,
+                          SizedBox(
+                              width: context.screenWidth * 0.33,
+                              child: TextFieldWidget(
+                                suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                                label: "Enter New Password",
+                                controller: controller.newPassword,
+                                obscure: true,
+                                onShowPassword: () {},
+                              )),
+                          10.heightBox,
+                          SizedBox(
+                              width: context.screenWidth * 0.33,
+                              child: TextFieldWidget(
+                                label: "Confirm New Password",
+                                controller: controller.confirmPassword,
+                                obscure: true,
+                                suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                                onShowPassword: () {},
+                              )),
+                          20.heightBox,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ButtonWidget(
+                                onTap: (){
+                                  controller.changePasswordMethod( context: context);
+                                },
+                                text: "Change Password",
+                              ).w(200),
+                            ],
+                          ),
+                        ],
+                      ).pSymmetric(h: 10, v: 10),
+                    ),
+                  ),
+                  Container(
+                    width: context.screenWidth * 0.35,
+                    child: Card(
+                      color: Colors.grey[100],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          20.heightBox,
+                          const TextWidget(
+                            text: "Preferences",
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          10.heightBox,
+                          TextWidget(
+                            text: "Time Format",
+                            fontSize: 16,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          20.heightBox,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Radio(
+                                      value: 0,
+                                      groupValue: controller.selectedValue.value,
+                                      onChanged: (value) {
+                                        controller.updateTimeFormat(value);
+                                      }),
+                                  TextWidget(text: "12 Hours, 1:30pm"),
+                                ],
+                              ),
+                              40.widthBox,
+                              Row(
+                                children: [
+                                  Radio(
+                                    value: 1,
+                                  groupValue: controller.selectedValue.value,
+                                  onChanged: (value) {
+                                    controller.updateTimeFormat(value);
+                                  }
+                                  ),
+                                  TextWidget(text: "24 Hours, 13:30pm"),
+                                ],
+                              )
+                            ],
+                          ),
+                          20.heightBox,
+                          TextWidget(
+                            text: "Date Format",
+                            fontSize: 16,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          20.heightBox,
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Radio(
+                                    value: 0,
+                                    groupValue: controller.selectedValues.value,
+                                    onChanged: (value) {
+                                      controller.updateDateFormat(value);
+                                    },
+                                  ),
+                                  TextWidget(text: "05 May,2021"),
+                                ],
+                              ),
+                              40.widthBox,
+                              Row(
+                                children: [
+                                  Radio(
+                                    value: 1,
+                                    groupValue: controller.selectedValues.value,
+                                    onChanged: (value) {
+                                      controller.updateDateFormat(value);
+                                    },
+                                  ),
+                                  TextWidget(text: "May 05,2021"),
+                                ],
+                              )
+                            ],
+                          ),
+                        50.heightBox,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ButtonWidget(
+                                text: "Update",
+                              ).w(150),
+                            ],
+                          ),
+                        ],
+                      ).pSymmetric(h: 10, v: 10),
+                    ),
+                  ),
                 ],
               )
             ],

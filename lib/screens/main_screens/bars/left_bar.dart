@@ -17,10 +17,12 @@ class LeftBar extends GetView<LeftbarController> {
                 topRight: Radius.circular(10.0),
                 bottomRight: Radius.circular(10.0)),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: ListView(
+            shrinkWrap: true,
+          //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+              //  shrinkWrap: true,
                 children: [
                   IconButton(
                       onPressed: () {
@@ -199,7 +201,7 @@ class LeftBar extends GetView<LeftbarController> {
                     ],
                   )).pOnly(bottom: 10.0),
             ],
-          )).w(100).pSymmetric(v: 10);
+          )).w(100);
     });
   }
 }

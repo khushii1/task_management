@@ -24,6 +24,8 @@ class ButtonWidget extends StatelessWidget {
               fontWeight: FontWeight.w700,
             )
           : const CircularProgressIndicator(),
-    );
+    ).onTap((){
+      onTap!();
+    });
   }
 }
