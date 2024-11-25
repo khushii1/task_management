@@ -19,10 +19,10 @@ class LeftBar extends GetView<LeftbarController> {
           ),
           child: ListView(
             shrinkWrap: true,
-          //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
-              //  shrinkWrap: true,
+                //  shrinkWrap: true,
                 children: [
                   IconButton(
                       onPressed: () {
@@ -201,7 +201,7 @@ class LeftBar extends GetView<LeftbarController> {
                     ],
                   )).pOnly(bottom: 10.0),
             ],
-          )).w(100);
+          )).wh(100, context.screenHeight).pSymmetric(v: 10);
     });
   }
 }
