@@ -10,7 +10,6 @@ import 'package:jio_works/screens/main_screens/jio_screen.dart';
 import 'package:jio_works/screens/login_screen.dart';
 import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
-import 'package:jio_works/screens/splash_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
@@ -84,7 +83,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
       builder: (context,child){
-        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),child: child!,);
+        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),child: child!,);
       },
       key: navigatorKey,
       routerDelegate: router.routerDelegate,

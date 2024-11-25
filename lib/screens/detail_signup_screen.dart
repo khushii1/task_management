@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jio_works/custom_widgets/blurred_loader.dart';
 import 'package:jio_works/custom_widgets/textfield_widget.dart';
-import 'package:pinput/pinput.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../constants/color-constant.dart';
 import '../controllers/signup_controller.dart';
 import '../custom_widgets/appbar_widget.dart';

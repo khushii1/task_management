@@ -5,6 +5,5 @@ class LeftbarController extends GetxController{
 changeIndex(value){
  DataInfo.index=value;
  update();
- print(DataInfo.index);
 }
 }

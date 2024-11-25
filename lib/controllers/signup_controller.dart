@@ -1,12 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:appwrite/models.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
-import 'package:jio_works/datainfo/datainfo.dart';
-import 'package:jio_works/utilities/custom_field.dart';
+
 import 'package:appwrite/appwrite.dart';
+import 'package:jio_works/utilities/library.dart';
 
 class SignupController extends GetxController {
   clearData() {
@@ -66,7 +64,9 @@ RxBool isLoading=false.obs;
       } on AppwriteException catch (e) {
         isLoading.value=false;
         update();
-        print(e);
+        if (kDebugMode) {
+          print(e);
+        }
       }
     } else {
       isLoading.value=false;
@@ -151,14 +151,16 @@ update();
       ).then((value) {
         isLoading.value=false;
         update();
-        print(value.toString());
+        
         clearData();
         context.go('/login');
       });
     } on AppwriteException catch (e) {
       isLoading.value=false;
       update();
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     // try {
     //   final user = await Datainfo.account

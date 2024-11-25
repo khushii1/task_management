@@ -2,7 +2,7 @@ String imagePath = "assets/images/";
 String iconPath = "icons/";
 
 //icons
-String jio_logo = "${imagePath}jio_logo.svg";
+String jioLogo = "${imagePath}jio_logo.svg";
 
 String workspace = "$iconPath/workspace.svg";
 

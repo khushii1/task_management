@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +32,11 @@ class LoginController extends GetxController {
 
   }
   Future<void> login({required BuildContext context}) async {
-    print("Checking user in database...");
+    
     try {
-      print("f1:${isLoading.value}");
+      
       isLoading.value = true;
-      print("f2:${isLoading.value}");
+      
       update();
       // final response = await databases.listDocuments(
       //   databaseId: '6735eba3001840aef863',

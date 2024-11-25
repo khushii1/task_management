@@ -21,7 +21,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSize {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             10.widthBox,
-            jio_logo.svg(),
+            jioLogo.svg(),
             15.widthBox,
             const TextWidget(
               text: "Jio Works",
@@ -45,6 +45,6 @@ class AppbarWidget extends StatelessWidget implements PreferredSize {
   Size get preferredSize => const Size.fromHeight(56.0);
 
   @override
-  // TODO: implement child
+  
   Widget get child => throw UnimplementedError();
 }

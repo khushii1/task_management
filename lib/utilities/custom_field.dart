@@ -1,9 +1,9 @@
-import 'dart:io';
+// ignore_for_file: deprecated_member_use
 
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+
 
 import '../custom_widgets/text_widget.dart';
 

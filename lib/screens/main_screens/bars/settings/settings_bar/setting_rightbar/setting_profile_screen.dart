@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
-import 'package:jio_works/custom_widgets/button_widget.dart';
-import 'package:jio_works/custom_widgets/textfield_widget.dart';
 import '../../../../../../utilities/library.dart';
 
 class SettingProfileScreen extends GetView<SettingsController> {
@@ -83,14 +79,14 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                             MainAxisAlignment.spaceBetween,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          TextWidget(
+                                          const TextWidget(
                                             text: "Upload Photo",
                                             fontSize: 27,
                                             fontWeight: FontWeight.bold,
                                           ).w(parentWidth*0.4),
                                           Container(
                         
-                                            child: TextWidget(
+                                            child: const TextWidget(
                         
                                               text:
                                                   "Basic info like your name, photo, email that you use on jioworks service",
@@ -176,9 +172,9 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                         controller: controller.datecontroller,
                                         obscure: false,
                                         label: "Birthday",
-                                        suffixIcon: Icon(Icons.date_range),
+                                        suffixIcon: const Icon(Icons.date_range),
                                         onShowPassword: () async {
-                                          print("hello");
+                                          
                                           await controller.chooseDate(context);
                                         },
                                       ),
@@ -194,7 +190,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                         
                                 Flexible(
                                   child: Column(
-                                  //  mainAxisSize: MainAxisSize.max,
+                                  
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       const TextWidget(

@@ -6,49 +6,47 @@ class ProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        child: Row(
-          children: [
-            Card(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  40.heightBox,
-                  TextWidget(
-                    text: "Profile Settings",
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                  ).pSymmetric(h: 12),
-                  20.heightBox,
-                  tile(title: "Profile Details", icon: profileIcon),
-                  tile(title: "Password & Preferences", icon: lock),
-                  Container(
-                    width: 220,
-                    height: 0.5,
-                    color: Colors.grey[400],
-                  ),
-                  50.heightBox,
-                  TextWidget(
-                    text: "Admin Settings",
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
-                  ).pSymmetric(h: 12.0),
-                  20.heightBox,
-                  tile(title: "Upgrade Plan", icon: crown),
-                  tile(title: "Manage Users", icon: manageUser),
-                  Container(
-                    width: 220,
-                    height: 0.5,
-                    color: Colors.grey[400],
-                  ),
-                ],
-              ),
-            ).pSymmetric(v: 15.0)
-          ],
-        ),
+      child: Row(
+        children: [
+          Card(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                40.heightBox,
+                TextWidget(
+                  text: "Profile Settings",
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                ).pSymmetric(h: 12),
+                20.heightBox,
+                tile(title: "Profile Details", icon: profileIcon),
+                tile(title: "Password & Preferences", icon: lock),
+                Container(
+                  width: 220,
+                  height: 0.5,
+                  color: Colors.grey[400],
+                ),
+                50.heightBox,
+                TextWidget(
+                  text: "Admin Settings",
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                ).pSymmetric(h: 12.0),
+                20.heightBox,
+                tile(title: "Upgrade Plan", icon: crown),
+                tile(title: "Manage Users", icon: manageUser),
+                Container(
+                  width: 220,
+                  height: 0.5,
+                  color: Colors.grey[400],
+                ),
+              ],
+            ),
+          ).pSymmetric(v: 15.0)
+        ],
       ),
     );
   }
