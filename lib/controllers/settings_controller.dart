@@ -2,7 +2,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:jio_works/utilities/library.dart';
-import 'package:vph_web_date_picker/vph_web_date_picker.dart';
+
 
 class SettingsController extends GetxController {
   RxInt index = 0.obs;
@@ -35,23 +35,10 @@ class SettingsController extends GetxController {
     index.value = value;
     update();
   }
-chooseDate()async{
-  final pickedDate = await showWebDatePicker(
-    context: textFieldKey.currentContext!,
-    initialDate: date,
-    firstDate: DateTime.now().subtract(const Duration(days: 7)),
-    lastDate: DateTime.now().add(const Duration(days: 14000)),
-    // width: 400,
-    // withoutActionButtons: true,
-    weekendDaysColor: Colors.red,
-    // selectedDayColor: Colors.brown
-    // firstDayOfWeekIndex: 1,
-    // asDialog: _asDialog,
-  );
-  if (pickedDate != null) {
-    date = pickedDate;
-    datecontroller.text = pickedDate.toString().split(' ')[0];
-  }
+chooseDate(context)async{
+
+
+
 }
   getData() async {
     Databases databases = Databases(DataInfo.client!);

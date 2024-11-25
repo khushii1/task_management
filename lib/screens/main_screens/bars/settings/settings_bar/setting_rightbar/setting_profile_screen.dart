@@ -179,7 +179,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                         suffixIcon: Icon(Icons.date_range),
                                         onShowPassword: () async {
                                           print("hello");
-                                          await controller.chooseDate();
+                                          await controller.chooseDate(context);
                                         },
                                       ),
                                       10.heightBox,
