@@ -1,10 +1,6 @@
-
-
 import 'package:get/get.dart';
 
 import 'package:jio_works/utilities/library.dart';
-
-
 
 class SplashController extends GetxController {
   BuildContext context;
@@ -18,13 +14,15 @@ class SplashController extends GetxController {
   }
 
   checkSession(BuildContext context) async {
-    
     //String? sessionId = await getSessionId();
 
     await Future.delayed(const Duration(seconds: 1));
     try {
-      await DataInfo.account.get();
-      
+      await DataInfo.account
+          .getSession(sessionId: DataInfo.box.read("sessionId"));
+
+      // await DataInfo.account.get();
+
       if (context.mounted) {
         context.go('/jioscreen');
       }

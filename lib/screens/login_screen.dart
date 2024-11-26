@@ -33,7 +33,7 @@ class LoginScreen extends GetView<LoginController> {
                     elevation: 2,
                     child: Container(
                       constraints: BoxConstraints(
-                        minWidth: context.screenWidth * 0.3,
+                        minWidth: 100,
                         //  minHeight: context.screenHeight * 0.54,
                         maxWidth: 450,
                         //  maxHeight: context.screenHeight

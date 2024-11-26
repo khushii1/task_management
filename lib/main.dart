@@ -1,6 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jio_works/datainfo/datainfo.dart';
 import 'package:jio_works/screens/custom_url_screen.dart';
@@ -10,12 +11,14 @@ import 'package:jio_works/screens/main_screens/jio_screen.dart';
 import 'package:jio_works/screens/login_screen.dart';
 import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
+import 'package:jio_works/screens/splash_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await DataInfo.appWriteInfo();
+  await GetStorage.init();
 
   runApp(
     MyApp(account: DataInfo.account),
@@ -26,7 +29,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const JioScreen();
+        return const SplashScreen();
       },
       routes: [
         GoRoute(

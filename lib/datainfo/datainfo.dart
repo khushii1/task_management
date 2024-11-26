@@ -1,5 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
 
 class DataInfo {
   static String projectId = '6732e7f20038e9fc710b';
@@ -7,8 +8,8 @@ class DataInfo {
   static late Account account;
   static String sessionId = '';
   static Client? client;
-
   static int index = 4;
+  static GetStorage box = GetStorage();
 
   static appWriteInfo() async {
     try {
@@ -22,6 +23,4 @@ class DataInfo {
       }
     }
   }
-
-
 }
