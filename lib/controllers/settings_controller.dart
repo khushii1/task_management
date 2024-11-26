@@ -198,13 +198,7 @@ class SettingsController extends GetxController {
                   "${DateTime.now().millisecondsSinceEpoch.toString()}.png",
               bytes: webImage!,
             ),
-          )
-              .then((value) {
-            var fileUrl = storage.getFile(
-              bucketId: "6745af79002818a31afc",
-              fileId: filedId,
-            );
-          });
+          );
         }
         await databases
             .updateDocument(
