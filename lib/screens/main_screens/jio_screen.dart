@@ -23,8 +23,17 @@ class JioScreen extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       appBar: AppbarWidget(
         onClick: () async {
-          await DataInfo.account.deleteSessions();
-          context.go("/login");
+          try {
+            if (DataInfo.box.hasData("sessionId")) {
+              await DataInfo.account
+                  .deleteSession(sessionId: DataInfo.sessionId);
+              context.go("/login");
+            }
+          } catch (e) {
+            if (kDebugMode) {
+              print(e);
+            }
+          }
         },
       ),
       body: GetBuilder<LeftbarController>(builder: (controller) {

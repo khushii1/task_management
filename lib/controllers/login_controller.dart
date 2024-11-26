@@ -14,29 +14,24 @@ class LoginController extends GetxController {
   final password = TextEditingController();
   final databases = Databases(DataInfo.client!);
   final RxBool isLoading = false.obs;
-  checkDetail({required BuildContext context}){
-
-    if(!email.text.isEmail){
-      isLoading.value=false;
+  checkDetail({required BuildContext context}) {
+    if (!email.text.isEmail) {
+      isLoading.value = false;
       update();
       showSnackBar(message: "Please Enter Correct Email", context: context);
-    }
-    else if(password.text.isEmpty || password.text.length<6) {
-      isLoading.value=false;
+    } else if (password.text.isEmpty || password.text.length < 6) {
+      isLoading.value = false;
       update();
       showSnackBar(message: "Please Enter Correct Password", context: context);
-    }
-    else{
+    } else {
       login(context: context);
     }
-
   }
+
   Future<void> login({required BuildContext context}) async {
-    
     try {
-      
       isLoading.value = true;
-      
+
       update();
       // final response = await databases.listDocuments(
       //   databaseId: '6735eba3001840aef863',
@@ -53,30 +48,27 @@ class LoginController extends GetxController {
       //   return;
       // }
 
-
-
-
-   await DataInfo.account.createEmailPasswordSession(
+      await DataInfo.account
+          .createEmailPasswordSession(
         email: email.text,
         password: password.text,
-      ).then((value) {
-        isLoading.value=false;
+      )
+          .then((value) {
+        print(value.$id);
+        DataInfo.sessionId = value.$id;
+        DataInfo.box.write("sessionId", DataInfo.sessionId);
+
+        isLoading.value = false;
         update();
-    //  DataInfo.sessionId=value.$id;
-    //     print(value.$id);
-    //
-    // print(DataInfo.sessionId);
+        //  DataInfo.sessionId=value.$id;
+        //     print(value.$id);
+        //
+        // print(DataInfo.sessionId);
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
-
-
-
-
-
-
     } catch (e) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
       showSnackBar(message: e.toString(), context: context);
     }
