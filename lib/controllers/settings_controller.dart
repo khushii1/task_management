@@ -74,9 +74,12 @@ class SettingsController extends GetxController {
   }
 
   getData() async {
+
     Databases databases = Databases(DataInfo.client!);
 
     try {
+      isLoading.value=true;
+      update();
       // Fetch documents from a specific database and collection
       var response = await databases.listDocuments(
         databaseId: '6735eba3001840aef863',
@@ -99,39 +102,56 @@ class SettingsController extends GetxController {
           if (Check.data(userDetails['image'])) {
             userImage.value = userDetails['image'];
           }
+          isLoading.value=false;
 
           update();
         }
       }
     } catch (e) {
+      isLoading.value=false;
+      update();
       if (kDebugMode) {
+        isLoading.value=false;
+        update();
         print('Error: $e');
       }
     }
   }
 
   changePasswordMethod({required BuildContext context}) async {
+    isLoading.value=true;
+    update();
     if (password.text.trim().isEmpty ||
         newPassword.text.trim().isEmpty ||
         confirmPassword.text.trim().isEmpty) {
+      isLoading.value=false;
+      update();
       showSnackBar(
           message: "Please Enter Passwords Properly", context: context);
     } else if (prevPassword != password.text) {
+      isLoading.value=false;
+      update();
       showSnackBar(
           message: "Current password is wrong Please Enter corrct one ",
           context: context);
     } else if (prevPassword == newPassword.text) {
+      isLoading.value=false;
+      update();
       showSnackBar(
           message:
               "Please Enter another Passwords its simmilar to your previous password",
           context: context);
     } else if (newPassword.text != confirmPassword.text) {
+      isLoading.value=false;
+      update();
       showSnackBar(
           message:
               '“Password & Confirm Password do not match” should be “Password & Confirm Password does not match',
           context: context);
     } else if (newPassword.text.trim().length < 8 ||
         confirmPassword.text.trim().length < 8) {
+      isLoading.value=false;
+      update();
       showSnackBar(
           message: "Please Enter atleast 8 digit password", context: context);
     } else {
@@ -148,7 +168,11 @@ class SettingsController extends GetxController {
           showSnackBar(
               message: "Password updated successfully", context: context);
         });
+        isLoading.value=false;
+        update();
       } catch (e) {
+        isLoading.value=false;
+        update();
         showSnackBar(
             message: 'Failed to update password: $e', context: context);
       }
@@ -156,8 +180,11 @@ class SettingsController extends GetxController {
   }
 
   updateProfileDetails({required BuildContext context}) async {
+
     Databases databases = Databases(DataInfo.client!);
     try {
+      isLoading.value=true;
+      update();
       Map<String, dynamic> data = {};
 
       if (datecontroller.text.isNotEmpty) {
@@ -175,7 +202,8 @@ class SettingsController extends GetxController {
       }
 
       if (data.isNotEmpty) {
-        showLoader(context);
+       isLoading.value=true;
+       update();
         String filedId = ID.unique();
         if (webImage != null) {
           final Storage storage = Storage(DataInfo.client!);
@@ -199,15 +227,21 @@ class SettingsController extends GetxController {
           data: data,
         )
             .then((value) {
-          Navigator.pop(context);
+         // Navigator.pop(context);
 
           showSnackBar(message: "updated successfully", context: context);
         });
+       isLoading.value=false;
+       update();
       } else {
+        isLoading.value=false;
+        update();
         showSnackBar(message: "No fields to update", context: context);
       }
     } catch (e) {
-      Navigator.pop(context);
+      isLoading.value=false;
+      update();
+    // Navigator.pop(context);
       showSnackBar(message: 'Failed to update profile: $e', context: context);
     }
   }
