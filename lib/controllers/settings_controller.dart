@@ -3,12 +3,9 @@
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:jio_works/main.dart';
 import 'package:jio_works/utilities/library.dart';
 
 import '../utilities/utilities.dart';
@@ -51,7 +48,6 @@ class SettingsController extends GetxController {
   }
 
   Future<void> pickImage() async {
-    print("yes");
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -66,20 +62,15 @@ class SettingsController extends GetxController {
 //
   chooseDate(context) async {
     DateTime chooseValue = await selectCustomDate(context: context) as DateTime;
-    print('date value: ${chooseValue}');
-    if (chooseValue != null) {
-      datecontroller.text = chooseValue.toString().split(' ')[0];
-    }
-    update();
+    datecontroller.text = chooseValue.toString().split(' ')[0];
+      update();
   }
 
   choseAniversary(context) async {
     DateTime chooseValue = await selectCustomDate(context: context) as DateTime;
 
-    if (chooseValue != null) {
-      aniversary.text = chooseValue.toString().split(' ')[0];
-    }
-    update();
+    aniversary.text = chooseValue.toString().split(' ')[0];
+      update();
   }
 
   getData() async {
@@ -95,7 +86,6 @@ class SettingsController extends GetxController {
       if (response.documents.isNotEmpty) {
         if (response.documents.isNotEmpty) {
           userDetails.value = response.documents.first.data;
-          print(userDetails.value);
           firstName.text = userDetails['first_name'];
           lastName.text = userDetails['last_name'];
           email.text = userDetails['email'];
@@ -217,7 +207,6 @@ class SettingsController extends GetxController {
         showSnackBar(message: "No fields to update", context: context);
       }
     } catch (e) {
-      print(e);
       Navigator.pop(context);
       showSnackBar(message: 'Failed to update profile: $e', context: context);
     }

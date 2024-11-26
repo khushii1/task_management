@@ -1,10 +1,9 @@
-import 'dart:io';
+
 
 import 'package:appwrite/appwrite.dart';
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
 import '../../../../../../utilities/library.dart';
-import '../../../../../../utilities/utilities.dart';
 
 class SettingProfileScreen extends GetView<SettingsController> {
   const SettingProfileScreen({super.key});
@@ -106,7 +105,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                                                       snapshot
                                                                           .data!,
                                                                     )
-                                                                  : CircularProgressIndicator();
+                                                                  : const CircularProgressIndicator();
                                                             },
                                                           )))
                                                   : Container(
@@ -250,7 +249,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                         TextFieldWidget(
                                           controller: controller.aniversary,
                                           obscure: false,
-                                          suffixIcon: Icon(Icons.date_range),
+                                          suffixIcon: const Icon(Icons.date_range),
                                           label: "Work Aniversary",
                                           onShowPassword: () async {
                                             controller.choseAniversary(context);

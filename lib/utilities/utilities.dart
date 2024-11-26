@@ -49,6 +49,5 @@ Future<DateTime?> selectCustomDate({
       lastDate: DateTime(DateTime.now().year),
     ),
   );
-  print("picked date:${picked}");
   return picked;
 }
