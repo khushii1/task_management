@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:appwrite/appwrite.dart';
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
 import '../../../../../../utilities/library.dart';
@@ -53,30 +54,74 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                     Row(children: [
                                       Stack(
                                         children: [
-
-                                             controller.webImage != null
-                                                ? Container(
-                                              width: 60,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(40),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.circular(40),
-                                                child: Image.memory(controller.webImage!))
-                                                )
-
-
-                                                : Container(
-                                              width: 60,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xffe5f1f7),
-                                                borderRadius: BorderRadius.circular(40),
-                                              ),
-                                              child: profileIcon.svg(colors: primaryColor),
-
-                                          ),
+                                          controller.webImage != null
+                                              ? Container(
+                                                  width: 60,
+                                                  height: 60,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            40),
+                                                  ),
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              40),
+                                                      child: Image.memory(
+                                                          controller
+                                                              .webImage!)))
+                                              : controller.userImage.value
+                                                      .isNotEmpty
+                                                  ? Container(
+                                                      width: 60,
+                                                      height: 60,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(40),
+                                                      ),
+                                                      child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(40),
+                                                          child: FutureBuilder(
+                                                            future: Storage(
+                                                                    DataInfo
+                                                                        .client!)
+                                                                .getFileDownload(
+                                                              bucketId:
+                                                                  '6745af79002818a31afc',
+                                                              fileId: controller
+                                                                  .userImage
+                                                                  .value,
+                                                            ), //works for both public file and private file, for private files you need to be logged in
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              return snapshot
+                                                                          .hasData &&
+                                                                      snapshot.data !=
+                                                                          null
+                                                                  ? Image
+                                                                      .memory(
+                                                                      snapshot
+                                                                          .data!,
+                                                                    )
+                                                                  : CircularProgressIndicator();
+                                                            },
+                                                          )))
+                                                  : Container(
+                                                      width: 60,
+                                                      height: 60,
+                                                      decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xffe5f1f7),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(40),
+                                                      ),
+                                                      child: profileIcon.svg(
+                                                          colors: primaryColor),
+                                                    ),
                                           Positioned(
                                               bottom: 0,
                                               right: 0,
@@ -90,7 +135,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                                       color: Colors.white),
                                                   child: editIcon.svg().p2()))
                                         ],
-                                      ).onTap((){
+                                      ).onTap(() {
                                         controller.pickImage();
                                       }),
                                       20.widthBox,
@@ -168,8 +213,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                           children: [
                                             Flexible(
                                                 child: TextFieldWidget(
-                                              controller:
-                                                  controller.firstName,
+                                              controller: controller.firstName,
                                               obscure: false,
                                               hint: "Enter first name",
                                               label: "First Name",
@@ -177,8 +221,7 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                             10.widthBox,
                                             Flexible(
                                               child: TextFieldWidget(
-                                                controller:
-                                                    controller.lastName,
+                                                controller: controller.lastName,
                                                 obscure: false,
                                                 hint: "Enter last name",
                                                 label: "Last Name",
@@ -194,15 +237,13 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                         ),
                                         10.heightBox,
                                         TextFieldWidget(
-                                          controller:
-                                              controller.datecontroller,
+                                          controller: controller.datecontroller,
                                           obscure: false,
                                           label: "Birthday",
                                           suffixIcon:
                                               const Icon(Icons.date_range),
                                           onShowPassword: () async {
-                                         controller.chooseDate(context);
-
+                                            controller.chooseDate(context);
                                           },
                                         ),
                                         10.heightBox,
@@ -213,61 +254,60 @@ class SettingProfileScreen extends GetView<SettingsController> {
                                           label: "Work Aniversary",
                                           onShowPassword: () async {
                                             controller.choseAniversary(context);
-
                                           },
                                         ),
                                       ],
                                     )
-                                        //.pSymmetric(h: 20),
-                                   , Column(
-                                     crossAxisAlignment:
-                                         CrossAxisAlignment.start,
-                                     children: [
-                                       const TextWidget(
-                                         text: "Contact Info",
-                                         color: Color(0xffb5b5bb),
-                                         fontSize: 20,
-                                       ),
-                                       20.heightBox,
-                                       TextFieldWidget(
-                                         hint: "Enter Email ",
-                                         controller: controller.email,
-                                         obscure: false,
-                                         label: "Email",
-                                         readOnly: true,
-                                       ),
-                                       10.heightBox,
-                                       TextFieldWidget(
-                                         controller: controller.city,
-                                         obscure: false,
-                                         label: "City",
-                                       ),
-                                       10.heightBox,
-                                       TextFieldWidget(
-                                         controller: controller.phone,
-                                         obscure: false,
-                                         label: "Contact No.",
-                                       ),
-                                       10.heightBox,
-                                       TextFieldWidget(
-                                         controller: controller.aniversary,
-                                         obscure: false,
-                                         label: "Timezone",
-                                       ),
-                                       20.heightBox,
-                                       Align(
-                                           alignment: Alignment.centerRight,
-                                           child:  ButtonWidget(
-
-                                                   text: "Save Details",
-                                           onTap: (){
-                                                 controller.updateProfileDetails(context: context);
-                                           },
-                                           )
-                                               .w(160))
-                                       // ButtonWidget(text: "Save Details").w(100)
-                                     ],
-                                   ).pSymmetric(h: 20)
+                                    //.pSymmetric(h: 20),
+                                    ,
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const TextWidget(
+                                          text: "Contact Info",
+                                          color: Color(0xffb5b5bb),
+                                          fontSize: 20,
+                                        ),
+                                        20.heightBox,
+                                        TextFieldWidget(
+                                          hint: "Enter Email ",
+                                          controller: controller.email,
+                                          obscure: false,
+                                          label: "Email",
+                                          readOnly: true,
+                                        ),
+                                        10.heightBox,
+                                        TextFieldWidget(
+                                          controller: controller.city,
+                                          obscure: false,
+                                          label: "City",
+                                        ),
+                                        10.heightBox,
+                                        TextFieldWidget(
+                                          controller: controller.phone,
+                                          obscure: false,
+                                          label: "Contact No.",
+                                        ),
+                                        10.heightBox,
+                                        TextFieldWidget(
+                                          controller: controller.aniversary,
+                                          obscure: false,
+                                          label: "Timezone",
+                                        ),
+                                        20.heightBox,
+                                        Align(
+                                            alignment: Alignment.centerRight,
+                                            child: ButtonWidget(
+                                              text: "Save Details",
+                                              onTap: () {
+                                                controller.updateProfileDetails(
+                                                    context: context);
+                                              },
+                                            ).w(160))
+                                        // ButtonWidget(text: "Save Details").w(100)
+                                      ],
+                                    ).pSymmetric(h: 20)
                                   ],
                                 ),
                               ],
