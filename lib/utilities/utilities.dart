@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:jio_works/utilities/library.dart';
 
@@ -38,37 +39,16 @@ Future<DateTime?> selectCustomDate({
 }) async {
   DateTime? selectedDate = initialDate ?? DateTime.now();
 
-  return await showDialog<DateTime>(
+  final DateTime? picked = await showCupertinoModalPopup(
     context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text("Select Date"),
-        content: SizedBox(
-          height: 300,
-          child: CalendarDatePicker(
-            initialDate: selectedDate,
-            firstDate: firstDate ?? DateTime(2000),
-            lastDate: lastDate ?? DateTime(2100),
-            onDateChanged: (DateTime date) {
-              selectedDate = date;
-            },
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context, null); // Cancel
-            },
-            child: const Text("Cancel"),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context, selectedDate); // Confirm
-            },
-            child: const Text("OK"),
-          ),
-        ],
-      );
-    },
+    builder: (context) => DatePickerDialog(
+      restorationId: 'date_picker_dialog',
+      initialEntryMode: DatePickerEntryMode.calendarOnly,
+      initialDate: DateTime(selectedDate.year-18),
+      firstDate: DateTime(1950),
+      lastDate: DateTime(DateTime.now().year),
+    ),
   );
+  print("picked date:${picked}");
+  return picked;
 }
