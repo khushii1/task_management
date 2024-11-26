@@ -89,3 +89,42 @@ showSnackBar({required String message, required BuildContext context}) {
     }
   }
 }
+
+void showLoader(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false, 
+      builder: (BuildContext context) {
+        return const CustomLoader();
+      },
+    );
+
+    
+  }
+
+class CustomLoader extends StatelessWidget {
+  const CustomLoader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: const Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircularProgressIndicator(), // The spinner
+            SizedBox(height: 20),
+            Text(
+              "Loading, please wait...",
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

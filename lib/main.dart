@@ -17,10 +17,9 @@ void main() async {
 
   await DataInfo.appWriteInfo();
 
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MyApp(account: DataInfo.account),
-  ));
+  runApp(
+    MyApp(account: DataInfo.account),
+  );
 }
 
 final GoRouter router = GoRouter(routes: [
@@ -82,14 +81,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
-      builder: (context,child){
-        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),child: child!,);
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context)
+              .copyWith(textScaler: const TextScaler.linear(1.0)),
+          child: child!,
+        );
       },
       key: navigatorKey,
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,
       routeInformationProvider: router.routeInformationProvider,
-      title: 'jio works',
+      title: 'Jio Works',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
     );
