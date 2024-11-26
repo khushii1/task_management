@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/settings_controller.dart';
-
 import '../../../../../../utilities/library.dart';
 
 class SettingProfileScreen extends GetView<SettingsController> {
