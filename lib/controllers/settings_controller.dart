@@ -36,6 +36,7 @@ class SettingsController extends GetxController {
   File? file;
   Uint8List? webImage;
   RxString userImage = "".obs;
+  RxBool isLoading=false.obs;
 
   RxMap<String, dynamic> userDetails = <String, dynamic>{}.obs;
   @override
