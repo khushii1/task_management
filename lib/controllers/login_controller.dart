@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jio_works/utilities/library.dart';
+import 'package:jio_works/utilities/utilities.dart';
 
 import '../datainfo/datainfo.dart';
 import '../utilities/custom_field.dart';
@@ -33,7 +35,6 @@ class LoginController extends GetxController {
       isLoading.value = true;
 
       update();
-      await DataInfo.account.deleteSession(sessionId: DataInfo.sessionId);
 
       await DataInfo.account
           .createEmailPasswordSession(
@@ -51,10 +52,14 @@ class LoginController extends GetxController {
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
-    } catch (e) {
+    } on AppwriteException catch (e) {
+      if (kDebugMode) {
+        print("error:${e.toString()}");
+      }
       isLoading.value = false;
       update();
-      showSnackBar(message: e.toString(), context: context);
+      String error = getAuthErrorMessage(e);
+      showSnackBar(message: error, context: context);
     }
   }
 
@@ -62,12 +67,11 @@ class LoginController extends GetxController {
     try {
       final user = await DataInfo.account.get();
       DataInfo.user = user;
-      print('User ID: ${user.$id}');
-      print('Email: ${user.email}');
-      print('Name: ${user.name}');
-      // Handle the user details as needed
+      DataInfo.box.write("userDetails", user.toMap());
     } catch (e) {
-      print('Error fetching user details: $e');
+      if (kDebugMode) {
+        print('Error fetching user details: $e');
+      }
     }
   }
 }

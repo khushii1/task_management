@@ -1,3 +1,4 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:jio_works/utilities/library.dart';
@@ -50,4 +51,19 @@ Future<DateTime?> selectCustomDate({
     ),
   );
   return picked;
+}
+
+String getAuthErrorMessage(AppwriteException e) {
+  switch (e.code) {
+    case 401:
+      return 'Invalid email or password.';
+    case 403:
+      return 'Please verify your email to login.';
+    case 404:
+      return 'Account not found. Please check your email.';
+    case 409:
+      return 'An account with this email already exists.';
+    default:
+      return 'An unexpected error occurred: ${e.message}';
+  }
 }
