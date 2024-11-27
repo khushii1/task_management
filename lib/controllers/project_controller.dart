@@ -1,9 +1,11 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jio_works/utilities/library.dart';
 import 'package:universal_html/html.dart';
+import 'package:universal_html/js.dart';
 
 class ProjectController extends GetxController {
 
@@ -17,8 +19,13 @@ class ProjectController extends GetxController {
   RxBool isLoading=false.obs;
   RxList<dynamic> teams=[].obs;
   final teamName = TextEditingController();
+  final newProjectName = TextEditingController();
+  final projectName = TextEditingController();
   RxBool isButtonEnabled = false.obs;
+  RxBool isButtonEnabled1 = false.obs;
   final databases = Databases(DataInfo.client!);
+  RxString docuId=''.obs;
+
   showBox({required BuildContext context}) {
     print("hello");
     showDialog(
@@ -131,20 +138,10 @@ update();
 
         },
       ).then((value) async{
+await addProject( value.data['id'],context);
 
-        await databases.createDocument(databaseId: DataInfo.databaseId, collectionId: DataInfo.projectCollectionId, documentId: ID.unique(), data: {
-          "id": ID.unique(),
-          "name": 'Your Project Here',
-          "team_id": value.data['id'],
-            "dashboard_id":value.data['id'],
-          "created_by":DataInfo.user!.$id,
-          "created_date": DateTime.now().toString(),
 
-        }).then((value){
-          getData();
-        });
-
-      showSnackBar(message: "Teams created", context: context);
+     // showSnackBar(message: "Teams created", context: context);
       teamName.clear();
 
        // context.go('/login');
@@ -192,5 +189,346 @@ update();
         print('Error: $e');
       }
     }
+  }
+ getDocumentIdByTeamId(String teamId,String projectName,BuildContext context) async {
+
+
+    final  database = Databases(DataInfo.client!);
+
+    final query = Query.and([
+      Query.equal('team_id', teamId),
+      Query.equal('name', projectName),
+    ]);
+
+    final documents = await database.listDocuments(
+      collectionId: DataInfo.projectCollectionId, // Your teams collection ID
+      queries: [query], databaseId: DataInfo.databaseId,
+    );
+
+    if (documents.documents.isNotEmpty) {
+      docuId.value=documents.documents.first.$id;
+      changeName(context);
+    } else {
+      return null;
+    }
+  }
+  changeName(BuildContext context)async{
+    Navigator.pop(context);
+    final  database = Databases(DataInfo.client!);
+
+    try {
+      print("documentid to change:${docuId.value}");
+      await database.updateDocument(
+        collectionId: DataInfo.projectCollectionId, // Your teams collection ID
+        documentId: docuId.value,
+        data: {
+          'name': projectName.text,
+        },
+        databaseId: DataInfo.databaseId,
+      ).then((value){getData();});
+    } catch (e) {
+      print('Error updating team name: $e');
+    }
+  }
+  renameProject({required BuildContext context,required String id,required String name}) {
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          icon:
+          Align(alignment: Alignment.centerRight, child: Icon(Icons.close))
+              .onTap(() {
+            Navigator.pop(context);
+          }),
+          title: TextWidget(
+            textAlign: TextAlign.start,
+            text: "Rename Project",
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ).pOnly(right: 200),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: projectName,
+                decoration: InputDecoration(
+                  isDense: true,
+                  hintStyle: const TextStyle(fontSize: 12, height: 3),
+                  floatingLabelStyle: const TextStyle(height: 10),
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  labelStyle: const TextStyle(fontSize: 20, height: 4),
+                  labelText: 'Enter Project Name',
+                  hintText: "Enter Project Namee",
+                  enabledBorder: const UnderlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Color(0xff595959), width: 1.5)),
+                  focusedBorder: const UnderlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Color(0xff595959), width: 1.5)),
+                ),
+                onChanged: (text) {
+                  if (text.isNotEmpty) {
+                    print("yes");
+                    isButtonEnabled1.value = true;
+                    update();
+                  } else {
+                    print('no');
+                    isButtonEnabled1.value = false;
+                    update();
+                  }
+                },
+              ),
+              20.heightBox,
+            ],
+          ),
+          actions: [
+            Container(
+              child: TextWidget(
+                text: "Cancel",
+                color: Colors.blue,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(20)),
+            ).onTap(() {
+              Navigator.pop(context);
+            }),
+            Obx(() => isButtonEnabled1.value
+                ? Container(
+              child: TextWidget(
+                text: "Rename",
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(20)),
+            ).onTap(() {
+              getDocumentIdByTeamId(id,name,context);
+            })
+                : Container(
+              child: TextWidget(
+                text: "Rename",
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(20)),
+            ).opacity(value: 0.5))
+          ],
+        );
+      },
+    );
+  }
+  addProjectPopup({required BuildContext context,required String id}){
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          icon:
+          Align(alignment: Alignment.centerRight, child: Icon(Icons.close))
+              .onTap(() {
+            Navigator.pop(context);
+          }),
+          title: TextWidget(
+            textAlign: TextAlign.start,
+            text: "Create New Project",
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ).pOnly(right: 200),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: newProjectName,
+                decoration: InputDecoration(
+                  isDense: true,
+                  hintStyle: const TextStyle(fontSize: 12, height: 3),
+                  floatingLabelStyle: const TextStyle(height: 10),
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  labelStyle: const TextStyle(fontSize: 20, height: 4),
+                  labelText: 'Enter Project Name',
+                  hintText: "Enter Project Namee",
+                  enabledBorder: const UnderlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Color(0xff595959), width: 1.5)),
+                  focusedBorder: const UnderlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Color(0xff595959), width: 1.5)),
+                ),
+                onChanged: (text) {
+                  if (text.isNotEmpty) {
+                    print("yes");
+                    isButtonEnabled1.value = true;
+                    update();
+                  } else {
+                    print('no');
+                    isButtonEnabled1.value = false;
+                    update();
+                  }
+                },
+              ),
+              20.heightBox,
+            ],
+          ),
+          actions: [
+            Container(
+              child: TextWidget(
+                text: "Cancel",
+                color: Colors.blue,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(20)),
+            ).onTap(() {
+              Navigator.pop(context);
+            }),
+            Obx(() => isButtonEnabled1.value
+                ? Container(
+              child: TextWidget(
+                text: "Create Project",
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(20)),
+            ).onTap(() {
+              Navigator.pop(context);
+              addProject(id,context);
+            })
+                : Container(
+              child: TextWidget(
+                text: "Create Project",
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(20)),
+            ).opacity(value: 0.5))
+          ],
+        );
+      },
+    );
+  }
+  addProject(String id,BuildContext context)async{
+try{
+  await databases.createDocument(databaseId: DataInfo.databaseId, collectionId: DataInfo.projectCollectionId, documentId: ID.unique(), data: {
+    "id": ID.unique(),
+    "name": newProjectName.text.trim().isNotEmpty?newProjectName.text:"Your Project Here",
+    "team_id":id,
+    "dashboard_id":id,
+    "created_by":DataInfo.user!.$id,
+    "created_date": DateTime.now().toString(),
+
+  }).then((value){
+    showSnackBar(message: "Project added", context: context);
+    getData();
+  });
+}on AppwriteException catch (e) {
+
+  if (kDebugMode) {
+    print(e);
+  }
+  isLoading.value=false;
+  update();
+}
+  }
+
+
+
+  Future<List<Document>?> getProjectList(String id) async {
+
+print("hello");
+    Databases databases = Databases(DataInfo.client!);
+
+    final query = Query.equal('team_id', id);
+
+    final response = await databases.listDocuments(
+      collectionId: DataInfo.projectCollectionId, // Your projects collection ID
+      queries: [query], databaseId: DataInfo.databaseId,
+    );
+    if (response.documents.isNotEmpty) {
+      print("done");
+     return response.documents;
+
+    }
+
+
+  }
+  Future<void> deleteProject(String projectId,BuildContext context) async {
+
+Navigator.pop(context);
+    await databases.deleteDocument(
+      collectionId: DataInfo.projectCollectionId,
+      documentId: projectId, databaseId: DataInfo.databaseId,
+    ).then((value){
+      getData();
+    });
+  }
+  DeleteBox({required BuildContext context,required String projectId}) {
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          icon:
+          Align(alignment: Alignment.centerRight, child: Icon(Icons.close))
+              .onTap(() {
+            Navigator.pop(context);
+          }),
+          title: TextWidget(
+            textAlign: TextAlign.start,
+            text: "Delete Project",
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ).pOnly(right: 200),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+             TextWidget(text: "Are you sure you want to Delete this project?",fontSize: 20,fontWeight: FontWeight.w700,),
+              20.heightBox,
+              TextWidget(text: "You along with your team member will loose access to this project",),
+
+
+              20.heightBox,
+            ],
+          ),
+          actions: [
+            Container(
+              child: TextWidget(
+                text: "Nah,i'll keep it",
+                color: Colors.blue,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(20)),
+            ).onTap(() {
+              Navigator.pop(context);
+            }),
+            Container(
+              child: TextWidget(
+                text: "Delete Project",
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ).pSymmetric(h: 20, v: 10),
+              decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(20)),
+            ).onTap(() {
+              deleteProject(projectId,context);
+            })
+
+          ],
+        );
+      },
+    );
   }
 }

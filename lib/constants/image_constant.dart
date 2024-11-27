@@ -30,13 +30,13 @@ String icon5 = "${imagePath}icon5.svg";
 String empty = "${imagePath}empty.svg";
 
 String home = "${iconPath}home.svg";
-String tabIcon = "${iconPath}home.svg";
+String tabIcon = "${iconPath}tabIcon.svg";
 String editIcon1 = "${iconPath}editIcon.svg";
 String arrowRight = "${iconPath}arrowRight.svg";
-String projectPermission = "${iconPath}home.svg";
+String projectPermission = "${iconPath}projectPermission.svg";
 String pinIcon = "${iconPath}pinIcon.svg";
 String copyIcon = "${iconPath}copyIcon.svg";
-String addIcon = "${iconPath}home.svg";
+String addIcon = "${iconPath}addIcon.svg";
 String addUser = "${iconPath}addUser.svg";
 String printIcon = "${iconPath}printIcon.svg";
 String fullScreenIcon = "${iconPath}fullScreenIcon.svg";

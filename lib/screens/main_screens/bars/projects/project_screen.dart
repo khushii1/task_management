@@ -1,3 +1,4 @@
+import 'package:appwrite/models.dart';
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/project_controller.dart';
 import 'package:jio_works/custom_widgets/blurred_loader.dart';
@@ -14,7 +15,7 @@ class ProjectScreen extends GetView<ProjectController> {
     Get.put(ProjectController());
     return GetBuilder<ProjectController>(builder: (controller) {
       return BlurredLoader(
-        isLoading:controller.isLoading.value,
+        isLoading: controller.isLoading.value,
         child: Row(
           children: [
             Card(
@@ -61,81 +62,157 @@ class ProjectScreen extends GetView<ProjectController> {
                   ),
                   20.heightBox,
                   Expanded(
-                    child: ListView(
+                      child: ListView(
+                    shrinkWrap: true,
+                    children: List.generate(controller.teams.length, (index) {
+                      String firstName = controller.teams[index]['name'][0]
+                          .toString()
+                          .capitalized;
+                      return FutureBuilder(
+                          future: controller
+                              .getProjectList(controller.teams[index]['id']),
+                          builder: (contxt, snapshot) {
 
-                      shrinkWrap: true,
-                      children: List.generate(controller.teams.length, (index) {
-                        String firstName=controller.teams[index]['name'][0].toString().capitalized;
-                        return Container(
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                children: [
+                            if (snapshot.hasData) {
+                              List<Document>? projectList = snapshot.data;
 
-                                Row(
+                              print("data is here:${projectList}");
+                              return Container(
+                                child: Column(
                                   children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: primaryColor,
-                                      ),
-                                      child: TextWidget(
-                                        color: Colors.white,
-                                        text: firstName,
-                                      ).pSymmetric(h: 10,v:5),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: primaryColor,
+                                              ),
+                                              child: TextWidget(
+                                                color: Colors.white,
+                                                text: firstName,
+                                              ).pSymmetric(h: 10, v: 5),
+                                            ),
+                                            10.widthBox,
+                                            TextWidget(
+                                              text: controller.teams[index]
+                                                      ['name']
+                                                  .toString()
+                                                  .capitalized,
+                                              color: primaryColor,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ],
+                                        ),
+                                        Icon(Icons.keyboard_arrow_down)
+                                      ],
                                     ),
-                                    10.widthBox,
-                                    TextWidget(
-                                      text: controller.teams[index]['name'].toString().capitalized,color: primaryColor,fontWeight: FontWeight.bold,),
+                                    20.heightBox,
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.home_filled,
+                                          size: 16,
+                                        ),
+                                        5.widthBox,
+                                        TextWidget(
+                                          text: "Team Summary",
+                                          fontWeight: FontWeight.bold,
+                                        )
+                                      ],
+                                    ).pOnly(left: 10),
+                                    20.heightBox,
 
+                                    Column(
+                                      children: List.generate(
+                                          projectList!.length, (projectIndex) {
+                                        String firstName = projectList[projectIndex].data['name'][0].toString().capitalized;
+                                        return   Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  color: Colors.grey[100],
+                                                  child: TextWidget(
+                                                    text: firstName,
+                                                  ).pSymmetric(h: 5, v: 5),
+                                                ),
+                                                5.widthBox,
+                                                TextWidget(
+                                                  text: projectList[projectIndex]
+                                                      .data['name'].toString().capitalized,
+                                                  fontWeight: FontWeight.bold,
+                                                )
+                                              ],
+                                            ),
+                                            CustomPopupMenuButton(
+                                              onSelected: (value) {
+                                                if(value=='2'){
+                                                  controller.renameProject(
+                                                      context: context,
+                                                      id: controller.teams[index]
+                                                      ['id'], name: projectList[projectIndex]
+                                                      .data['name']);
+                                                }
+                                                if(value=='8'){
+                                                  print("docuid:${projectList[projectIndex].data['\$id']}");
+                                                  controller.DeleteBox(context: contxt, projectId:  projectList[projectIndex].data['\$id']);
+                                                }
+
+                                                // controller.getDocumentIdByTeamId(controller.teams[index]['id']);
+                                              },
+                                            ).pOnly(right: 10)
+                                          ],
+                                        ).pOnly(left: 10,bottom: 10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      }),
+                                    ),
+                                    10.heightBox,
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.add,
+                                          size: 16,
+                                        ),
+                                        5.widthBox,
+                                        TextWidget(
+                                          text: "Add New Project",
+                                          fontWeight: FontWeight.bold,
+                                        )
+                                      ],
+                                    ).pOnly(left: 10).onTap(() {
+                                      controller.addProjectPopup(
+                                          context: context,
+                                          id: controller.teams[index]['id']);
+                                    }),
+                                    10.heightBox,
                                   ],
                                 ),
-                                  Icon(Icons.keyboard_arrow_down)
-                                ],
-                              ),
-                              15.heightBox,
-                              Row(
-                                children: [
-                                  Icon(Icons.home_filled,size: 16,),
-                                  5.widthBox,
-                                  TextWidget(text: "Team Summary",fontWeight: FontWeight.bold,)
-                                ],
-                              ).pOnly(left: 10),
-                              10.heightBox,
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                               Row(
-                                 children: [
-                                   Container(
-                                     color:Colors.grey[100],
-                                     child: TextWidget(text: 'Y',).pSymmetric(h: 5,v:5),
-                                   ),
-                                   5.widthBox,
-                                   TextWidget(text: "Your Project Here",fontWeight: FontWeight.bold,)
-                                 ],
-                               ),
-                                  Icon(Icons.more_vert,).onTap((){
-                                    CustomPopupMenuButton();
-                                  }).pOnly(right: 10)
-                                ],
-                              ).pOnly(left: 10),
-                              10.heightBox,
-                              Row(
-                                children: [
-                                  Icon(Icons.add,size: 16,),
-                                  5.widthBox,
-                                  TextWidget(text: "Add New Project",fontWeight: FontWeight.bold,)
-                                ],
-                              ).pOnly(left: 10),
-                              10.heightBox,
-                            ],
-                          ),
-                        ).pOnly(bottom: 10);
-                      }),
-                    ).w(context.screenWidth*0.15)
-                  )
+                              ).pOnly(bottom: 10);
+                            }
+                            else {
+                              return SizedBox();
 
+                            }
+                          });
+                    }),
+                  ).w(context.screenWidth * 0.15))
                 ],
               ).p16(),
             ).p12()
