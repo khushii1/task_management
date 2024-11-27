@@ -33,20 +33,7 @@ class LoginController extends GetxController {
       isLoading.value = true;
 
       update();
-      // final response = await databases.listDocuments(
-      //   databaseId: '6735eba3001840aef863',
-      //   collectionId: '6735ebaa003ba5e26526',
-      //   queries: [
-      //     Query.equal('email', email.text),
-      //     Query.equal('password', password.text),
-      //   ],
-      // );
-
-      // if (response.documents.isEmpty) {
-      //   // No matching user found in the database
-      //   showSnackBar(message: "Invalid email or password", context: context);
-      //   return;
-      // }
+      
 
       await DataInfo.account
           .createEmailPasswordSession(
@@ -54,16 +41,13 @@ class LoginController extends GetxController {
         password: password.text,
       )
           .then((value) {
-        print(value.$id);
+        
         DataInfo.sessionId = value.$id;
         DataInfo.box.write("sessionId", DataInfo.sessionId);
 
         isLoading.value = false;
         update();
-        //  DataInfo.sessionId=value.$id;
-        //     print(value.$id);
-        //
-        // print(DataInfo.sessionId);
+        
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
