@@ -42,7 +42,7 @@ class LoginController extends GetxController {
         password: password.text,
       )
           .then((value) async {
-        print("skjske:${value.toMap()}");
+        
         DataInfo.sessionId = value.$id;
         DataInfo.box.write("sessionId", DataInfo.sessionId);
         await getCurrentUser();

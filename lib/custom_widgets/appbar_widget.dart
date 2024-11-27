@@ -41,11 +41,9 @@ class AppbarWidget extends StatelessWidget implements PreferredSize {
               onSelected: (String value) async {
                 if (value == "1") {
                   try {
-                    if (DataInfo.box.hasData("sessionId")) {
-                      await DataInfo.account
-                          .deleteSession(sessionId: DataInfo.sessionId);
-                      context.go("/login");
-                    }
+                    await DataInfo.account
+                        .deleteSession(sessionId: DataInfo.sessionId);
+                    context.go("/login");
                   } catch (e) {
                     if (kDebugMode) {
                       print(e);
