@@ -28,7 +28,7 @@ class BlurredLoader extends StatelessWidget {
         // Loader overlay
         if (isLoading)
          Container(
-           width: context.screenWidth,
+width: context.screenWidth*0.92,
            height: context.screenHeight,
            color: Colors.transparent.withOpacity(0.6),
            child:  Center(

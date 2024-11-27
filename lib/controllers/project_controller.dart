@@ -13,6 +13,8 @@ class ProjectController extends GetxController {
     super.onInit();
     getData();
   }
+
+  RxBool isLoading=false.obs;
   RxList<dynamic> teams=[].obs;
   final teamName = TextEditingController();
   RxBool isButtonEnabled = false.obs;
@@ -111,9 +113,12 @@ class ProjectController extends GetxController {
     );
   }
   Future<void> createTeam({required BuildContext context}) async {
-    try {
 
-print(DataInfo.user!.$id);
+    try {
+      Navigator.pop(context);
+isLoading.value=true;
+update();
+      teams.any((element)=>element['name']==teamName.text)?showSnackBar(message: "Team Already Exist", context: context):
       await databases.createDocument(
         databaseId: DataInfo.databaseId,
         collectionId: DataInfo.teamCollectionId,
@@ -125,44 +130,44 @@ print(DataInfo.user!.$id);
           "created_date": DateTime.now().toString(),
 
         },
-      ).then((value) {
+      ).then((value) async{
+
+        await databases.createDocument(databaseId: DataInfo.databaseId, collectionId: DataInfo.projectCollectionId, documentId: ID.unique(), data: {
+          "id": ID.unique(),
+          "name": 'Your Project Here',
+          "team_id": value.data['id'],
+            "dashboard_id":value.data['id'],
+          "created_by":DataInfo.user!.$id,
+          "created_date": DateTime.now().toString(),
+
+        }).then((value){
+          getData();
+        });
 
       showSnackBar(message: "Teams created", context: context);
       teamName.clear();
-      Navigator.pop(context);
+
        // context.go('/login');
       });
+      isLoading.value=false;
+      update();
     } on AppwriteException catch (e) {
 
       if (kDebugMode) {
         print(e);
       }
+      isLoading.value=false;
+      update();
     }
-    // try {
-    //   final user = await Datainfo.account
-    //       .create(
-    //     userId: ID.unique(),
-    //     email: email.text,
-    //     password: password.text,
-    //   )
-    //       .then((value) {
-    //     clearData();
-    //     context.go('/login');
-    //   });
 
-    //   //  print('User created: ${user!.$id}');
-    // } catch (e) {
-    //   print("error comes");
-    //   print(e.toString());
-    //   showSnackBar(message: e.toString(), context: context);
-    // }
   }
   getData() async {
 
     Databases databases = Databases(DataInfo.client!);
 
     try {
-
+isLoading.value=true;
+update();
       // Fetch documents from a specific database and collection
       var response = await databases.listDocuments(
         databaseId: DataInfo.databaseId,
@@ -176,10 +181,14 @@ print(DataInfo.user!.$id);
        teams.value=response.documents.map((element)=>element.data).toList();
         print(teams.toString());
       }
+      isLoading.value=false;
+      update();
     } catch (e) {
-
+      isLoading.value=false;
+      update();
       if (kDebugMode) {
-
+        isLoading.value=false;
+        update();
         print('Error: $e');
       }
     }

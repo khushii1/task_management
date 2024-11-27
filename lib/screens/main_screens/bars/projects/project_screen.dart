@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:jio_works/controllers/project_controller.dart';
+import 'package:jio_works/custom_widgets/blurred_loader.dart';
+import 'package:jio_works/custom_widgets/custom_popup_menu_button.dart';
 import 'package:jio_works/custom_widgets/search_widget.dart';
 
 import '../../../../utilities/library.dart';
@@ -11,80 +13,134 @@ class ProjectScreen extends GetView<ProjectController> {
   Widget build(BuildContext context) {
     Get.put(ProjectController());
     return GetBuilder<ProjectController>(builder: (controller) {
-      return Row(
-        children: [
-          Card(
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SearchWidget(
-                  hint: "Search Team and Project",
-                ).w(220),
-                30.heightBox,
-                Row(
-                  children: [
-                    TextWidget(
-                      text: "My Teams ",
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    10.widthBox,
-                    PopupMenuButton(
-                      tooltip: "",
-                      itemBuilder: (context) => [
-                        PopupMenuItem(
-                          value: 'option1',
-                          child: Row(
+      return BlurredLoader(
+        isLoading:controller.isLoading.value,
+        child: Row(
+          children: [
+            Card(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SearchWidget(
+                    hint: "Search Team and Project",
+                  ).w(220),
+                  30.heightBox,
+                  Row(
+                    children: [
+                      TextWidget(
+                        text: "My Teams ",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      10.widthBox,
+                      PopupMenuButton(
+                        tooltip: "",
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 'option1',
+                            child: Row(
+                              children: [
+                                Icon(Icons.group),
+                                5.widthBox,
+                                TextWidget(
+                                  text: "New Team",
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                        onSelected: (value) {
+                          controller.showBox(context: context);
+                        },
+                        icon: Icon(Icons.add),
+                      ),
+                    ],
+                  ),
+                  20.heightBox,
+                  Expanded(
+                    child: ListView(
+
+                      shrinkWrap: true,
+                      children: List.generate(controller.teams.length, (index) {
+                        String firstName=controller.teams[index]['name'][0].toString().capitalized;
+                        return Container(
+                          child: Column(
                             children: [
-                              Icon(Icons.group),
-                              5.widthBox,
-                              TextWidget(
-                                text: "New Team",
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                Row(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: primaryColor,
+                                      ),
+                                      child: TextWidget(
+                                        color: Colors.white,
+                                        text: firstName,
+                                      ).pSymmetric(h: 10,v:5),
+                                    ),
+                                    10.widthBox,
+                                    TextWidget(
+                                      text: controller.teams[index]['name'].toString().capitalized,color: primaryColor,fontWeight: FontWeight.bold,),
+
+                                  ],
+                                ),
+                                  Icon(Icons.keyboard_arrow_down)
+                                ],
                               ),
+                              15.heightBox,
+                              Row(
+                                children: [
+                                  Icon(Icons.home_filled,size: 16,),
+                                  5.widthBox,
+                                  TextWidget(text: "Team Summary",fontWeight: FontWeight.bold,)
+                                ],
+                              ).pOnly(left: 10),
+                              10.heightBox,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                               Row(
+                                 children: [
+                                   Container(
+                                     color:Colors.grey[100],
+                                     child: TextWidget(text: 'Y',).pSymmetric(h: 5,v:5),
+                                   ),
+                                   5.widthBox,
+                                   TextWidget(text: "Your Project Here",fontWeight: FontWeight.bold,)
+                                 ],
+                               ),
+                                  Icon(Icons.more_vert,).onTap((){
+                                    CustomPopupMenuButton();
+                                  }).pOnly(right: 10)
+                                ],
+                              ).pOnly(left: 10),
+                              10.heightBox,
+                              Row(
+                                children: [
+                                  Icon(Icons.add,size: 16,),
+                                  5.widthBox,
+                                  TextWidget(text: "Add New Project",fontWeight: FontWeight.bold,)
+                                ],
+                              ).pOnly(left: 10),
+                              10.heightBox,
                             ],
                           ),
-                        ),
-                      ],
-                      onSelected: (value) {
-                        controller.showBox(context: context);
-                      },
-                      icon: Icon(Icons.add),
-                    ),
-                  ],
-                ),
-                20.heightBox,
-                ListView(
-                  shrinkWrap: true,
-                  children: List.generate(controller.teams.length, (index) {
-                    return Container(
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                ),
-                                child: TextWidget(
-                                  text: 'F',
-                                ).p12(),
-                              ),
-                              10.widthBox,
-                              TextWidget(text: "Flutter")
-                            ],
-                          )
-                        ],
-                      ),
-                    );
-                  }),
-                )
-              ],
-            ).p16(),
-          ).p12()
-        ],
+                        ).pOnly(bottom: 10);
+                      }),
+                    ).w(context.screenWidth*0.15)
+                  )
+
+                ],
+              ).p16(),
+            ).p12()
+          ],
+        ),
       );
     });
   }
