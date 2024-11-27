@@ -1,5 +1,7 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class DataInfo {
@@ -10,6 +12,8 @@ class DataInfo {
   static Client? client;
   static int index = 4;
   static GetStorage box = GetStorage();
+  static User? user;
+  static RxMap<String, dynamic> userDetails = <String,dynamic>{}.obs;
 
   static appWriteInfo() async {
     try {

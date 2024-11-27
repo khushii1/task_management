@@ -33,21 +33,19 @@ class LoginController extends GetxController {
       isLoading.value = true;
 
       update();
-      
 
       await DataInfo.account
           .createEmailPasswordSession(
         email: email.text,
         password: password.text,
       )
-          .then((value) {
-        
+          .then((value) async {
         DataInfo.sessionId = value.$id;
         DataInfo.box.write("sessionId", DataInfo.sessionId);
-
+        await getCurrentUser();
         isLoading.value = false;
         update();
-        
+
         showSnackBar(message: "Logged in successfully", context: context);
         context.go("/jioscreen");
       });
@@ -55,6 +53,19 @@ class LoginController extends GetxController {
       isLoading.value = false;
       update();
       showSnackBar(message: e.toString(), context: context);
+    }
+  }
+
+  Future<void> getCurrentUser() async {
+    try {
+      final user = await DataInfo.account.get();
+      DataInfo.user = user;
+      print('User ID: ${user.$id}');
+      print('Email: ${user.email}');
+      print('Name: ${user.name}');
+      // Handle the user details as needed
+    } catch (e) {
+      print('Error fetching user details: $e');
     }
   }
 }
