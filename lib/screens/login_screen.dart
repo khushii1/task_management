@@ -7,7 +7,6 @@ import 'package:jio_works/custom_widgets/blurred_loader.dart';
 import 'package:jio_works/custom_widgets/text_widget.dart';
 import 'package:jio_works/custom_widgets/textfield_widget.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../controllers/login_controller.dart';
 
 class LoginScreen extends GetView<LoginController> {

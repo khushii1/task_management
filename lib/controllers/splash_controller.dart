@@ -20,7 +20,8 @@ class SplashController extends GetxController {
     try {
       await DataInfo.account
           .getSession(sessionId: DataInfo.box.read("sessionId"));
-
+      await getCurrentUser();
+      print("shsjdkjs${DataInfo.userDetails['name'].toString()}");
       // await DataInfo.account.get();
 
       if (context.mounted) {
@@ -54,5 +55,20 @@ class SplashController extends GetxController {
     // } catch (e) {
     //   return false;  // No session exists, return false (not logged in)
     // }
+  }
+
+  Future<void> getCurrentUser() async {
+    try {
+      final user = await DataInfo.account.get();
+      DataInfo.user = user;
+      DataInfo.userDetails.value = user.toMap();
+      print(DataInfo.user!.toMap());
+      update();
+      
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error fetching user details: $e');
+      }
+    }
   }
 }
