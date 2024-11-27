@@ -1,27 +1,61 @@
+import 'package:get/get.dart';
+import 'package:jio_works/controllers/project_controller.dart';
 import 'package:jio_works/custom_widgets/search_widget.dart';
 
 import '../../../../utilities/library.dart';
 
-class ProjectScreen extends StatelessWidget {
+class ProjectScreen extends GetView<ProjectController> {
   const ProjectScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Card(
-          color: Colors.white,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          child: Column(
-            children: [
-              SearchWidget(
-                hint: "Search Team and Project",
-              ).w(250)
-            ],
-          ).p16(),
-        ).p12()
-      ],
+    Get.put(ProjectController());
+    return GetBuilder<ProjectController>(
+      builder: (controller) {
+        return Row(
+          children: [
+            Card(
+              color: Colors.white,
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SearchWidget(
+                    hint: "Search Team and Project",
+                  ).w(220),
+                   30.heightBox,
+                  Row(
+                    children: [
+                      TextWidget(text: "My Teams ", fontSize: 20, fontWeight: FontWeight.w700,),
+                      10.widthBox,
+                      PopupMenuButton(
+                        tooltip: "",
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 'option1',
+                            child: Row(
+                              children: [
+                                Icon(Icons.group),
+                                5.widthBox,
+                                TextWidget(text: "New Team",),
+                              ],
+                            ),
+                          ),
+                        ],
+                        onSelected: (value) {
+        controller.showBox(context: context);
+                        },
+                        icon: Icon(Icons.add),
+                      ),
+                    ],
+                  ),
+                ],
+              ).p16(),
+            ).p12()
+          ],
+        );
+      }
     );
   }
 }
