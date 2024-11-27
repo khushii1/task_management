@@ -13,6 +13,9 @@ class DataInfo {
   static int index = 4;
   static GetStorage box = GetStorage();
   static User? user;
+  static String databaseId='6735eba3001840aef863';
+  static String userCollectionId='6735ebaa003ba5e26526';
+  static String teamCollectionId='6746a4f9000ec5538ccc';
   static RxMap<String, dynamic> userDetails = <String,dynamic>{}.obs;
 
   static appWriteInfo() async {
