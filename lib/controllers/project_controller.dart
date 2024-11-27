@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jio_works/utilities/library.dart';
+import 'package:universal_html/html.dart';
 
 class ProjectController extends GetxController {
 
@@ -172,7 +173,8 @@ print(DataInfo.user!.$id);
       );
 
       if (response.documents.isNotEmpty) {
-
+       teams.value=response.documents.map((element)=>element.data).toList();
+        print(teams.toString());
       }
     } catch (e) {
 

@@ -42,6 +42,7 @@ class ProjectScreen extends GetView<ProjectController> {
                               ],
                             ),
                           ),
+                          
                         ],
                         onSelected: (value) {
         controller.showBox(context: context);
@@ -50,6 +51,32 @@ class ProjectScreen extends GetView<ProjectController> {
                       ),
                     ],
                   ),
+                  20.heightBox,
+                 ListView(
+                   shrinkWrap: true,
+                   children: List.generate(controller.teams.length, (index){
+                     return Container(
+                       child: Column(
+                         children: [
+                           Row(
+                             children: [
+                               Container(
+                                 decoration: BoxDecoration(
+                                   color: primaryColor,
+                                   
+                                 ),
+                                 child: TextWidget(text: 'F',).p12(),
+                                 
+                               ),
+                               10.widthBox,
+                               TextWidget(text: "Flutter")
+                             ],
+                           )
+                         ],
+                       ),
+                     );
+                   }),
+                 )
                 ],
               ).p16(),
             ).p12()
