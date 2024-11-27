@@ -62,9 +62,9 @@ class SplashController extends GetxController {
       final user = await DataInfo.account.get();
       DataInfo.user = user;
       DataInfo.userDetails.value = user.toMap();
+      DataInfo.box.write("userDetails", user.toMap());
       print(DataInfo.user!.toMap());
       update();
-      
     } catch (e) {
       if (kDebugMode) {
         print('Error fetching user details: $e');

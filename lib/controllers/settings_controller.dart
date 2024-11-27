@@ -33,7 +33,7 @@ class SettingsController extends GetxController {
   File? file;
   Uint8List? webImage;
   RxString userImage = "".obs;
-  RxBool isLoading=false.obs;
+  RxBool isLoading = false.obs;
 
   RxMap<String, dynamic> userDetails = <String, dynamic>{}.obs;
   @override
@@ -63,55 +63,60 @@ class SettingsController extends GetxController {
   chooseDate(context) async {
     DateTime chooseValue = await selectCustomDate(context: context) as DateTime;
     datecontroller.text = chooseValue.toString().split(' ')[0];
-      update();
+    update();
   }
 
   choseAniversary(context) async {
     DateTime chooseValue = await selectCustomDate(context: context) as DateTime;
 
     aniversary.text = chooseValue.toString().split(' ')[0];
-      update();
+    update();
   }
 
   getData() async {
-
     Databases databases = Databases(DataInfo.client!);
 
     try {
-      isLoading.value=true;
+      isLoading.value = true;
       update();
+
       // Fetch documents from a specific database and collection
       var response = await databases.listDocuments(
-        databaseId: '6735eba3001840aef863',
-        collectionId: '6735ebaa003ba5e26526',
+        databaseId: DataInfo.databaseId,
+        collectionId: DataInfo.userCollectionId,
+        queries: [
+          Query.equal('email', DataInfo.box.read('userDetails')['email']),
+        ],
       );
 
       if (response.documents.isNotEmpty) {
-        if (response.documents.isNotEmpty) {
-          userDetails.value = response.documents.first.data;
-          firstName.text = userDetails['first_name'];
-          lastName.text = userDetails['last_name'];
-          email.text = userDetails['email'];
-          title.text = userDetails['origanization'];
-          prevPassword = userDetails['password'];
-          docuId = response.documents.first.$id;
-          datecontroller.text = userDetails['birthday'];
-          aniversary.text = userDetails['work_anniversary'];
-          city.text = userDetails['city'];
-          phone.text = userDetails['mobile_no'];
-          if (Check.data(userDetails['image'])) {
-            userImage.value = userDetails['image'];
-          }
-          isLoading.value=false;
-
-          update();
+        userDetails.value = response.documents.first.data;
+        firstName.text = userDetails['first_name'];
+        lastName.text = userDetails['last_name'];
+        email.text = userDetails['email'];
+        title.text = userDetails['origanization'];
+        prevPassword = userDetails['password'];
+        docuId = response.documents.first.$id;
+        datecontroller.text = userDetails['birthday'] ?? "";
+        aniversary.text = userDetails['work_anniversary'] ?? "";
+        city.text = userDetails['city'] ?? "";
+        phone.text = userDetails['mobile_no'] ?? "";
+        if (Check.data(userDetails['image'])) {
+          userImage.value = userDetails['image'];
         }
+        isLoading.value = false;
+
+        update();
+      } else {
+        isLoading.value = false;
+
+        update();
       }
     } catch (e) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
       if (kDebugMode) {
-        isLoading.value=false;
+        isLoading.value = false;
         update();
         print('Error: $e');
       }
@@ -119,30 +124,30 @@ class SettingsController extends GetxController {
   }
 
   changePasswordMethod({required BuildContext context}) async {
-    isLoading.value=true;
+    isLoading.value = true;
     update();
     if (password.text.trim().isEmpty ||
         newPassword.text.trim().isEmpty ||
         confirmPassword.text.trim().isEmpty) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
       showSnackBar(
           message: "Please Enter Passwords Properly", context: context);
     } else if (prevPassword != password.text) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
       showSnackBar(
           message: "Current password is wrong Please Enter corrct one ",
           context: context);
     } else if (prevPassword == newPassword.text) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
       showSnackBar(
           message:
               "Please Enter another Passwords its simmilar to your previous password",
           context: context);
     } else if (newPassword.text != confirmPassword.text) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
       showSnackBar(
           message:
@@ -150,7 +155,7 @@ class SettingsController extends GetxController {
           context: context);
     } else if (newPassword.text.trim().length < 8 ||
         confirmPassword.text.trim().length < 8) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
       showSnackBar(
           message: "Please Enter atleast 8 digit password", context: context);
@@ -168,10 +173,10 @@ class SettingsController extends GetxController {
           showSnackBar(
               message: "Password updated successfully", context: context);
         });
-        isLoading.value=false;
+        isLoading.value = false;
         update();
       } catch (e) {
-        isLoading.value=false;
+        isLoading.value = false;
         update();
         showSnackBar(
             message: 'Failed to update password: $e', context: context);
@@ -180,10 +185,9 @@ class SettingsController extends GetxController {
   }
 
   updateProfileDetails({required BuildContext context}) async {
-
     Databases databases = Databases(DataInfo.client!);
     try {
-      isLoading.value=true;
+      isLoading.value = true;
       update();
       Map<String, dynamic> data = {};
 
@@ -202,14 +206,13 @@ class SettingsController extends GetxController {
       }
 
       if (data.isNotEmpty) {
-       isLoading.value=true;
-       update();
+        isLoading.value = true;
+        update();
         String filedId = ID.unique();
         if (webImage != null) {
           final Storage storage = Storage(DataInfo.client!);
           data['image'] = filedId;
-          await storage
-              .createFile(
+          await storage.createFile(
             bucketId: '6745af79002818a31afc', // Replace with your bucket ID
             fileId: filedId, // Unique file ID
             file: InputFile.fromBytes(
@@ -227,21 +230,21 @@ class SettingsController extends GetxController {
           data: data,
         )
             .then((value) {
-         // Navigator.pop(context);
+          // Navigator.pop(context);
 
           showSnackBar(message: "updated successfully", context: context);
         });
-       isLoading.value=false;
-       update();
+        isLoading.value = false;
+        update();
       } else {
-        isLoading.value=false;
+        isLoading.value = false;
         update();
         showSnackBar(message: "No fields to update", context: context);
       }
     } catch (e) {
-      isLoading.value=false;
+      isLoading.value = false;
       update();
-    // Navigator.pop(context);
+      // Navigator.pop(context);
       showSnackBar(message: 'Failed to update profile: $e', context: context);
     }
   }
