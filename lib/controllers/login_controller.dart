@@ -1,15 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:appwrite/appwrite.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jio_works/utilities/library.dart';
 import 'package:jio_works/utilities/utilities.dart';
 
-import '../datainfo/datainfo.dart';
-import '../utilities/custom_field.dart';
 
 class LoginController extends GetxController {
   final email = TextEditingController();

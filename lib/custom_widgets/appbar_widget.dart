@@ -1,13 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:appwrite/models.dart';
-import 'package:flutter/material.dart';
-import 'package:jio_works/constants/image_constant.dart';
-import 'package:jio_works/custom_widgets/text_widget.dart';
-import 'package:jio_works/datainfo/datainfo.dart';
-import 'package:jio_works/utilities/custom_field.dart';
 import 'package:jio_works/utilities/library.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSize {
   final String? title;
