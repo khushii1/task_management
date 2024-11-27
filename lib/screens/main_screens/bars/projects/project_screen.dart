@@ -62,7 +62,7 @@ class ProjectScreen extends GetView<ProjectController> {
                              children: [
                                Container(
                                  decoration: BoxDecoration(
-                                   color: primaryColor,
+                                   color: Colors.blue,
                                    
                                  ),
                                  child: TextWidget(text: 'F',).p12(),
