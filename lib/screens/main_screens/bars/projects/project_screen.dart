@@ -142,7 +142,8 @@ class ProjectScreen extends GetView<ProjectController> {
                                       return InkWell(
                                         onTap: () {
                                           controller.onChangeScreen("2",controller.teams[index],projectList[projectIndex]
-                                              .data['name']);
+
+                                              .data);
                                         },
                                         child: Container(
                                           color: Colors.white,
