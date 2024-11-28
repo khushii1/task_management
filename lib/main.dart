@@ -12,11 +12,12 @@ import 'package:jio_works/screens/login_screen.dart';
 import 'package:jio_works/screens/otp_screen.dart';
 import 'package:jio_works/screens/signup_screen.dart';
 import 'package:jio_works/screens/splash_screen.dart';
+import 'package:jio_works/utilities/app_data.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  setUrlPath();
   await DataInfo.appWriteInfo();
   await GetStorage.init();
 
