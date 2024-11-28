@@ -31,13 +31,7 @@ extension StringExtension on String {
         fit: BoxFit.contain,
         color: color,
       );
-    } else if (File(this).existsSync()) {
-      // Check if it's a local file
-      return Image.file(
-        File(this),
-        fit: fit,
-      );
-    } else {
+    }  else {
       // Default to an asset
       return Image.asset(
         this,
