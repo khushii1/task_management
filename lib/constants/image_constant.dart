@@ -40,3 +40,7 @@ String addIcon = "${iconPath}addIcon.svg";
 String addUser = "${iconPath}addUser.svg";
 String printIcon = "${iconPath}printIcon.svg";
 String fullScreenIcon = "${iconPath}fullScreenIcon.svg";
+String noDataTable = "${iconPath}no-data-table.svg";
+String tableIcon = "${iconPath}tableIcon.svg";
+String ganttIcon = "${iconPath}ganttIcon.svg";
+String boardIcon = "${iconPath}boardIcon.svg";
