@@ -24,6 +24,8 @@ class ProjectController extends GetxController {
   final databases = Databases(DataInfo.client!);
   RxString docuId = ''.obs;
   RxString type = "1".obs;
+  RxMap<String, dynamic> teamData = <String, dynamic>{}.obs;
+  RxMap<String, dynamic> projectData = <String, dynamic>{}.obs;
 
   showBox({required BuildContext context}) {
     showDialog(
@@ -534,8 +536,14 @@ class ProjectController extends GetxController {
     );
   }
 
-  onChangeScreen(String data) {
+  onChangeScreen(String data, final team, final project) {
     type.value = data;
+    if (data == "1") {
+      teamData.value = team;
+    } else {
+      projectData.value = project;
+    }
+
     update();
   }
 }
