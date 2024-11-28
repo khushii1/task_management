@@ -99,9 +99,12 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                    Row(
                      children: [
                        Column(
+                         crossAxisAlignment: CrossAxisAlignment.center,
                          children: [
                            Row(
+
                              children: [
+                               10.widthBox,
                                tableIcon.svg(),
                                5.widthBox,
                                TextWidget(text: "Table",fontWeight: FontWeight.bold,)
@@ -123,24 +126,59 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                          ],
                        ),
                        15.widthBox,
-                       Row(
+                       Column(
+                         crossAxisAlignment: CrossAxisAlignment.center,
                          children: [
-                           ganttIcon.svg(),
-                           5.widthBox,
-                           TextWidget(text: "Gantt",fontWeight: FontWeight.bold,)
+                           Row(
+                             children: [
+                               10.widthBox,
+                               ganttIcon.svg(),
+                               5.widthBox,
+                               TextWidget(text: "Gantt",fontWeight: FontWeight.bold,)
+                             ],
+                           ).onTap((){
+                             controller.changeTab(1);
+                           }),
+                           10.heightBox,
+                           controller.choose==1?
+                           Container(
+                             width: 100,
+                             height: 5,
+
+                             decoration: BoxDecoration(
+                                 color:primaryColor,
+                                 borderRadius: BorderRadius.circular(10)
+                             ),
+                           ):SizedBox()
                          ],
-                       ).onTap((){
-                         controller.changeTab(1);
-                       }),
+                       ),
                        15.widthBox,
-                       Row(
-                         children: [boardIcon.svg(),
-                           5.widthBox,
-                           TextWidget(text: "Board",fontWeight: FontWeight.bold,)
+                       Column(
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: [
+                           Row(
+                             children: [
+                               10.widthBox,
+                               boardIcon.svg(),
+                               5.widthBox,
+                               TextWidget(text: "Board",fontWeight: FontWeight.bold,)
+                             ],
+                           ).onTap((){
+                             controller.changeTab(2);
+                           }),
+                           10.heightBox,
+                           controller.choose==2?
+                           Container(
+                             width: 100,
+                             height: 5,
+
+                             decoration: BoxDecoration(
+                                 color:primaryColor,
+                                 borderRadius: BorderRadius.circular(10)
+                             ),
+                           ):SizedBox()
                          ],
-                       ).onTap((){
-                         controller.changeTab(2);
-                       }),
+                       ),
                      ],
                    ),
                     Row(
