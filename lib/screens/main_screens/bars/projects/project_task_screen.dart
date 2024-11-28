@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import 'package:jio_works/constants/image_constant.dart';
 import 'package:jio_works/controllers/project_task_controller.dart';
 import 'package:jio_works/utilities/library.dart';
@@ -12,17 +13,25 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
 
   @override
   Widget build(BuildContext context) {
+
     Get.put(ProjectTaskController());
     return GetBuilder<ProjectTaskController>(
       builder: (controller) {
-        return SizedBox(
-          width: context.screenWidth * 0.71,
-          child: Card(
-            color: Colors.white,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-            child: Column(
-              children: [
+
+
+    return SizedBox(
+      width: context.screenWidth * 0.71,
+      child: Card(
+        color: Colors.white,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        child: Column(
+          children: [
+
+
+
+
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -156,11 +165,10 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                 ),
               //  5.heightBox,
                 divider().w(context.screenWidth)
-              ],
-            ).pSymmetric(h: 10, v: 10),
-          ).pSymmetric(v: 12),
-        );
-      }
-    );
-  }
+
+
+        ]   ).pSymmetric(h: 10, v: 10),
+      ).pSymmetric(v: 15) );}); }
+
+
 }
