@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:jio_works/utilities/library.dart';
 
 class ProjectTeamSummaryScreen extends StatelessWidget {
@@ -17,7 +16,7 @@ class ProjectTeamSummaryScreen extends StatelessWidget {
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:[
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextWidget(text: "You are Member of"),
@@ -26,8 +25,8 @@ class ProjectTeamSummaryScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      TextWidget(text: "Team owner:"),
-                      TextWidget(text: "Nishant Sharma",color: Colors.blue,),
+                      const TextWidget(text: "Team owner:"),
+                      const TextWidget(text: "Nishant Sharma",color: Colors.blue,),
                       10.widthBox,
                       Container(
                         width: 30,
@@ -54,7 +53,7 @@ class ProjectTeamSummaryScreen extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.timelapse),
+                            const Icon(Icons.timelapse),
                             3.widthBox,
                             TextWidget(text: "Latest Updates",color: primaryColor,)
                           ],
@@ -66,7 +65,7 @@ class ProjectTeamSummaryScreen extends StatelessWidget {
                             color: primaryColor,
                             borderRadius: BorderRadius.circular(24)
                         ),
-                        child: Icon(Icons.settings).p12(),
+                        child: const Icon(Icons.settings).p12(),
                       )
                     ],
                   )

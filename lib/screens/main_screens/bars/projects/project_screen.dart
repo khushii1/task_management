@@ -4,6 +4,7 @@ import 'package:jio_works/controllers/project_controller.dart';
 import 'package:jio_works/custom_widgets/blurred_loader.dart';
 import 'package:jio_works/custom_widgets/custom_popup_menu_button.dart';
 import 'package:jio_works/custom_widgets/search_widget.dart';
+import 'package:jio_works/screens/main_screens/bars/projects/project_task_screen.dart';
 import 'package:jio_works/screens/main_screens/bars/projects/project_team_summary_screen.dart';
 
 import '../../../../utilities/library.dart';
@@ -32,7 +33,7 @@ class ProjectScreen extends GetView<ProjectController> {
                   30.heightBox,
                   Row(
                     children: [
-                      TextWidget(
+                      const TextWidget(
                         text: "My Teams ",
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -45,9 +46,9 @@ class ProjectScreen extends GetView<ProjectController> {
                             value: 'option1',
                             child: Row(
                               children: [
-                                Icon(Icons.group),
+                                const Icon(Icons.group),
                                 5.widthBox,
-                                TextWidget(
+                                const TextWidget(
                                   text: "New Team",
                                 ),
                               ],
@@ -57,7 +58,7 @@ class ProjectScreen extends GetView<ProjectController> {
                         onSelected: (value) {
                           controller.showBox(context: context);
                         },
-                        icon: Icon(Icons.add),
+                        icon: const Icon(Icons.add),
                       ),
                     ],
                   ),
@@ -73,143 +74,151 @@ class ProjectScreen extends GetView<ProjectController> {
                           future: controller
                               .getProjectList(controller.teams[index]['id']),
                           builder: (contxt, snapshot) {
-
                             if (snapshot.hasData) {
                               List<Document>? projectList = snapshot.data;
 
-                              print("data is here:${projectList}");
-                              return Container(
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                color: primaryColor,
-                                              ),
-                                              child: TextWidget(
-                                                color: Colors.white,
-                                                text: firstName,
-                                              ).pSymmetric(h: 10, v: 5),
-                                            ),
-                                            10.widthBox,
-                                            TextWidget(
-                                              text: controller.teams[index]
-                                                      ['name']
-                                                  .toString()
-                                                  .capitalized,
+                              return Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
                                               color: primaryColor,
-                                              fontWeight: FontWeight.bold,
                                             ),
-                                          ],
-                                        ),
-                                        Icon(Icons.keyboard_arrow_down)
-                                      ],
+                                            child: TextWidget(
+                                              color: Colors.white,
+                                              text: firstName,
+                                            ).pSymmetric(h: 10, v: 5),
+                                          ),
+                                          10.widthBox,
+                                          TextWidget(
+                                            text: controller.teams[index]
+                                                    ['name']
+                                                .toString()
+                                                .capitalized,
+                                            color: primaryColor,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ],
+                                      ),
+                                      const Icon(Icons.keyboard_arrow_down)
+                                    ],
+                                  ),
+                                  20.heightBox,
+                                  InkWell(
+                                    onTap: () {
+                                      controller.onChangeScreen("1");
+                                    },
+                                    child: Container(
+                                      color: Colors.white,
+                                      child: Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.home_filled,
+                                            size: 16,
+                                          ),
+                                          5.widthBox,
+                                          const TextWidget(
+                                            text: "Team Summary",
+                                            fontWeight: FontWeight.bold,
+                                          )
+                                        ],
+                                      ).pOnly(left: 10),
                                     ),
-                                    20.heightBox,
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.home_filled,
-                                          size: 16,
+                                  ),
+                                  20.heightBox,
+                                  Column(
+                                    children: List.generate(projectList!.length,
+                                        (projectIndex) {
+                                      String firstName =
+                                          projectList[projectIndex]
+                                              .data['name'][0]
+                                              .toString()
+                                              .capitalized;
+                                      return InkWell(
+                                        onTap: () {
+                                          controller.onChangeScreen("2");
+                                        },
+                                        child: Container(
+                                          color: Colors.white,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    color: Colors.grey[100],
+                                                    child: TextWidget(
+                                                      text: firstName,
+                                                    ).pSymmetric(h: 5, v: 5),
+                                                  ),
+                                                  5.widthBox,
+                                                  TextWidget(
+                                                    text: projectList[
+                                                            projectIndex]
+                                                        .data['name']
+                                                        .toString()
+                                                        .capitalized,
+                                                    fontWeight: FontWeight.bold,
+                                                  )
+                                                ],
+                                              ),
+                                              CustomPopupMenuButton(
+                                                onSelected: (value) {
+                                                  if (value == '2') {
+                                                    controller.renameProject(
+                                                        context: context,
+                                                        id: controller
+                                                            .teams[index]['id'],
+                                                        name: projectList[
+                                                                projectIndex]
+                                                            .data['name']);
+                                                  }
+                                                  if (value == '8') {
+                                                    controller.deleteBox(
+                                                        context: contxt,
+                                                        projectId: projectList[
+                                                                projectIndex]
+                                                            .data['\$id']);
+                                                  }
+
+                                                  // controller.getDocumentIdByTeamId(controller.teams[index]['id']);
+                                                },
+                                              ).pOnly(right: 10)
+                                            ],
+                                          ).pOnly(left: 10, bottom: 10),
                                         ),
-                                        5.widthBox,
-                                        TextWidget(
-                                          text: "Team Summary",
-                                          fontWeight: FontWeight.bold,
-                                        )
-                                      ],
-                                    ).pOnly(left: 10),
-                                    20.heightBox,
-
-                                    Column(
-                                      children: List.generate(
-                                          projectList!.length, (projectIndex) {
-                                        String firstName = projectList[projectIndex].data['name'][0].toString().capitalized;
-                                        return   Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  color: Colors.grey[100],
-                                                  child: TextWidget(
-                                                    text: firstName,
-                                                  ).pSymmetric(h: 5, v: 5),
-                                                ),
-                                                5.widthBox,
-                                                TextWidget(
-                                                  text: projectList[projectIndex]
-                                                      .data['name'].toString().capitalized,
-                                                  fontWeight: FontWeight.bold,
-                                                )
-                                              ],
-                                            ),
-                                            CustomPopupMenuButton(
-                                              onSelected: (value) {
-                                                if(value=='2'){
-                                                  controller.renameProject(
-                                                      context: context,
-                                                      id: controller.teams[index]
-                                                      ['id'], name: projectList[projectIndex]
-                                                      .data['name']);
-                                                }
-                                                if(value=='8'){
-                                                  print("docuid:${projectList[projectIndex].data['\$id']}");
-                                                  controller.DeleteBox(context: contxt, projectId:  projectList[projectIndex].data['\$id']);
-                                                }
-
-                                                // controller.getDocumentIdByTeamId(controller.teams[index]['id']);
-                                              },
-                                            ).pOnly(right: 10)
-                                          ],
-                                        ).pOnly(left: 10,bottom: 10);
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                      }),
-                                    ),
-                                    10.heightBox,
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.add,
-                                          size: 16,
-                                        ),
-                                        5.widthBox,
-                                        TextWidget(
-                                          text: "Add New Project",
-                                          fontWeight: FontWeight.bold,
-                                        )
-                                      ],
-                                    ).pOnly(left: 10).onTap(() {
-                                      controller.addProjectPopup(
-                                          context: context,
-                                          id: controller.teams[index]['id']);
+                                      );
                                     }),
-                                    10.heightBox,
-                                  ],
-                                ),
+                                  ),
+                                  10.heightBox,
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.add,
+                                        size: 16,
+                                      ),
+                                      5.widthBox,
+                                      const TextWidget(
+                                        text: "Add New Project",
+                                        fontWeight: FontWeight.bold,
+                                      )
+                                    ],
+                                  ).pOnly(left: 10).onTap(() {
+                                    controller.addProjectPopup(
+                                        context: context,
+                                        id: controller.teams[index]['id']);
+                                  }),
+                                  10.heightBox,
+                                ],
                               ).pOnly(bottom: 10);
-                            }
-                            else {
-                              return SizedBox();
-
+                            } else {
+                              return const SizedBox();
                             }
                           });
                     }),
@@ -217,7 +226,9 @@ class ProjectScreen extends GetView<ProjectController> {
                 ],
               ).p16(),
             ).p12(),
-    ProjectTeamSummaryScreen()
+            controller.type.value == "1"
+                ? const ProjectTeamSummaryScreen()
+                : const ProjectTaskScreen()
           ],
         ),
       );

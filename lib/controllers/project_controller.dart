@@ -2,17 +2,14 @@
 
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+
 import 'package:jio_works/utilities/library.dart';
-import 'package:universal_html/html.dart';
-import 'package:universal_html/js.dart';
 
 class ProjectController extends GetxController {
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     getData();
   }
@@ -26,6 +23,7 @@ class ProjectController extends GetxController {
   RxBool isButtonEnabled1 = false.obs;
   final databases = Databases(DataInfo.client!);
   RxString docuId = ''.obs;
+  RxString type = "1".obs;
 
   showBox({required BuildContext context}) {
     showDialog(
@@ -473,7 +471,7 @@ class ProjectController extends GetxController {
     });
   }
 
-  DeleteBox({required BuildContext context, required String projectId}) {
+  deleteBox({required BuildContext context, required String projectId}) {
     showDialog(
       context: context,
       builder: (context) {
@@ -534,5 +532,10 @@ class ProjectController extends GetxController {
         );
       },
     );
+  }
+
+  onChangeScreen(String data) {
+    type.value = data;
+    update();
   }
 }
