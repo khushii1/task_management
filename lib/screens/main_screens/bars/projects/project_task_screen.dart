@@ -18,70 +18,33 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Column(
           children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextWidget(text: "You are Member of"),
-                  TextWidget(
-                    text: "Flutter App",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  const TextWidget(text: "Team owner:"),
-                  const TextWidget(
-                    text: "Nishant Sharma",
-                    color: Colors.blue,
-                  ),
-                  10.widthBox,
-                  Container(
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey),
-                  ),
-                  5.widthBox,
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blueGrey),
-                    child: TextWidget(
-                      text: "View All",
-                      color: primaryColor,
-                    ).pSymmetric(h: 10, v: 4),
-                  ),
-                  10.widthBox,
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.grey[200],
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.timelapse),
-                        3.widthBox,
-                        TextWidget(
-                          text: "Latest Updates",
-                          color: primaryColor,
-                        )
-                      ],
-                    ).pSymmetric(h: 10, v: 5),
-                  ),
-                  10.widthBox,
-                  Container(
-                    decoration: BoxDecoration(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
                         color: primaryColor,
-                        borderRadius: BorderRadius.circular(24)),
-                    child: const Icon(Icons.settings).p12(),
-                  )
-                ],
-              )
-            ])
+                      ),
+                      child: TextWidget(text: "F",color: Colors.white,).p4(),
+                    ),
+                    5.widthBox,
+                    TextWidget(text: "Flutter Basic",fontSize: 20,fontWeight: FontWeight.bold,)
+                  ,
+                    5.widthBox,
+                    Icon(Icons.pin_end_outlined)
+                  ],
+                ),
+                Row(
+                  children: [
+                    TextWidget(text: "Project Owner:"),
+                    TextWidget(text: "Nishant Sharma",color: primaryColor,)
+                  ],
+                )
+              ],
+            )
           ],
         ).pSymmetric(h: 10, v: 10),
       ).pSymmetric(v: 12),
