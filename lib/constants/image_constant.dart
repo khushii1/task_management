@@ -44,3 +44,4 @@ String noDataTable = "${iconPath}no-data-table.svg";
 String tableIcon = "${iconPath}tableIcon.svg";
 String ganttIcon = "${iconPath}ganttIcon.svg";
 String boardIcon = "${iconPath}boardIcon.svg";
+String noGanttData = "${iconPath}no-gantt-data.svg";
