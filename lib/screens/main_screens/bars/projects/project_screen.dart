@@ -111,7 +111,7 @@ class ProjectScreen extends GetView<ProjectController> {
                                   20.heightBox,
                                   InkWell(
                                     onTap: () {
-                                      controller.onChangeScreen("1");
+                                      controller.onChangeScreen("1",controller.teams[index],null);
                                     },
                                     child: Container(
                                       color: Colors.white,
@@ -141,7 +141,8 @@ class ProjectScreen extends GetView<ProjectController> {
                                               .capitalized;
                                       return InkWell(
                                         onTap: () {
-                                          controller.onChangeScreen("2");
+                                          controller.onChangeScreen("2",controller.teams[index],projectList[projectIndex]
+                                              .data['name']);
                                         },
                                         child: Container(
                                           color: Colors.white,
@@ -228,7 +229,7 @@ class ProjectScreen extends GetView<ProjectController> {
             ).p12(),
             controller.type.value == "1"
                 ? const ProjectTeamSummaryScreen()
-                : const ProjectTaskScreen()
+                :  ProjectTaskScreen(teamData: controller.teamData,projectData:controller.projectData)
           ],
         ),
       );
