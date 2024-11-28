@@ -4,6 +4,7 @@ import 'package:jio_works/controllers/project_controller.dart';
 import 'package:jio_works/custom_widgets/blurred_loader.dart';
 import 'package:jio_works/custom_widgets/custom_popup_menu_button.dart';
 import 'package:jio_works/custom_widgets/search_widget.dart';
+import 'package:jio_works/screens/main_screens/bars/projects/project_team_summary_screen.dart';
 
 import '../../../../utilities/library.dart';
 
@@ -215,7 +216,8 @@ class ProjectScreen extends GetView<ProjectController> {
                   ).w(context.screenWidth * 0.15))
                 ],
               ).p16(),
-            ).p12()
+            ).p12(),
+    ProjectTeamSummaryScreen()
           ],
         ),
       );
