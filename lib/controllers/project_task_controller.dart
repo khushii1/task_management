@@ -5,6 +5,6 @@ class ProjectTaskController extends GetxController{
  changeTab(value){
    choose.value=value;
    update();
-   print("value is:${choose.value}");
+   
  }
 }

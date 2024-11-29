@@ -457,6 +457,8 @@ class ProjectController extends GetxController {
     );
     if (response.documents.isNotEmpty) {
       return response.documents;
+    } else {
+      return [];
     }
   }
 

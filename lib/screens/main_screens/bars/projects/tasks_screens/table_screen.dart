@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:jio_works/constants/image_constant.dart';
 import 'package:jio_works/utilities/library.dart';
 
 class TableScreen extends StatelessWidget {
@@ -16,10 +14,10 @@ class TableScreen extends StatelessWidget {
           children: [
             noDataTable.image().h(300),
             20.heightBox,
-            TextWidget(text: "This space is empty. Let's create a task to get started",color: Colors.black45,fontWeight: FontWeight.bold,fontSize: 20,)
+            const TextWidget(text: "This space is empty. Let's create a task to get started",color: Colors.black45,fontWeight: FontWeight.bold,fontSize: 20,)
             ,
              20.heightBox,
-            ButtonWidget(text: "Create Task").wh(150,40)
+            const ButtonWidget(text: "Create Task").wh(150,40)
           ],
         ),
       ),

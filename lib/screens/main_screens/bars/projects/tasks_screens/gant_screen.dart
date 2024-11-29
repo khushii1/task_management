@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:jio_works/constants/image_constant.dart';
 import 'package:jio_works/utilities/library.dart';
 
 class GantScreen extends StatelessWidget {
@@ -15,12 +13,12 @@ class GantScreen extends StatelessWidget {
         children: [
           noGanttData.svg(),
           20.heightBox,
-          TextWidget(text: "No Timeline Column",color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 20,)
+          const TextWidget(text: "No Timeline Column",color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 20,)
      ,
           20.heightBox,
-          TextWidget(text: "Please add data in Timeline column to view Gantt chart",color: Colors.grey,fontWeight: FontWeight.w600,),
+          const TextWidget(text: "Please add data in Timeline column to view Gantt chart",color: Colors.grey,fontWeight: FontWeight.w600,),
           20.heightBox,
-          ButtonWidget(text: "Go to Table").wh(150,40)
+          const ButtonWidget(text: "Go to Table").wh(150,40)
         ],
       ),
     );

@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-
-import 'package:jio_works/constants/image_constant.dart';
 import 'package:jio_works/controllers/project_task_controller.dart';
 import 'package:jio_works/screens/main_screens/bars/projects/tasks_screens/board_screen.dart';
 import 'package:jio_works/screens/main_screens/bars/projects/tasks_screens/gant_screen.dart';
@@ -36,67 +34,67 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                             borderRadius: BorderRadius.circular(20),
                             color: primaryColor,
                           ),
-                          child: TextWidget(
+                          child: const TextWidget(
                             text: "F",
                             color: Colors.white,
                           ).pSymmetric(h: 10, v: 5),
                         ),
                         10.widthBox,
-                        TextWidget(
+                        const TextWidget(
                           text: "Flutter Basic",
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                         10.widthBox,
-                        Icon(Icons.pin_end_outlined)
+                        const Icon(Icons.pin_end_outlined)
                       ],
                     ),
                     Row(
                       children: [
-                        TextWidget(text: "Project Owner : "),
+                        const TextWidget(text: "Project Owner : "),
                         TextWidget(
                           text: "Nishant Sharma",
                           color: primaryColor,
                         ),
                         20.widthBox,
                         Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.grey.shade300)),
                           child: Icon(
                             Icons.person_add_alt,
                             color: primaryColor,
                           ).p4(),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.grey.shade300)),
                         ),
                         20.widthBox,
                         Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.grey.shade300)),
                           child: Icon(
                             Icons.print,
                             color: primaryColor,
                           ).p4(),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.grey.shade300)),
                         ),
                         20.widthBox,
                         Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.grey.shade300)),
                           child: Icon(
                             Icons.more_vert,
                             color: primaryColor,
                           ).p4(),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.grey.shade300)),
                         ),
                         20.widthBox,
                         Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.grey.shade300)),
                           child: Icon(
                             Icons.screen_lock_landscape_sharp,
                             color: primaryColor,
                           ).p4(),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.grey.shade300)),
                         )
                       ],
                     )
@@ -119,14 +117,14 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                 children: [
                                   10.widthBox,
                                   tableIcon.svg(
-                                      colors: controller.choose == 0
+                                      colors: controller.choose.value == 0
                                           ? Colors.black
                                           : Colors.grey),
                                   5.widthBox,
                                   TextWidget(
                                     text: "Table",
                                     fontWeight: FontWeight.bold,
-                                    color: controller.choose == 0
+                                    color: controller.choose.value == 0
                                         ? Colors.black
                                         : Colors.grey,
                                   )
@@ -135,7 +133,7 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                 controller.changeTab(0);
                               }),
                               10.heightBox,
-                              controller.choose == 0
+                              controller.choose.value == 0
                                   ? Container(
                                       width: 100,
                                       height: 5,
@@ -144,7 +142,7 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                     )
-                                  : SizedBox(
+                                  : const SizedBox(
                                       height: 5,
                                     )
                             ],
@@ -161,14 +159,14 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                 children: [
                                   10.widthBox,
                                   ganttIcon.svg(
-                                      colors: controller.choose == 1
+                                      colors: controller.choose.value == 1
                                           ? Colors.black
                                           : Colors.grey),
                                   5.widthBox,
                                   TextWidget(
                                       text: "Gantt",
                                       fontWeight: FontWeight.bold,
-                                      color: controller.choose == 1
+                                      color: controller.choose.value == 1
                                           ? Colors.black
                                           : Colors.grey)
                                 ],
@@ -176,7 +174,7 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                 controller.changeTab(1);
                               }),
                               10.heightBox,
-                              controller.choose == 1
+                              controller.choose.value == 1
                                   ? Container(
                                       width: 100,
                                       height: 5,
@@ -185,7 +183,7 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                     )
-                                  : SizedBox(
+                                  : const SizedBox(
                                       height: 5,
                                     )
                             ],
@@ -202,14 +200,14 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                 children: [
                                   10.widthBox,
                                   boardIcon.svg(
-                                      colors: controller.choose == 2
+                                      colors: controller.choose.value == 2
                                           ? Colors.black
                                           : Colors.grey),
                                   5.widthBox,
                                   TextWidget(
                                       text: "Board",
                                       fontWeight: FontWeight.bold,
-                                      color: controller.choose == 2
+                                      color: controller.choose.value == 2
                                           ? Colors.black
                                           : Colors.grey)
                                 ],
@@ -217,7 +215,7 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                 controller.changeTab(2);
                               }),
                               10.heightBox,
-                              controller.choose == 2
+                              controller.choose.value == 2
                                   ? Container(
                                       width: 100,
                                       height: 5,
@@ -226,7 +224,7 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                     )
-                                  : SizedBox(
+                                  : const SizedBox(
                                       height: 5,
                                     )
                             ],
@@ -236,7 +234,7 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                     ),
                     Row(
                       children: [
-                        TextWidget(
+                        const TextWidget(
                           text: "Progress:",
                           color: Colors.grey,
                         ).pOnly(bottom: 5),
@@ -245,21 +243,21 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                           width: 200,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
-                            child: LinearProgressIndicator(
+                            child: const LinearProgressIndicator(
                               value: 0,
                               minHeight: 10,
                             ),
                           ),
                         ).pOnly(bottom: 5),
                         5.widthBox,
-                        TextWidget(text: "0%")
+                        const TextWidget(text: "0%")
                       ],
                     )
                   ],
                 ),
                 //  5.heightBox,
                 divider().w(context.screenWidth),
-              controller.choose.value==0?TableScreen():controller.choose.value==1?GantScreen():BoardScreen()
+              controller.choose.value==0?const TableScreen():controller.choose.value==1?const GantScreen():const BoardScreen()
               ]).pSymmetric(h: 10, v: 10),
             ).pSymmetric(v: 15)),
       );

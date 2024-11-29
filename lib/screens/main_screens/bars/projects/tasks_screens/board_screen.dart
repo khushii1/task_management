@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:jio_works/custom_widgets/text_widget.dart';
 import 'package:jio_works/utilities/library.dart';
 
 class BoardScreen extends StatelessWidget {
@@ -22,7 +20,7 @@ class BoardScreen extends StatelessWidget {
           color:primaryColor,
           borderRadius: BorderRadius.circular(20)
         ),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(Icons.add,color: Colors.white,),
                           TextWidget(text: "New Card",color: Colors.white,)
@@ -39,7 +37,7 @@ class BoardScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20)
                         ),
                         child:
-                            TextWidget(text: "Detailed",color: Colors.white,)
+                            const TextWidget(text: "Detailed",color: Colors.white,)
                          .pSymmetric(h: 10,v: 5)
                     ),
                     20.widthBox,
@@ -49,7 +47,7 @@ class BoardScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20)
                         ),
                         child:
-                        TextWidget(text: "Simplified",color: Colors.black,)
+                        const TextWidget(text: "Simplified",color: Colors.black,)
                             .pSymmetric(h: 10,v: 5)
                     ),
                     20.widthBox,
@@ -67,7 +65,7 @@ class BoardScreen extends StatelessWidget {
                 children: [
                   Container(
 
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                       color: Color(0xffebebeb)
                     ),
@@ -79,15 +77,15 @@ class BoardScreen extends StatelessWidget {
                         Container(
                           width: 260,
                           height: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
 
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                               color: Color(0xffb5b5b5)
                           ),
-                          child: TextWidget(text: "To be Assigned / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
+                          child: const TextWidget(text: "To be Assigned / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
       
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           height: 220,
 
@@ -98,7 +96,7 @@ class BoardScreen extends StatelessWidget {
                   ).p4(),
                   Container(
 
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                         color: Color(0xffebebeb)
                     ),
@@ -110,15 +108,15 @@ class BoardScreen extends StatelessWidget {
                         Container(
                           width: 260,
                           height: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
 
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                               color: Color(0xff609fff)
                           ),
-                          child: TextWidget(text: "Assigned / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
+                          child: const TextWidget(text: "Assigned / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
 
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           height: 220,
 
@@ -129,7 +127,7 @@ class BoardScreen extends StatelessWidget {
                   ).p4(),
                   Container(
 
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                         color: Color(0xffebebeb)
                     ),
@@ -141,15 +139,15 @@ class BoardScreen extends StatelessWidget {
                         Container(
                           width: 260,
                           height: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
 
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                               color: Color(0xfffdab3d)
                           ),
-                          child: TextWidget(text: "Work in Progress / 0",color:Colors.black,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
+                          child: const TextWidget(text: "Work in Progress / 0",color:Colors.black,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
 
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           height: 220,
 
@@ -160,7 +158,7 @@ class BoardScreen extends StatelessWidget {
                   ).p4(),
                   Container(
 
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                         color: Color(0xffebebeb)
                     ),
@@ -172,15 +170,15 @@ class BoardScreen extends StatelessWidget {
                         Container(
                           width: 260,
                           height: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
 
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                               color: Color(0xffb24141)
                           ),
-                          child: TextWidget(text: "Decesion Pending / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
+                          child: const TextWidget(text: "Decesion Pending / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
 
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           height: 220,
 
@@ -191,7 +189,7 @@ class BoardScreen extends StatelessWidget {
                   ).p4(),
                   Container(
 
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                         color: Color(0xffebebeb)
                     ),
@@ -203,15 +201,15 @@ class BoardScreen extends StatelessWidget {
                         Container(
                           width: 260,
                           height: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
 
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10),),
                               color: Color(0xff66ba6a)
                           ),
-                          child: TextWidget(text: "Done / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
+                          child: const TextWidget(text: "Done / 0",color:Colors.white,fontWeight: FontWeight.w400,fontSize: 20,).pSymmetric(h: 20,v: 10),
 
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           height: 220,
 

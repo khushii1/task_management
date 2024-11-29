@@ -34,7 +34,7 @@ class ProjectTeamSummaryScreen extends StatelessWidget {
                         height: 30,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Color(0xffa3f1f7)
+                            color: const Color(0xffa3f1f7)
                         ),
                       ),
                       10.widthBox,
@@ -42,7 +42,7 @@ class ProjectTeamSummaryScreen extends StatelessWidget {
 
                         decoration:BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color:Color(0xffe5f6fa)
+                            color:const Color(0xffe5f6fa)
                         ) ,
                         child: TextWidget(text: "View All",color: primaryColor,).pSymmetric(h: 10,v: 4),
                       ),
