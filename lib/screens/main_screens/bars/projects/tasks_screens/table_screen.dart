@@ -138,42 +138,6 @@ class TableScreen extends GetView<TableScreenController> {
                               ).wh(120, 40)
                             ],
                           ).pSymmetric(h: 15.0, v: 10.0),
-                          SfDataGrid(
-                            source: controller.employeeDataSource,
-                            columns: <GridColumn>[
-                              GridColumn(
-                                columnName: 'id',
-                                label: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  alignment: Alignment.center,
-                                  child: const Text('ID',
-                                      style: TextStyle(
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                              ),
-                              GridColumn(
-                                columnName: 'name',
-                                label: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  alignment: Alignment.center,
-                                  child: const Text('Name',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                              ),
-                              GridColumn(
-                                columnName: 'designation',
-                                label: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  alignment: Alignment.center,
-                                  child: const Text('Designation',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       )
                     : Column(
@@ -201,62 +165,4 @@ class TableScreen extends GetView<TableScreenController> {
               ),
             ));
   }
-}
-
-class EmployeeDataSource extends DataGridSource {
-  EmployeeDataSource(this.employees) {
-    buildDataGridRows();
-  }
-
-  final List<Employee> employees;
-  List<DataGridRow> dataGridRows = [];
-
-  void buildDataGridRows() {
-    dataGridRows = employees
-        .map((employee) => DataGridRow(cells:
-         [
-              DataGridCell<int>(columnName: 'id', value: employee.id),
-              DataGridCell<String>(columnName: 'name', value: employee.name),
-              DataGridCell<String>(
-                  columnName: 'designation', value: employee.designation),
-            ]
-            
-            ))
-        .toList();
-  }
-
-  @override
-  List<DataGridRow> get rows => dataGridRows;
-
-  @override
-  DataGridRowAdapter buildRow(DataGridRow row) {
-    return DataGridRowAdapter(
-      cells: row.getCells().map<Widget>((cell) {
-        return Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8),
-          child: Text(cell.value.toString()),
-        );
-      }).toList(),
-    );
-  }
-}
-
-// Define the data model
-class Employee {
-  Employee(this.id, this.name, this.designation);
-
-  final int id;
-  final String name;
-  final String designation;
-}
-
-// Create sample data
-List<Employee> getEmployeeData() {
-  return [
-    Employee(1, 'John', 'Manager'),
-    Employee(2, 'Doe', 'Developer'),
-    Employee(3, 'Smith', 'Designer'),
-    Employee(4, 'Jane', 'HR'),
-  ];
 }
