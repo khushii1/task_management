@@ -139,35 +139,39 @@ class TableScreen extends GetView<TableScreenController> {
                             ],
                           ).pSymmetric(h: 15.0, v: 10.0),
                           SfDataGrid(
-                            source: ,
+                            source: controller.employeeDataSource,
                             columns: <GridColumn>[
                               GridColumn(
-                                  columnName: 'id',
-                                  label: Container(
-                                      padding: EdgeInsets.all(16.0),
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        'ID',
-                                      ))),
+                                columnName: 'id',
+                                label: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  alignment: Alignment.center,
+                                  child: const Text('ID',
+                                      style: TextStyle(
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ),
                               GridColumn(
-                                  columnName: 'name',
-                                  label: Container(
-                                      padding: EdgeInsets.all(16.0),
-                                      alignment: Alignment.centerLeft,
-                                      child: Text('Name'))),
+                                columnName: 'name',
+                                label: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  alignment: Alignment.center,
+                                  child: const Text('Name',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ),
                               GridColumn(
-                                  columnName: 'designation',
-                                  width: 120,
-                                  label: Container(
-                                      padding: EdgeInsets.all(16.0),
-                                      alignment: Alignment.centerLeft,
-                                      child: Text('Designation'))),
-                              GridColumn(
-                                  columnName: 'salary',
-                                  label: Container(
-                                      padding: EdgeInsets.all(16.0),
-                                      alignment: Alignment.centerRight,
-                                      child: Text('Salary'))),
+                                columnName: 'designation',
+                                label: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  alignment: Alignment.center,
+                                  child: const Text('Designation',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ),
                             ],
                           ),
                         ],
@@ -209,11 +213,15 @@ class EmployeeDataSource extends DataGridSource {
 
   void buildDataGridRows() {
     dataGridRows = employees
-        .map((employee) => DataGridRow(cells: [
+        .map((employee) => DataGridRow(cells:
+         [
               DataGridCell<int>(columnName: 'id', value: employee.id),
               DataGridCell<String>(columnName: 'name', value: employee.name),
-              DataGridCell<String>(columnName: 'designation', value: employee.designation),
-            ]))
+              DataGridCell<String>(
+                  columnName: 'designation', value: employee.designation),
+            ]
+            
+            ))
         .toList();
   }
 
@@ -226,7 +234,7 @@ class EmployeeDataSource extends DataGridSource {
       cells: row.getCells().map<Widget>((cell) {
         return Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Text(cell.value.toString()),
         );
       }).toList(),
