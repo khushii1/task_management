@@ -45,3 +45,4 @@ String tableIcon = "${imagePath}tableIcon.svg";
 String ganttIcon = "${imagePath}ganttIcon.svg";
 String boardIcon = "${imagePath}boardIcon.svg";
 String noGanttData = "${imagePath}no-gantt-data.svg";
+String emptyBox = "${imagePath}empty-box.png";
