@@ -10,7 +10,7 @@ class TableScreenController extends GetxController {
   TableScreenController({required this.teamData, required this.projectData});
 
   RxList<dynamic> taskHeadingList = [].obs;
-  final EmployeeDataSource employeeDataSource = EmployeeDataSource(getEmployeeData());
+ 
 
   @override
   void onInit() {
@@ -85,6 +85,7 @@ class TableScreenController extends GetxController {
     if (response.documents.isNotEmpty) {
       taskHeadingList.value =
           response.documents.map((element) => element.data).toList();
+      print("le:${taskHeadingList.length}");
       update();
       print(response.documents.first.data);
     }
