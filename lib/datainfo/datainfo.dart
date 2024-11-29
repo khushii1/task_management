@@ -13,11 +13,12 @@ class DataInfo {
   static int index = 4;
   static GetStorage box = GetStorage();
   static User? user;
-  static String databaseId='6735eba3001840aef863';
-  static String userCollectionId='6735ebaa003ba5e26526';
-  static String teamCollectionId='6746a4f9000ec5538ccc';
-  static String projectCollectionId='6746e4ec002afcaa7211';
-  static RxMap<String, dynamic> userDetails = <String,dynamic>{}.obs;
+  static String databaseId = '6735eba3001840aef863';
+  static String userCollectionId = '6735ebaa003ba5e26526';
+  static String teamCollectionId = '6746a4f9000ec5538ccc';
+  static String projectCollectionId = '6746e4ec002afcaa7211';
+  static String taskHeadignCollectionId = "674961c800205d13c324";
+  static RxMap<String, dynamic> userDetails = <String, dynamic>{}.obs;
 
   static appWriteInfo() async {
     try {

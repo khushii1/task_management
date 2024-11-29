@@ -543,6 +543,7 @@ class ProjectController extends GetxController {
     if (data == "1") {
       teamData.value = team;
     } else {
+      teamData.value = team;
       projectData.value = project;
     }
 

@@ -14,11 +14,13 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
 
   @override
   Widget build(BuildContext context) {
+    print("skskjs:${projectData}");
     Get.put(ProjectTaskController());
     return GetBuilder<ProjectTaskController>(builder: (controller) {
       return SingleChildScrollView(
         child: SizedBox(
-            width: context.screenWidth * 0.71,height: context.screenHeight,
+            width: context.screenWidth * 0.71,
+            height: context.screenHeight,
             child: Card(
               color: Colors.white,
               shape: RoundedRectangleBorder(
@@ -257,7 +259,14 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
                 ),
                 //  5.heightBox,
                 divider().w(context.screenWidth),
-              controller.choose.value==0?const TableScreen():controller.choose.value==1?const GantScreen():const BoardScreen()
+                controller.choose.value == 0
+                    ? TableScreen(
+                        teamData: teamData,
+                        projectData: projectData,
+                      )
+                    : controller.choose.value == 1
+                        ? const GantScreen()
+                        : const BoardScreen()
               ]).pSymmetric(h: 10, v: 10),
             ).pSymmetric(v: 15)),
       );
