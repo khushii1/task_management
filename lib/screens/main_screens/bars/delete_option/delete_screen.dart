@@ -21,9 +21,9 @@ class DeleteScreen extends GetView<DeleteController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextWidget(text: "Bin",fontSize: 30,fontWeight: FontWeight.bold,),
+                  const TextWidget(text: "Bin",fontSize: 30,fontWeight: FontWeight.bold,),
                   5.heightBox,
-                  TextWidget(text: "Up to 30 days, all of your deleted items are listed here.",color: Colors.black87, fontSize: 20,),
+                  const TextWidget(text: "Up to 30 days, all of your deleted items are listed here.",color: Colors.black87, fontSize: 20,),
                   30.heightBox,
                   Row(
                     children: [
@@ -42,7 +42,7 @@ class DeleteScreen extends GetView<DeleteController> {
                                   color: primaryColor,
                                   borderRadius:
                                   BorderRadius.circular(10)),
-                            ):SizedBox(height: 5,)
+                            ):const SizedBox(height: 5,)
                           ],
                         ),
                       ).onTap((){
@@ -54,9 +54,9 @@ class DeleteScreen extends GetView<DeleteController> {
                         height: 40,
                         child: Column(
                           children: [
-                            TextWidget(text: "Project (0)",color:controller.choose==1?Colors.black:Colors.grey[700],fontSize: 20,fontWeight: FontWeight.w600,),
+                            TextWidget(text: "Project (0)",color:controller.choose.value==1?Colors.black:Colors.grey[700],fontSize: 20,fontWeight: FontWeight.w600,),
                             10.heightBox,
-                            controller.choose==1?
+                            controller.choose.value==1?
                             Container(
                               width: 100,
                               height: 5,
@@ -64,7 +64,7 @@ class DeleteScreen extends GetView<DeleteController> {
                                   color: primaryColor,
                                   borderRadius:
                                   BorderRadius.circular(10)),
-                            ):SizedBox(height: 5,)
+                            ):const SizedBox(height: 5,)
                           ],
                         ),
                       ).onTap((){
@@ -86,7 +86,7 @@ class DeleteScreen extends GetView<DeleteController> {
                                   color: primaryColor,
                                   borderRadius:
                                   BorderRadius.circular(10)),
-                            ):SizedBox(height: 5,)
+                            ):const SizedBox(height: 5,)
                           ],
                         ),
                       ).onTap((){
@@ -100,7 +100,7 @@ class DeleteScreen extends GetView<DeleteController> {
                           children: [
                             TextWidget(text: "Tasks (0)",color:controller.choose.value==3?Colors.black:Colors.grey[700],fontSize: 20,fontWeight: FontWeight.w600,),
                             10.heightBox,
-                            controller.choose==3?
+                            controller.choose.value==3?
                             Container(
                               width: 100,
                               height: 5,
@@ -108,7 +108,7 @@ class DeleteScreen extends GetView<DeleteController> {
                                   color: primaryColor,
                                   borderRadius:
                                   BorderRadius.circular(10)),
-                            ):SizedBox(height: 5,)
+                            ):const SizedBox(height: 5,)
                           ],
                         ),
                       ).onTap((){
@@ -123,7 +123,7 @@ class DeleteScreen extends GetView<DeleteController> {
                           children: [
                             TextWidget(text: "Sub Task (0)",color:controller.choose.value==4?Colors.black:Colors.grey[700],fontSize: 20,fontWeight: FontWeight.w600,),
                             10.heightBox,
-                            controller.choose==4?
+                            controller.choose.value==4?
                             Container(
                               width: 100,
                               height: 5,
@@ -131,7 +131,7 @@ class DeleteScreen extends GetView<DeleteController> {
                                   color: primaryColor,
                                   borderRadius:
                                   BorderRadius.circular(10)),
-                            ):SizedBox(height: 5,)
+                            ):const SizedBox(height: 5,)
                           ],
                         ),
                       ).onTap((){
@@ -139,7 +139,7 @@ class DeleteScreen extends GetView<DeleteController> {
                       })
                     ],
                   ),
-                  DeleteEmptyScreen()
+                  const DeleteEmptyScreen()
                 ],
               ).p12()).pSymmetric(v: 10,h: 10),
           )
