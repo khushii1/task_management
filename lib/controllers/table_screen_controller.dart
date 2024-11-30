@@ -10,6 +10,7 @@ class TableScreenController extends GetxController {
 
   RxList<dynamic> taskHeadingList = [].obs;
 
+
   @override
   void onInit() {
     getHeadingData();
