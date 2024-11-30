@@ -14,7 +14,9 @@ class ProjectTaskScreen extends GetView<ProjectTaskController> {
 
   @override
   Widget build(BuildContext context) {
-    print("skskjs:${projectData}");
+    
+    
+    
     Get.put(ProjectTaskController());
     return GetBuilder<ProjectTaskController>(builder: (controller) {
       return SingleChildScrollView(

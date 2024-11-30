@@ -1,6 +1,5 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:get/get.dart';
-import 'package:jio_works/screens/main_screens/bars/projects/tasks_screens/table_screen.dart';
 import 'package:jio_works/utilities/library.dart';
 
 class TableScreenController extends GetxController {
@@ -10,7 +9,6 @@ class TableScreenController extends GetxController {
   TableScreenController({required this.teamData, required this.projectData});
 
   RxList<dynamic> taskHeadingList = [].obs;
- 
 
   @override
   void onInit() {
@@ -85,9 +83,8 @@ class TableScreenController extends GetxController {
     if (response.documents.isNotEmpty) {
       taskHeadingList.value =
           response.documents.map((element) => element.data).toList();
-      print("le:${taskHeadingList.length}");
+
       update();
-      print(response.documents.first.data);
     }
   }
 }
