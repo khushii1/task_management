@@ -140,15 +140,35 @@ class TableScreen extends GetView<TableScreenController> {
                           Column(
                             children: [
                               Row(
+                                mainAxisSize: MainAxisSize.max,
                                 children: List.generate(
                                     controller.taskHeadingList.length, (int i) {
-                                  return SizedBox(
-                                    child: Text(controller.taskHeadingList[i]
-                                            ['name']
-                                        .toString()),
+                                  return Container(
+                                    width: context.screenWidth / 6,
+                                    height: 30,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                        color: headingBarColor,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: i == 0
+                                                ? const Radius.circular(25)
+                                                : Radius.zero,
+                                            topRight: i ==
+                                                    controller.taskHeadingList
+                                                            .length -
+                                                        1
+                                                ? const Radius.circular(25.0)
+                                                : Radius.zero)),
+                                    child: TextWidget(
+                                      text: controller.taskHeadingList[i]
+                                              ['name']
+                                          .toString(),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ).pSymmetric(h: 15.0),
                                   );
                                 }),
-                              )
+                              ).h(32)
                             ],
                           )
                         ],

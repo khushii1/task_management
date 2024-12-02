@@ -12,3 +12,4 @@ Color color5 = const Color(0xffebebeb);
 Color textColor = const Color(0xff595959);
 
 Color borderColor = Colors.grey[400]!;
+Color headingBarColor = Color(0xffFFD2AD);
