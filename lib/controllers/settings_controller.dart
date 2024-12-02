@@ -34,11 +34,13 @@ class SettingsController extends GetxController {
   Uint8List? webImage;
   RxString userImage = "".obs;
   RxBool isLoading = false.obs;
+  RxList<dynamic>teamsData=[].obs;
 
   RxMap<String, dynamic> userDetails = <String, dynamic>{}.obs;
   @override
   void onInit() {
     getData();
+    getTeams();
     super.onInit();
   }
 
@@ -257,5 +259,46 @@ class SettingsController extends GetxController {
   updateDateFormat(value) {
     selectedValues.value = value;
     update();
+  }
+  getTeams()async{
+print("commng..");
+print("value f userid:${DataInfo.user!.$id}");
+      Databases databases =  Databases(DataInfo.client!);
+
+      try {
+        isLoading.value = true;
+        update();
+
+
+        // Fetch documents from a specific database and collection
+        var response = await databases.listDocuments(
+          databaseId: DataInfo.databaseId,
+          collectionId: DataInfo.teamCollectionId,
+          queries: [
+            Query.equal('created_by', DataInfo.user!.$id,)
+          ],
+        );
+
+        if (response.documents.isNotEmpty) {
+         teamsData.value=response.documents.map((element)=>element.data).toList();
+         print("teamdata are:${teamsData}");
+          isLoading.value = false;
+
+          update();
+        } else {
+          isLoading.value = false;
+
+          update();
+        }
+      } catch (e) {
+        isLoading.value = false;
+        update();
+        if (kDebugMode) {
+          isLoading.value = false;
+          update();
+          print('Error: $e');
+        }
+      }
+
   }
 }

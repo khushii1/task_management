@@ -68,6 +68,14 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
                 height: 0.5,
                 color: Colors.grey[400],
               ),
+              20.heightBox,
+              Container(
+                child: TextWidget(
+                  text: "Team Settings",
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                )
+              ).pOnly(left:20)
             ],
           ),
         ).pSymmetric(v: 10),
