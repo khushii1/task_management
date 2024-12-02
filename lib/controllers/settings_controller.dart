@@ -286,6 +286,7 @@ class SettingsController extends GetxController {
         print("teamdata are:${teamsData}");
         isLoading.value = false;
 
+
         update();
       } else {
         isLoading.value = false;
