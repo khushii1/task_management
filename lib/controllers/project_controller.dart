@@ -156,7 +156,7 @@ class ProjectController extends GetxController {
   }
 
   getData() async {
-    print("Project");
+    
     Databases databases = Databases(DataInfo.client!);
 
     try {
