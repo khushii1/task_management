@@ -75,7 +75,47 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
                   color: textColor,
                   fontWeight: FontWeight.bold,
                 )
-              ).pOnly(left:20)
+              ).pOnly(left:20),
+              10.heightBox,
+             Column(
+               children: List.generate(controller.teamsData.length, (index){
+                 String name=controller.teamsData[index]['name'][0].toString().capitalized;
+                  return Container(
+                    width: context.screenWidth,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                      Row(
+                        children: [
+                          Container(
+                              color:primaryColor,
+                              child: TextWidget(text:name,color: Colors.white,).pSymmetric(h: 8,v: 3)
+                          ),
+                          6.widthBox,
+                          TextWidget(text: controller.teamsData[index]['name'],fontSize: 17,fontWeight: FontWeight.bold,)
+
+                        ],
+                      ),
+                      Icon(Icons.arrow_drop_down).pOnly(right: 10)
+                        ],
+                    ).pOnly(left: 10),
+
+                  );
+               }),
+             ),
+              10.heightBox,
+              tile(
+                  title: "Custom Status",
+                  icon: list,
+                  chooseIndex: () {
+                    controller.changeIndex(3);
+                  }),
+              tile(
+                  title: "Manage Users",
+                  icon: manageUser,
+                  chooseIndex: () {
+                    controller.changeIndex(3);
+                  }),
             ],
           ),
         ).pSymmetric(v: 10),
