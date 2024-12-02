@@ -83,7 +83,6 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
                  String name=controller.teamsData[index]['name'][0].toString().capitalized;
                   return Container(
                     width: context.screenWidth,
-                    height: 40,
                     child: Column(
                       children: [
                         Row(
@@ -100,7 +99,7 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
 
                             ],
                           ),
-                          const Icon(Icons.arrow_drop_down).pOnly(right: 10)
+                          Icon(Icons.arrow_drop_down).pOnly(right: 10)
                             ],
                         ).pOnly(left: 10).onTap((){
                           controller.showValue();
