@@ -10,7 +10,6 @@ class TableScreenController extends GetxController {
 
   RxList<dynamic> taskHeadingList = [].obs;
 
-
   @override
   void onInit() {
     getHeadingData();
@@ -62,7 +61,9 @@ class TableScreenController extends GetxController {
             Permission.read(Role.users()),
             Permission.write(Role.users()),
           ],
-        );
+        ).then((value) {
+          getHeadingData();
+        });
       }));
     } catch (e) {
       if (kDebugMode) {

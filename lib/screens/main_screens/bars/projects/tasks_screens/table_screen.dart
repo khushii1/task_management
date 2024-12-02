@@ -4,7 +4,6 @@ import 'package:jio_works/custom_widgets/search_widget.dart';
 import 'package:jio_works/utilities/library.dart';
 import 'package:jio_works/utilities/utilities.dart';
 
-
 class TableScreen extends GetView<TableScreenController> {
   final Map<String, dynamic> teamData;
   final Map<String, dynamic> projectData;
@@ -138,6 +137,20 @@ class TableScreen extends GetView<TableScreenController> {
                               ).wh(120, 40)
                             ],
                           ).pSymmetric(h: 15.0, v: 10.0),
+                          Column(
+                            children: [
+                              Row(
+                                children: List.generate(
+                                    controller.taskHeadingList.length, (int i) {
+                                  return SizedBox(
+                                    child: Text(controller.taskHeadingList[i]
+                                            ['name']
+                                        .toString()),
+                                  );
+                                }),
+                              )
+                            ],
+                          )
                         ],
                       )
                     : Column(
