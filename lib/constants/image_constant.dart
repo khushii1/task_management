@@ -46,3 +46,6 @@ String ganttIcon = "${imagePath}ganttIcon.svg";
 String boardIcon = "${imagePath}boardIcon.svg";
 String noGanttData = "${imagePath}no-gantt-data.svg";
 String emptyBox = "${imagePath}empty-box.png";
+String arrowDown1 = "${imagePath}arrow_down1.svg";
+String chat = "${imagePath}chat.svg";
+String list = "${imagePath}list.svg";
