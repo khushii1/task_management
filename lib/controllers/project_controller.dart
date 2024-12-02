@@ -4,6 +4,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 
 import 'package:get/get.dart';
+import 'package:jio_works/controllers/settings_controller.dart';
 
 import 'package:jio_works/utilities/library.dart';
 
@@ -172,6 +173,7 @@ class ProjectController extends GetxController {
       if (response.documents.isNotEmpty) {
         teams.value =
             response.documents.map((element) => element.data).toList();
+        Get.find<SettingsController>().teamsData=teams;
       }
       isLoading.value = false;
       update();
@@ -434,6 +436,7 @@ class ProjectController extends GetxController {
             "created_by": DataInfo.user!.$id,
             "created_date": DateTime.now().toString(),
           }).then((value) {
+
         showSnackBar(message: "Project added", context: context);
         getData();
       });

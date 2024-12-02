@@ -40,7 +40,7 @@ class SettingsController extends GetxController {
   @override
   void onInit() {
     getData();
-    getTeams();
+   // getTeams();
     super.onInit();
   }
 
