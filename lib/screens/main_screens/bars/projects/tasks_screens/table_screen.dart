@@ -151,13 +151,13 @@ class TableScreen extends GetView<TableScreenController> {
                                         color: headingBarColor,
                                         borderRadius: BorderRadius.only(
                                             topLeft: i == 0
-                                                ? const Radius.circular(25)
+                                                ? const Radius.circular(10)
                                                 : Radius.zero,
                                             topRight: i ==
                                                     controller.taskHeadingList
                                                             .length -
                                                         1
-                                                ? const Radius.circular(25.0)
+                                                ? const Radius.circular(10)
                                                 : Radius.zero)),
                                     child: TextWidget(
                                       text: controller.taskHeadingList[i]
