@@ -262,6 +262,7 @@ class SettingsController extends GetxController {
   }
 
   getTeams() async {
+    print("settigs left bar screen");
     Databases databases = Databases(DataInfo.client!);
 
     try {
@@ -285,7 +286,6 @@ class SettingsController extends GetxController {
             response.documents.map((element) => element.data).toList();
         print("teamdata are:${teamsData}");
         isLoading.value = false;
-
 
         update();
       } else {
