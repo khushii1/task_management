@@ -19,7 +19,7 @@ class SplashController extends GetxController {
     await Future.delayed(const Duration(seconds: 1));
     try {
       await DataInfo.account.get();
-    
+
       await getCurrentUser();
       if (context.mounted) {
         context.go('/jioscreen');
@@ -40,6 +40,8 @@ class SplashController extends GetxController {
       DataInfo.user = user;
       DataInfo.userDetails.value = user.toMap();
       DataInfo.box.write("userDetails", user.toMap());
+      DataInfo.box.write("userId", user.$id);
+      DataInfo.userId.value = user.$id;
 
       update();
     } catch (e) {
