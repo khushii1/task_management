@@ -19,6 +19,7 @@ class DataInfo {
   static String projectCollectionId = '6746e4ec002afcaa7211';
   static String taskHeadignCollectionId = "674961c800205d13c324";
   static RxMap<String, dynamic> userDetails = <String, dynamic>{}.obs;
+  static RxString userId = "".obs;
 
   static appWriteInfo() async {
     try {

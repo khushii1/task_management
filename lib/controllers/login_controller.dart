@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:jio_works/utilities/library.dart';
 import 'package:jio_works/utilities/utilities.dart';
 
-
 class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
@@ -37,7 +36,6 @@ class LoginController extends GetxController {
         password: password.text,
       )
           .then((value) async {
-        
         DataInfo.sessionId = value.$id;
         DataInfo.box.write("sessionId", DataInfo.sessionId);
         await getCurrentUser();
@@ -63,6 +61,8 @@ class LoginController extends GetxController {
       final user = await DataInfo.account.get();
       DataInfo.user = user;
       DataInfo.box.write("userDetails", user.toMap());
+      DataInfo.box.write("userId", user.$id);
+      DataInfo.userId.value = user.$id;
     } catch (e) {
       if (kDebugMode) {
         print('Error fetching user details: $e');
