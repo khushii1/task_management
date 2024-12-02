@@ -265,7 +265,7 @@ showValue(){
   }
 
   getTeams() async {
-    print("settigs left bar screen");
+    
     Databases databases = Databases(DataInfo.client!);
 
     try {
