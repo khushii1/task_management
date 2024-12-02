@@ -101,19 +101,26 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
                           ),
                           Icon(Icons.arrow_drop_down).pOnly(right: 10)
                             ],
-                        ).pOnly(left: 10),
-                        tile(
-                            title: "Custom Status",
-                            icon: list,
-                            chooseIndex: () {
-                              controller.changeIndex(3);
-                            }),
-                        tile(
-                            title: "Manage Users",
-                            icon: manageUser,
-                            chooseIndex: () {
-                              controller.changeIndex(3);
-                            }),
+                        ).pOnly(left: 10).onTap((){
+                          controller.showValue();
+                        }),
+                        controller.show.value==false?SizedBox(height: 20,):
+                        Column(
+                          children: [
+                            tile(
+                                title: "Custom Status",
+                                icon: list,
+                                chooseIndex: () {
+                                  controller.changeIndex(4);
+                                }),
+                            tile(
+                                title: "Manage Users",
+                                icon: manageUser,
+                                chooseIndex: () {
+                                  controller.changeIndex(5);
+                                }),
+                          ],
+                        )
                       ],
                     ),
 

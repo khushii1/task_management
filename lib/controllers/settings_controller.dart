@@ -35,12 +35,12 @@ class SettingsController extends GetxController {
   RxString userImage = "".obs;
   RxBool isLoading = false.obs;
   RxList<dynamic> teamsData = [].obs;
-
+RxBool show=false.obs;
   RxMap<String, dynamic> userDetails = <String, dynamic>{}.obs;
   @override
   void onInit() {
     getData();
-   // getTeams();
+    getTeams();
     super.onInit();
   }
 
@@ -48,7 +48,10 @@ class SettingsController extends GetxController {
     index.value = value;
     update();
   }
-
+showValue(){
+    show.value=!show.value;
+    update();
+}
   Future<void> pickImage() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
