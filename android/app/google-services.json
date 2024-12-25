@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "363271052828",
+    "firebase_url": "https://task-85f1a-default-rtdb.firebaseio.com",
+    "project_id": "task-85f1a",
+    "storage_bucket": "task-85f1a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363271052828:android:d2b2082467950d7bed89d9",
+        "android_client_info": {
+          "package_name": "com.example.jio_works"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAimi-nf4mLrmTvy96EFo-1_iw1qfHzSHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
