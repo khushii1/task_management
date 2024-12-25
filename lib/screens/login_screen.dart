@@ -89,7 +89,7 @@ class LoginScreen extends GetView<LoginController> {
                           Row(
                             children: [
                               const TextWidget(
-                                text: "Dont have an Account?",
+                                text: "Don't have an Account?",
                                 fontSize: 15,
                                 color: Color(0xff5b5058),
                               ),

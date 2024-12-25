@@ -58,7 +58,7 @@ RxBool isLoading=false.obs;
           if (context.mounted) {
             isLoading.value=false;
             update();
-            showSnackBar(message: "Email is alredy exists.", context: context);
+            showSnackBar(message: "Email is already exists.", context: context);
           }
         }
       } on AppwriteException catch (e) {
