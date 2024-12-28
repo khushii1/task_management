@@ -1,5 +1,5 @@
 
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
