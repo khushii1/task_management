@@ -287,7 +287,6 @@ showValue(){
       if (response.documents.isNotEmpty) {
         teamsData.value =
             response.documents.map((element) => element.data).toList();
-        print("teamdata are:${teamsData}");
         isLoading.value = false;
 
         update();

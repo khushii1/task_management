@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -89,7 +91,7 @@ class LoginScreen extends GetView<LoginController> {
                           Row(
                             children: [
                               const TextWidget(
-                                text: "Dont have an Account?",
+                                text: "Don't have an Account?",
                                 fontSize: 15,
                                 color: Color(0xff5b5058),
                               ),

@@ -70,18 +70,16 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
                 color: Colors.grey[400],
               ),
               20.heightBox,
-              Container(
-                child: TextWidget(
-                  text: "Team Settings",
-                  color: textColor,
-                  fontWeight: FontWeight.bold,
-                )
+              TextWidget(
+                text: "Team Settings",
+                color: textColor,
+                fontWeight: FontWeight.bold,
               ).pOnly(left:20),
               10.heightBox,
              Column(
                children: List.generate(controller.teamsData.length, (index){
                  String name=controller.teamsData[index]['name'][0].toString().capitalized;
-                  return Container(
+                  return SizedBox(
                     width: context.screenWidth,
                     child: Column(
                       children: [
@@ -99,12 +97,12 @@ class SettingLeftbarScreen extends GetView<SettingsController> {
 
                             ],
                           ),
-                          Icon(Icons.arrow_drop_down).pOnly(right: 10)
+                          const Icon(Icons.arrow_drop_down).pOnly(right: 10)
                             ],
                         ).pOnly(left: 10).onTap((){
                           controller.showValue();
                         }),
-                        controller.show.value==false?SizedBox(height: 20,):
+                        controller.show.value==false?const SizedBox(height: 20,):
                         Column(
                           children: [
                             tile(
